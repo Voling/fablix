@@ -4,6 +4,7 @@
 #sql files
 *.sql
 *.txt
+.idea
 #node
 **/node_modules/
 ### Eclipse ###
