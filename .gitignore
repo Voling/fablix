@@ -5,6 +5,8 @@
 *.sql
 *.txt
 .idea
+**/.idea
+
 #node
 **/node_modules/
 ### Eclipse ###
@@ -40,6 +42,7 @@ local.properties
 .buildpath
 
 # sbteclipse plugin
+**/target/
 .target
 
 # Tern plugin
