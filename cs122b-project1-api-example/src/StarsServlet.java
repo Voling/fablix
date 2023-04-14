@@ -48,7 +48,7 @@ public class StarsServlet extends HttpServlet {
             // Declare our statement
             Statement statement = conn.createStatement();
 
-            String query = "SELECT * from movies";
+            String query = "SELECT * from movies JOIN ratings on movies.id = ratings.movieId ORDER BY ratings.rating LIMIT 20;";
 
             // Perform the query
             ResultSet rs = statement.executeQuery(query);
@@ -60,12 +60,14 @@ public class StarsServlet extends HttpServlet {
                 String id = rs.getString("id");
                 String title = rs.getString("title");
                 String year = rs.getString("year");
+                String rating = rs.getString("rating");
 
                 // Create a JsonObject based on the data we retrieve from rs
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("id", id);
                 jsonObject.addProperty("title", title);
                 jsonObject.addProperty("year", year);
+                jsonObject.addProperty("rating", rating);
 
                 jsonArray.add(jsonObject);
             }
