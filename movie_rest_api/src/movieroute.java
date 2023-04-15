@@ -1,6 +1,6 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
+import java.io.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import jakarta.servlet.ServletConfig;
@@ -17,8 +17,8 @@ import java.sql.Statement;
 
 
 // Declaring a WebServlet called StarsServlet, which maps to url "/api/stars"
-@WebServlet(name = "StarsServlet", urlPatterns = "/api/movies")
-public class StarsServlet extends HttpServlet {
+@WebServlet(name = "movieroute", urlPatterns = "/api/movies")
+public class movieroute extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // Create a dataSource which registered in web.
@@ -48,8 +48,49 @@ public class StarsServlet extends HttpServlet {
             // Declare our statement
             Statement statement = conn.createStatement();
 
-            String query = "SELECT * from movies JOIN ratings on movies.id = ratings.movieId ORDER BY ratings.rating LIMIT 20;";
+            String query = "SELECT\n" +
+                    "    B.movieid,\n" +
+                    "    B.title,\n" +
+                    "    B.year,\n" +
+                    "    B.director,\n" +
+                    "    B.rating,\n" +
+                    "    genres.name AS genrename,\n" +
+                    "    stars.name AS starname\n" +
+                    "FROM\n" +
+                    "    (\n" +
+                    "        SELECT\n" +
+                    "            A.movieid,\n" +
+                    "            A.title,\n" +
+                    "            A.year,\n" +
+                    "            A.director,\n" +
+                    "            A.rating,\n" +
+                    "            genres_in_movies.genreId,\n" +
+                    "            stars_in_movies.starId\n" +
+                    "        FROM\n" +
+                    "            (\n" +
+                    "                SELECT\n" +
+                    "                    movies.id AS movieid,\n" +
+                    "                    movies.title,\n" +
+                    "                    movies.year,\n" +
+                    "                    movies.director,\n" +
+                    "                    ratings.rating\n" +
+                    "                FROM\n" +
+                    "                    movies\n" +
+                    "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
+                    "                ORDER BY\n" +
+                    "                    -ratings.rating\n" +
+                    "                LIMIT\n" +
+                    "                    20\n" +
+                    "            ) AS A\n" +
+                    "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
+                    "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
+                    "    ) AS B\n" +
+                    "INNER JOIN genres ON genres.id = B.genreId\n" +
+                    "INNER JOIN stars ON stars.id = B.starId;";
 
+
+
+            System.out.println(query);
             // Perform the query
             ResultSet rs = statement.executeQuery(query);
 
@@ -57,17 +98,23 @@ public class StarsServlet extends HttpServlet {
 
             // Iterate through each row of rs
             while (rs.next()) {
-                String id = rs.getString("id");
+                String id = rs.getString("movieid");
                 String title = rs.getString("title");
                 String year = rs.getString("year");
                 String rating = rs.getString("rating");
+                String director = rs.getString("director");
+                String genre = rs.getString("genrename");
+                String star = rs.getString("starname");
 
                 // Create a JsonObject based on the data we retrieve from rs
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("id", id);
                 jsonObject.addProperty("title", title);
                 jsonObject.addProperty("year", year);
+                jsonObject.addProperty("director", director);
                 jsonObject.addProperty("rating", rating);
+                jsonObject.addProperty("genre", genre);
+                jsonObject.addProperty("star", star);
 
                 jsonArray.add(jsonObject);
             }
