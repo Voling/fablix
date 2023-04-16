@@ -15,6 +15,7 @@
  * @param target String
  * @returns {*}
  */
+
 function getParameterByName(target) {
     // Get request URL
     let url = window.location.href;
@@ -36,7 +37,7 @@ function getParameterByName(target) {
  * @param resultData jsonObject
  */
 
-function handleResult(resultData) {
+function handle(resultData) {
 
     console.log("handleResult: populating single movie info from resultData");
 
@@ -55,10 +56,10 @@ function handleResult(resultData) {
     let movieTableBodyElement = jQuery("#star_table_body");
 
     // Concatenate the html tags with resultData jsonObject to create table rows
-    for (let i = 0; i < Math.min(10, resultData.length); i++) {
+    for (let i = 0; i < Math.min(10, resultData[0]["starsInMovie"].length); i++) {
         let rowHTML = "";
         rowHTML += "<tr>";
-        rowHTML += "<th>" + '<a href="single-star.html?id=' + resultData[i]["star_id"]+ '">' + resultData[i]["star_name"] + '</a>' + "</th>";
+        rowHTML += "<th>" + '<a href="single-star.html?id=' + resultData[0]["starsInMovie"][i]["starid"]+ '">' + resultData[0]["starsInMovie"][i]["starname"] + '</a>' + "</th>";
         rowHTML += "</tr>";
 
         // Append the row created to the table body, which will refresh the page
@@ -78,5 +79,5 @@ jQuery.ajax({
     dataType: "json",  // Setting return data type
     method: "GET",// Setting request method
     url: "api/single-movie?id=" + movieId, // Setting request url, which is mapped by StarsServlet in Stars.java
-    success: (resultData) => handleResult(resultData) // Setting callback function to handle data returned successfully by the SingleStarServlet
+    success: (resultData) => handle(resultData) // Setting callback function to handle data returned successfully by the SingleStarServlet
 });

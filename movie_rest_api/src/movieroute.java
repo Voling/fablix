@@ -55,7 +55,8 @@ public class movieroute extends HttpServlet {
                     "    B.director,\n" +
                     "    B.rating,\n" +
                     "    genres.name AS genrename,\n" +
-                    "    stars.name AS starname\n" +
+                    "    stars.name AS starname,\n" +
+                    "    B.starId " +
                     "FROM\n" +
                     "    (\n" +
                     "        SELECT\n" +
@@ -105,6 +106,7 @@ public class movieroute extends HttpServlet {
                 String director = rs.getString("director");
                 String genre = rs.getString("genrename");
                 String star = rs.getString("starname");
+                String starid = rs.getString("starId");
 
                 // Create a JsonObject based on the data we retrieve from rs
                 JsonObject jsonObject = new JsonObject();
@@ -115,6 +117,7 @@ public class movieroute extends HttpServlet {
                 jsonObject.addProperty("rating", rating);
                 jsonObject.addProperty("genre", genre);
                 jsonObject.addProperty("star", star);
+                jsonObject.addProperty("starid", starid);
 
                 jsonArray.add(jsonObject);
             }

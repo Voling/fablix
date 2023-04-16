@@ -39,7 +39,7 @@ function getParameterByName(target) {
 function handleResult(resultData) {
 
     console.log("handleResult: populating star info from resultData");
-
+    console.log(resultData);
     // populate the star info h3
     // find the empty h3 body by id "star_info"
     let starInfoElement = jQuery("#star_info");
@@ -49,6 +49,7 @@ function handleResult(resultData) {
         "<p>Date Of Birth: " + resultData[0]["star_dob"] + "</p>");
 
     console.log("handleResult: populating movie table from resultData");
+
 
     // Populate the star table
     // Find the empty table body by id "movie_table_body"
@@ -74,6 +75,8 @@ function handleResult(resultData) {
 
 // Get id from URL
 let starId = getParameterByName('id');
+console.log("starid");
+console.log(starId);
 
 // Makes the HTTP GET request and registers on success callback function handleResult
 jQuery.ajax({

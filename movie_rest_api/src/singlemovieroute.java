@@ -12,11 +12,12 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.ResultSet;
+import java.io.*;
 
 // Declaring a WebServlet called SingleStarServlet, which maps to url "/api/single-star"
-@WebServlet(name = "singlemovieroute", urlPatterns = "/api/single-star")
+@WebServlet(name = "singlemovieroute", urlPatterns = "/api/single-movie")
 public class singlemovieroute extends HttpServlet {
     private static final long serialVersionUID = 3L;
 
@@ -53,19 +54,49 @@ public class singlemovieroute extends HttpServlet {
             // Get a connection from dataSource
 
             // Construct a query with parameter represented by "?"
-            String query = "SELECT m.id as id, m.title as title, m.year as year, m.director as director, sim.starId as simstarId, sim.movieId as s.id as starId" +
-                    "from movies as m, stars_in_movies as sim, stars as s" +
-                    "where id = simmovieId and simstarId = starId and id = ?";
+            Statement statement = conn.createStatement();
 
             // Declare our statement
-            PreparedStatement statement = conn.prepareStatement(query);
-
-            // Set the parameter represented by "?" in the query to the id we get from url,
-            // num 1 indicates the first "?" in the query
-            statement.setString(1, id);
-
+           String query = "SELECT\n" +
+                   "    B.movieid,\n" +
+                   "    B.title,\n" +
+                   "    B.year,\n" +
+                   "    B.director,\n" +
+                   "    B.rating,\n" +
+                   "    genres.name AS genrename,\n" +
+                   "    stars.name AS starname,\n" +
+                   "    B.starId " +
+                   "FROM\n" +
+                   "    (\n" +
+                   "        SELECT\n" +
+                   "            A.movieid,\n" +
+                   "            A.title,\n" +
+                   "            A.year,\n" +
+                   "            A.director,\n" +
+                   "            A.rating,\n" +
+                   "            genres_in_movies.genreId,\n" +
+                   "            stars_in_movies.starId\n" +
+                   "        FROM\n" +
+                   "            (\n" +
+                   "                SELECT\n" +
+                   "                    movies.id AS movieid,\n" +
+                   "                    movies.title,\n" +
+                   "                    movies.year,\n" +
+                   "                    movies.director,\n" +
+                   "                    ratings.rating\n" +
+                   "                FROM\n" +
+                   "                    movies\n" +
+                   "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
+                   "                WHERE movieid = '" + id + "'"+
+                   "            ) AS A\n" +
+                   "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
+                   "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
+                   "    ) AS B\n" +
+                   "INNER JOIN genres ON genres.id = B.genreId\n" +
+                   "INNER JOIN stars ON stars.id = B.starId;";
+            System.out.println(query);
             // Perform the query
-            ResultSet rs = statement.executeQuery();
+            ResultSet rs = statement.executeQuery(query);
             JsonArray jsonArray = new JsonArray();
             JsonArray starsInMovie = new JsonArray();
             boolean firstRun = false;
@@ -76,7 +107,7 @@ public class singlemovieroute extends HttpServlet {
                 if (!firstRun){
                     // put tile to json
                     //add actor
-                    String movieId = rs.getString("id");
+                    String movieId = rs.getString("movieid");
                     String movieTitle = rs.getString("title");
                     String movieYear = rs.getString("year");
                     String movieDirector = rs.getString("director");
@@ -90,19 +121,22 @@ public class singlemovieroute extends HttpServlet {
                     jsonObject.add("starsInMovie", starsInMovie); //create jsonarray in jsonobj
 
                     firstRun = true;
+                    jsonArray.add(jsonObject);
                 }
                 /*
                 add all stars
                  */
                 String starId = rs.getString("starId");
-                starsInMovie.add(starId);
-                String starName = rs.getString("star");
-                starsInMovie.add(starName);
-                jsonArray.add(jsonObject);
+                String starName = rs.getString("starname");
+                JsonObject combined = new JsonObject();
+                combined.addProperty("starid",starId);
+                combined.addProperty("starname",starName);
+                starsInMovie.add( combined);
+
             }
             rs.close();
             statement.close();
-
+            System.out.println(jsonArray);
             // Write JSON string to output
             out.write(jsonArray.toString());
             // Set response status to 200 (OK)

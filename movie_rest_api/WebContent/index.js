@@ -28,12 +28,11 @@ function transformdata(resultdata){
     let length = -1
     for (let i = 0; i < resultdata.length; i++){
         if(resultdata[i].id != movie){
-            array.push({ title: resultdata[i].title,id:resultdata[i].id ,year:resultdata[i].year, director:resultdata[i].director,rating:resultdata[i].rating,genres:resultdata[i].genre,cast:[resultdata[i].star]})
+            array.push({ title: resultdata[i].title,id:resultdata[i].id ,year:resultdata[i].year, director:resultdata[i].director,rating:resultdata[i].rating,genres:resultdata[i].genre,cast:[[resultdata[i].star,resultdata[i].starid]]})
             movie = resultdata[i].id
             prevgenre = resultdata[i].genre;
             prevstar = resultdata[i].star;
-            length += 1
-
+            length += 1;
         }
         else{
             if(resultdata[i].genre != prevgenre){
@@ -41,8 +40,9 @@ function transformdata(resultdata){
                 prevgenre = resultdata[i].genre
             }
             if(resultdata[i].star != prevstar){
-                array[length].cast.push(resultdata[i].star)
+                array[length].cast.push([resultdata[i].star,resultdata[i].starid])
                 prevstar = resultdata[i].star
+                console.log(resultdata[i].starid)
             }
         }
     }
@@ -66,19 +66,19 @@ function handlemovieResult(resultData) {
         rowHTML +=
             "<th>" +
             // Add a link to single-star.html with id passed with GET url parameter
-            '<a href="single-star.html?id=' + resultData[i]['movieid'] + '">'
+            '<a href="single-movie.html?id=' + resultData[i]['id'] + '">'
             + resultData[i]["title"] +     // display star_name for the link text
             '</a>' +
             "</th>";
         rowHTML += "<th>" + resultData[i]["year"] + "</th>";
         rowHTML += "<th>" + resultData[i]["director"] + "</th>";
         rowHTML += "<th>" + resultData[i]["genres"]+ "</th>";
-        rowHTML += "<th>" + '<a href="single-star.html?id=' + resultData[i]["cast"][0]+ '">'
-            + resultData[i]["cast"][0] +     // display star_name for the link text
-            '</a>'+  " " + '<a href="single-star.html?id=' + resultData[i]["cast"][1]+ '">'
-            + resultData[i]["cast"][1] +     // display star_name for the link text
-            '</a>' + " " + '<a href="single-star.html?id=' + resultData[i]["cast"][2]+ '">'
-            + resultData[i]["cast"][2] +     // display star_name for the link text
+        rowHTML += "<th>" + '<a href="single-star.html?id=' + resultData[i]["cast"][0][1]+ '">'
+            + resultData[i]["cast"][0][0] +     // display star_name for the link text
+            '</a>'+  " " + '<a href="single-star.html?id=' + resultData[i]["cast"][1][1]+ '">'
+            + resultData[i]["cast"][1][0] +     // display star_name for the link text
+            '</a>' + " " + '<a href="single-star.html?id=' + resultData[i]["cast"][2][1]+ '">'
+            + resultData[i]["cast"][2][0] +    // display star_name for the link text
             '</a>'+ "</th>";
         rowHTML += "<th>" + resultData[i]["rating"] + "</th>";
         rowHTML += "</tr>";

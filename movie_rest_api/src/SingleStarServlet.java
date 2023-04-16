@@ -12,8 +12,9 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.io.*;
 
 // Declaring a WebServlet called SingleStarServlet, which maps to url "/api/single-star"
 @WebServlet(name = "SingleStarServlet", urlPatterns = "/api/single-star")
@@ -41,6 +42,8 @@ public class SingleStarServlet extends HttpServlet {
 
         // Retrieve parameter id from url request.
         String id = request.getParameter("id");
+        System.out.println("id is ");
+        System.out.println(id);
 
         // The log message can be found in localhost log
         request.getServletContext().log("getting id: " + id);
@@ -51,20 +54,13 @@ public class SingleStarServlet extends HttpServlet {
         // Get a connection from dataSource and let resource manager close the connection after usage.
         try (Connection conn = dataSource.getConnection()) {
             // Get a connection from dataSource
-
+            Statement statement = conn.createStatement();
             // Construct a query with parameter represented by "?"
             String query = "SELECT * from stars as s, stars_in_movies as sim, movies as m " +
-                    "where m.id = sim.movieId and sim.starId = s.id and s.id = ?";
+                    "where m.id = sim.movieId and sim.starId = s.id and s.id = '" + id + "'" ;
 
-            // Declare our statement
-            PreparedStatement statement = conn.prepareStatement(query);
-
-            // Set the parameter represented by "?" in the query to the id we get from url,
-            // num 1 indicates the first "?" in the query
-            statement.setString(1, id);
-
-            // Perform the query
-            ResultSet rs = statement.executeQuery();
+            System.out.println(query);
+            ResultSet rs = statement.executeQuery(query);
 
             JsonArray jsonArray = new JsonArray();
 
