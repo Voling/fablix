@@ -53,8 +53,9 @@ public class singlemovieroute extends HttpServlet {
             // Get a connection from dataSource
 
             // Construct a query with parameter represented by "?"
-            String query = "SELECT * from movies as m, stars_in_movies as sim, stars as s" +
-                    "where m.id = sim.movieId and sim.starId = s.id and s.id = ?";
+            String query = "SELECT m.id as id, m.title as title, m.year as year, m.director as director, sim.starId as simstarId, sim.movieId as s.id as starId" +
+                    "from movies as m, stars_in_movies as sim, stars as s" +
+                    "where id = simmovieId and simstarId = starId and id = ?";
 
             // Declare our statement
             PreparedStatement statement = conn.prepareStatement(query);
@@ -90,11 +91,11 @@ public class singlemovieroute extends HttpServlet {
                     firstRun = true;
                 }
                 /*
-                all stars
+                add all stars
                  */
-
                 String starId = rs.getString("starId");
                 starsInMovie.add(starId);
+                String starName = rs.getString("star");
             }
             rs.close();
             statement.close();
