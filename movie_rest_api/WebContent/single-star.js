@@ -46,7 +46,13 @@ function handleResult(resultData) {
 
     // append two html <p> created to the h3 body, which will refresh the page
     starInfoElement.append("<p style = \"color:#ffc107\">Star Name: " + resultData[0]["star_name"] + "</p>" +
-        "<p style = \"color:#ffc107\">Date Of Birth: " + resultData[0]["star_dob"] + "</p>");
+        "<p style = \"color:#ffc107\">Date Of Birth: ");
+    if (resultData[0]["star_dob"] ){
+        starInfoElement.append(resultData[0]["star_dob"] + "</p>")
+    }
+    else{
+        starInfoElement.append("N/A" + "</p>")
+    }
 
     console.log("handleResult: populating movie table from resultData");
 
@@ -59,7 +65,7 @@ function handleResult(resultData) {
     for (let i = 0; i < Math.min(10, resultData.length); i++) {
         let rowHTML = "";
         rowHTML += "<tr>";
-        rowHTML += "<th>" + resultData[i]["movie_title"] + "</th>";
+        rowHTML += "<th>" + '<a href="single-movie.html?id=' + resultData[i]["movie_id"]+ '">' + resultData[i]["movie_title"] +  "</a>" + "</th>";
         rowHTML += "<th>" + resultData[i]["movie_year"] + "</th>";
         rowHTML += "<th>" + resultData[i]["movie_director"] + "</th>";
         rowHTML += "</tr>";
