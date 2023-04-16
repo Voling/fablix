@@ -64,23 +64,23 @@ function handlemovieResult(resultData) {
         let rowHTML = "";
         rowHTML += "<tr>";
         rowHTML +=
-            "<th>" +
+            "<th class=\"rounded-th\">" +
             // Add a link to single-star.html with id passed with GET url parameter
             '<a href="single-movie.html?id=' + resultData[i]['id'] + '">'
             + resultData[i]["title"] +     // display star_name for the link text
             '</a>' +
             "</th>";
-        rowHTML += "<th>" + resultData[i]["year"] + "</th>";
-        rowHTML += "<th>" + resultData[i]["director"] + "</th>";
-        rowHTML += "<th>" + resultData[i]["genres"]+ "</th>";
-        rowHTML += "<th>" + '<a href="single-star.html?id=' + resultData[i]["cast"][0][1]+ '">'
+        rowHTML += "<th class=\"rounded-th\">" + resultData[i]["year"] + "</th>";
+        rowHTML += "<th class=\"rounded-th\">" + resultData[i]["director"] + "</th>";
+        rowHTML += "<th class=\"rounded-th\">" + resultData[i]["genres"]+ "</th>";
+        rowHTML += "<th class=\"rounded-th\">" + '<a href="single-star.html?id=' + resultData[i]["cast"][0][1]+ '">'
             + resultData[i]["cast"][0][0] +     // display star_name for the link text
             '</a>'+  " " + '<a href="single-star.html?id=' + resultData[i]["cast"][1][1]+ '">'
             + resultData[i]["cast"][1][0] +     // display star_name for the link text
             '</a>' + " " + '<a href="single-star.html?id=' + resultData[i]["cast"][2][1]+ '">'
             + resultData[i]["cast"][2][0] +    // display star_name for the link text
             '</a>'+ "</th>";
-        rowHTML += "<th>" + resultData[i]["rating"] + "</th>";
+        rowHTML += "<th class=\"rounded-th\">" + resultData[i]["rating"] + "</th>";
         rowHTML += "</tr>";
 
         // Append the row created to the table body, which will refresh the page
