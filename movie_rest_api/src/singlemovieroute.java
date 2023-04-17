@@ -102,7 +102,7 @@ public class singlemovieroute extends HttpServlet {
             JsonArray starsInMovie = new JsonArray();
 
             JsonArray allGenres = new JsonArray();
-            HashMap<String, boolean> genreTracker = new HashMap<>();
+            HashMap<String, Integer> genreTracker = new HashMap<>();
 
             boolean firstRun = false;
 
@@ -140,8 +140,8 @@ public class singlemovieroute extends HttpServlet {
                 starsInMovie.add(combined);
 
                 String thisGenre = rs.getString("genrename");
-                if (!genreTracker.contains(thisGenre)) {
-                    genreTracker[thisGenre] = true;
+                if (!genreTracker.containsKey(thisGenre)) {
+                    genreTracker.put(thisGenre, 1)
                     allGenres.add(thisGenre);
                 } // if not in hashmap (dne) then it can be added
             }
