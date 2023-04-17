@@ -97,6 +97,7 @@ public class singlemovieroute extends HttpServlet {
             System.out.println(query);
             // Perform the query
             ResultSet rs = statement.executeQuery(query);
+            JsonObject jsonObject = new JsonObject();
             JsonArray jsonArray = new JsonArray();
             JsonArray starsInMovie = new JsonArray();
 
@@ -107,7 +108,7 @@ public class singlemovieroute extends HttpServlet {
 
             // Iterate through each row of rs
             while (rs.next()) {
-                JsonObject jsonObject = new JsonObject();
+
                 if (!firstRun){
                     // put tile to json
                     String movieId = rs.getString("movieid");
@@ -130,9 +131,7 @@ public class singlemovieroute extends HttpServlet {
                     firstRun = true;
                     jsonArray.add(jsonObject);
                 }
-                /*
-                add all stars
-                 */
+                //add all stars
                 String starId = rs.getString("starId");
                 String starName = rs.getString("starname");
                 JsonObject combined = new JsonObject();
