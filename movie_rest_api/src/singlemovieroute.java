@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.io.*;
-
+import java.util.HashMap;
 // Declaring a WebServlet called SingleStarServlet, which maps to url "/api/single-star"
 @WebServlet(name = "singlemovieroute", urlPatterns = "/api/single-movie")
 public class singlemovieroute extends HttpServlet {
@@ -100,6 +100,9 @@ public class singlemovieroute extends HttpServlet {
             JsonArray jsonArray = new JsonArray();
             JsonArray starsInMovie = new JsonArray();
 
+            JsonArray allGenres = new JsonArray();
+            HashMap<String, boolean> genreTracker = new HashMap<>();
+
             boolean firstRun = false;
 
             // Iterate through each row of rs
@@ -112,7 +115,7 @@ public class singlemovieroute extends HttpServlet {
                     String movieYear = rs.getString("year");
                     String movieDirector = rs.getString("director");
                     String movieRating = rs.getString("rating");
-                    String movieGenres = rs.getString("genrename");
+                    //String movieGenres = rs.getString("genrename");
 
                     // Create a JsonObject based on the data we retrieve from rs
 
@@ -121,7 +124,7 @@ public class singlemovieroute extends HttpServlet {
                     jsonObject.addProperty("movie_year", movieYear);
                     jsonObject.addProperty("movie_director", movieDirector);
                     jsonObject.addProperty("movie_rating", movieRating);
-                    jsonObject.addProperty("movie_genres", movieGenres);
+                    //jsonObject.addProperty("movie_genres", movieGenres);
                     jsonObject.add("starsInMovie", starsInMovie); //create jsonarray in jsonobj
 
                     firstRun = true;
@@ -136,7 +139,14 @@ public class singlemovieroute extends HttpServlet {
                 combined.addProperty("starid",starId);
                 combined.addProperty("starname",starName);
                 starsInMovie.add(combined);
+
+                String thisGenre = rs.getString("genrename");
+                if (!genreTracker.contains(thisGenre)) {
+                    genreTracker[thisGenre] = true;
+                    allGenres.add(thisGenre);
+                } // if not in hashmap (dne) then it can be added
             }
+            jsonObject.add("movie_genres", allGenres);
             rs.close();
             statement.close();
             System.out.println(jsonArray);
