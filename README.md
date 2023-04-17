@@ -1,5 +1,5 @@
 # s23-122b-tryna_find_a_teammate
-https://www.youtube.com/
+https://www.youtube.com/watch?v=LZ8xK6RqNUQ
 
 Contributions:
 Dean Du: home page, aws management, extra css, sql management and queries, maven management, debugging
