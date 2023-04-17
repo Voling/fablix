@@ -72,7 +72,7 @@ function handlemovieResult(resultData) {
             "</th>";
         rowHTML += "<th class=\"rounded-th\">" + resultData[i]["year"] + "</th>";
         rowHTML += "<th class=\"rounded-th\">" + resultData[i]["director"] + "</th>";
-        rowHTML += "<th class=\"rounded-th\">" + resultData[i]["movie_genres"] + "</th>";
+        rowHTML += "<th class=\"rounded-th\">" + resultData[i]["genres"] + "</th>";
         rowHTML += "<th class=\"rounded-th\">" + '<a href="single-star.html?id=' + resultData[i]["cast"][0][1]+ '">'
             + resultData[i]["cast"][0][0] +     // display star_name for the link text
             '</a>'+  " " + '<a href="single-star.html?id=' + resultData[i]["cast"][1][1]+ '">'

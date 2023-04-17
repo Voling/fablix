@@ -141,7 +141,7 @@ public class singlemovieroute extends HttpServlet {
 
                 String thisGenre = rs.getString("genrename");
                 if (!genreTracker.containsKey(thisGenre)) {
-                    genreTracker.put(thisGenre, 1)
+                    genreTracker.put(thisGenre, 1);
                     allGenres.add(thisGenre);
                 } // if not in hashmap (dne) then it can be added
             }
