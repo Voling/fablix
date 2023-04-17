@@ -99,6 +99,7 @@ public class singlemovieroute extends HttpServlet {
             ResultSet rs = statement.executeQuery(query);
             JsonArray jsonArray = new JsonArray();
             JsonArray starsInMovie = new JsonArray();
+
             boolean firstRun = false;
 
             // Iterate through each row of rs
@@ -106,11 +107,12 @@ public class singlemovieroute extends HttpServlet {
                 JsonObject jsonObject = new JsonObject();
                 if (!firstRun){
                     // put tile to json
-                    //add actor
                     String movieId = rs.getString("movieid");
                     String movieTitle = rs.getString("title");
                     String movieYear = rs.getString("year");
                     String movieDirector = rs.getString("director");
+                    String movieRating = rs.getString("rating");
+                    String movieGenres = rs.getString("genrename");
 
                     // Create a JsonObject based on the data we retrieve from rs
 
@@ -118,6 +120,8 @@ public class singlemovieroute extends HttpServlet {
                     jsonObject.addProperty("movie_title", movieTitle);
                     jsonObject.addProperty("movie_year", movieYear);
                     jsonObject.addProperty("movie_director", movieDirector);
+                    jsonObject.addProperty("movie_rating", movieRating);
+                    jsonObject.addProperty("movie_genres", movieGenres);
                     jsonObject.add("starsInMovie", starsInMovie); //create jsonarray in jsonobj
 
                     firstRun = true;
@@ -131,8 +135,7 @@ public class singlemovieroute extends HttpServlet {
                 JsonObject combined = new JsonObject();
                 combined.addProperty("starid",starId);
                 combined.addProperty("starname",starName);
-                starsInMovie.add( combined);
-
+                starsInMovie.add(combined);
             }
             rs.close();
             statement.close();

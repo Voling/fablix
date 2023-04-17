@@ -44,10 +44,16 @@ function handle(resultData) {
     // populate the star info h3
     // find the empty h3 body by id "star_info"
     let movieInfoElement = jQuery("#movie_info");
-
+    let allGenres = "";
+    for (let i = 0; i < resultData[0]["movie_genres"].length; i++) {
+        allGenres += resultData[0]["movie_genres"][i] + " ";
+    }
     // append two html <p> created to the h3 body, which will refresh the page
     movieInfoElement.append("<p style = \"color:#ffc107\">Title: " + resultData[0]["movie_title"] + "</p>" +
-        "<p style = \"color:#ffc107\">Year: " + resultData[0]["movie_year"] + "</p>");
+        "<p style = \"color:#ffc107\">Genres: " + allGenres + "</p>" +
+        "<p style = \"color:#ffc107\">Year: " + resultData[0]["movie_year"] + "</p>" +
+        "<p style = \"color:#ffc107\">Rating: " + resultData[0]["movie_rating"] + "</p>" +
+        "<p style = \"color:#ffc107\">Director: " + resultData[0]["movie_director"] + "</p>");
 
     console.log("handleResult: populating movie table from resultData");
 
