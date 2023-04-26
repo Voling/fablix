@@ -16,6 +16,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.io.*;
 import java.util.HashMap;
+import java.sql.PreparedStatement;
+
 // Declaring a WebServlet called SingleStarServlet, which maps to url "/api/single-star"
 @WebServlet(name = "singlemovieroute", urlPatterns = "/api/single-movie")
 public class singlemovieroute extends HttpServlet {
@@ -54,7 +56,6 @@ public class singlemovieroute extends HttpServlet {
             // Get a connection from dataSource
 
             // Construct a query with parameter represented by "?"
-            Statement statement = conn.createStatement();
 
             // Declare our statement
            String query = "SELECT\n" +
@@ -87,7 +88,7 @@ public class singlemovieroute extends HttpServlet {
                    "                FROM\n" +
                    "                    movies\n" +
                    "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
-                   "                WHERE movieid = '" + id + "'"+
+                   "                WHERE movieid = ? "+
                    "            ) AS A\n" +
                    "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
                    "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
@@ -96,7 +97,9 @@ public class singlemovieroute extends HttpServlet {
                    "INNER JOIN stars ON stars.id = B.starId;";
             System.out.println(query);
             // Perform the query
-            ResultSet rs = statement.executeQuery(query);
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, id);
+            ResultSet rs = statement.executeQuery();
             JsonObject jsonObject = new JsonObject();
             JsonArray jsonArray = new JsonArray();
             JsonArray starsInMovie = new JsonArray();

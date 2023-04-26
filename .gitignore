@@ -6,7 +6,8 @@
 *.txt
 .idea
 **/.idea
-
+#password
+/passwords/
 #node
 **/node_modules/
 ### Eclipse ###
