@@ -16,7 +16,7 @@
 
 function handle(resultData){
 
-    handlemovieResult(transformdata(resultData));
+    handleMovieResult(transformdata(resultData));
 
 }
 
@@ -50,7 +50,7 @@ function transformdata(resultdata){
     return array
 
 }
-function handlemovieResult(resultData) {
+function handleMovieResult(resultData) {
     console.log("handleStarResult: populating star table from resultData");
 
     // Populate the star table
@@ -87,8 +87,18 @@ function handlemovieResult(resultData) {
         starTableBodyElement.append(rowHTML);
     }
 }
-
-
+$(document).ready(function() {
+    //find button and attach logout fx to it
+    $('#logoutButton').click(function(){
+        $.ajax({
+            url: "api/logout",
+            type: "POST",
+            success: function(response) {
+                window.location.replace("login.html")
+            }
+        })
+    })
+})
 /**
  * Once this .js is loaded, following scripts will be executed by the browser
  */
