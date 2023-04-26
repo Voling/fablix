@@ -124,7 +124,7 @@ public class login extends HttpServlet {
         if (info.equals("found")) {
             // Login success:
             // set this user into the session
-            // request.getSession().setAttribute("user", new User(username));
+            request.getSession().setAttribute("user", new user(email));
             System.out.println("sucess!");
             responseJsonObject.addProperty("status", "success");
             responseJsonObject.addProperty("message", "success");
