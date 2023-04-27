@@ -4,7 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.io.*;
 /**
  * Servlet Filter implementation class LoginFilter
  */
@@ -31,9 +31,11 @@ public class loginfilter implements Filter {
 
         // Redirect to login page if the "user" attribute doesn't exist in session
         if (httpRequest.getSession().getAttribute("user") == null) {
+
             httpResponse.sendRedirect("login.html");
         } else {
             chain.doFilter(request, response);
+            System.out.println("session checked");
         }
     }
 

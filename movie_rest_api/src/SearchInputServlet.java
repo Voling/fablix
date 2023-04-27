@@ -10,8 +10,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
-
+import java.sql.PreparedStatement;
+import java.io.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 /**
  * A servlet that takes input from a html <form> and talks to MySQL moviedbexample,
  * generates output as a html <table>
@@ -39,24 +41,80 @@ public class SearchInputServlet extends HttpServlet {
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
         // Building page head with title
-        out.println("<html><head><title>Found Records</title></head>");
+        out.println("Found Records");
         // Building page body
-        out.println("<body><h1>Found Records</h1>");
+        out.println("Found Records");
         try {
             // Create a new connection to database
-            Connection dbCon = dataSource.getConnection();
+            Connection conn = dataSource.getConnection();
             // Declare a new statement
-            Statement statement = dbCon.createStatement();
+            //Statement statement = dbCon.createStatement();
             // Retrieve parameter "name" from the http request, which refers to the value of <input name="name"> in index.html
             String title = request.getParameter("title");
-            String year = request.getParameter("title");
+            System.out.println(title);
+            String year = request.getParameter("year");
             String director = request.getParameter("director");
-            String starName = request.getParameter("star");
+            //String starName = request.getParameter("star");
             // Generate a SQL query
-            String query = "SELECT * FROM movies WHERE ";
-            if (title != null && !title.equals("")) query += String.format("title like '%s' ", title);
-            if (year != null && !year.equals("")) query += String.format(", year like '%s' ", year);
-            if (director != null && !director.equals("")) query += String.format(", director like '%s' ", director);
+            String query = "SELECT * FROM movies WHERE 1=1";
+            if (title != null && !title.equals("")) {query += " and title like ?";}
+            if (year != null ) {query += " and year =?";}
+            if (director != null&& !director.equals("")) {query += " and director like ?";}
+            System.out.println(query);
+            PreparedStatement statement = conn.prepareStatement(query);
+            // a decision tree on where to insert parameters
+            if(title == null){
+                if(year == null){
+                    if (director == null){
+
+                    }
+                    else{
+                        statement.setString(1, director);
+
+                    }
+                }
+                else{
+                    statement.setString(1, year);
+                    if (director == null){
+
+                    }
+                    else{
+                        statement.setString(2, director);
+
+                    }
+
+                }
+
+            }
+            else{
+                statement.setString(1, title);
+                if(year == null){
+                    if (director == null){
+
+                    }
+                    else{
+                        statement.setString(2, director);
+
+                    }
+                }
+                else{
+                    statement.setString(2, year);
+                    if (director == null){
+
+                    }
+                    else{
+                        statement.setString(3, director);
+
+                    }
+
+
+                }
+
+
+
+            }
+            System.out.println(statement.toString());
+            ResultSet rs = statement.executeQuery();
             //if title, year, director present then add them to query
             //TODO: proper starName query addition
             //String getStar = String.format("SELECT id FROM stars WHERE stars.name = %s LEFT JOIN stars_in_movies ON stars_in_movies.starId = id", starName); //?
@@ -69,26 +127,46 @@ public class SearchInputServlet extends HttpServlet {
             //TODO: if star is active add to query...
 
             // Log to localhost log
-            request.getServletContext().log("query：" + query);
+            //request.getServletContext().log("query：" + query);
 
             // Perform the query
-            ResultSet rs = statement.executeQuery(query);
+            //ResultSet rs = statement.executeQuery(query);
             // Create a html <table>
-            out.println("<table border>");
+            JsonArray jsonArray = new JsonArray();
 
-            // Iterate through each row of rs and create a table row <tr>
-            out.println("<tr><td>ID</td><td>Name</td></tr>");
             while (rs.next()) {
-                String m_ID = rs.getString("ID");
-                String m_Name = rs.getString("name");
-                out.println(String.format("<tr><td>%s</td><td>%s</td></tr>", m_ID, m_Name));
-            }
-            out.println("</table>");
+                String id = rs.getString("id");
+                String dtitle = rs.getString("title");
+                String dyear = rs.getString("year");
+                String ddirector = rs.getString("director");
+                //String genre = rs.getString("genrename");
+                //String star = rs.getString("starname");
+                //String starid = rs.getString("starId");
 
-            // Close all structures
+                // Create a JsonObject based on the data we retrieve from rs
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("id", id);
+                jsonObject.addProperty("title", dtitle);
+                jsonObject.addProperty("year", dyear);
+                jsonObject.addProperty("director", ddirector);
+                //jsonObject.addProperty("rating", rating);
+                //jsonObject.addProperty("genre", genre);
+                //jsonObject.addProperty("star", star);
+                //jsonObject.addProperty("starid", starid);
+
+                jsonArray.add(jsonObject);
+            }
             rs.close();
             statement.close();
-            dbCon.close();
+
+            // Log to localhost log
+            request.getServletContext().log("getting " + jsonArray.size() + " results");
+
+            // Write JSON string to output
+            out.write(jsonArray.toString());
+            // Set response status to 200 (OK)
+            response.setStatus(200);
+
         } catch (Exception e) {
             /*
              * After you deploy the WAR file through tomcat manager webpage,

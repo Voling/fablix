@@ -17,17 +17,15 @@ public class logout extends HttpServlet {
             responseJsonObject.addProperty("status", "success");
             responseJsonObject.addProperty("message", "success");
 
-        }
-        else{
+        } else {
             responseJsonObject.addProperty("status", "failed");
             responseJsonObject.addProperty("message", "failed");
         }
-        try{
-        response.getWriter().write(responseJsonObject.toString());
-        }
-        catch(IOException e){
+        try {
+            response.getWriter().write(responseJsonObject.toString());
+        } catch (IOException e) {
             e.printStackTrace();
 
         }
-}
+    }
 }
