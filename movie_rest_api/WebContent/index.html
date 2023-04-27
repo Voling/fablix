@@ -26,7 +26,14 @@
 
 
 <h1 style = "color:#ffc107">Top movies</h1>
-<button id="logoutButton">Log Out</button> <!-- logout -->
+<button id="logoutButton">Log Out</button> <!-- button has jquery attached -->
+<form ACTION="form" METHOD="GET"> <!-- search form, HTTP GET to SearchInputServlet-->
+    Title: <input TYPE="TEXT" name="title"> <br>
+    Year: <input TYPE="TEXT" name="year"> <br>
+    Director: <input TYPE="TEXT" name="director"> <br>
+    Star name: <input TYPE="TEXT" name="star"> <br>
+    <input TYPE="SUBMIT" VALUE="Search Movies">
+</form>
 <!-- Id "star_table" is useful for jQuery to find the html element with id, class here is mapping to Bootstrap defined class CSS -->
 <table id=movie_table class="table table-striped table-dark table-hover">
     <!-- Create a table header -->
