@@ -45,6 +45,12 @@ public class SearchInputServlet extends HttpServlet {
         // Building page body
         out.println("Found Records");
         try {
+            
+            
+            //select * from movies inner join(select movieId FROM stars inner join stars_in_movies on stars.id = stars_in_movies.starId where stars.name like '%d%')as
+            //A on movies.id = A.movieId;
+
+            
             // Create a new connection to database
             Connection conn = dataSource.getConnection();
             // Declare a new statement
@@ -56,12 +62,56 @@ public class SearchInputServlet extends HttpServlet {
             String director = request.getParameter("director");
             //String starName = request.getParameter("star");
             // Generate a SQL query
+            String biggerquery =  "SELECT\n" +
+            "    B.movieid,\n" +
+            "    B.title,\n" +
+            "    B.year,\n" +
+            "    B.director,\n" +
+            "    B.rating,\n" +
+            "    genres.name AS genrename,\n" +
+            "    stars.name AS starname,\n" +
+            "    B.starId " +
+            "FROM\n" +
+            "    (\n" +
+            "        SELECT\n" +
+            "            A.movieid,\n" +
+            "            A.title,\n" +
+            "            A.year,\n" +
+            "            A.director,\n" +
+            "            A.rating,\n" +
+            "            genres_in_movies.genreId,\n" +
+            "            stars_in_movies.starId\n" +
+            "        FROM\n" +
+            "            (\n" +
+            "                SELECT\n" +
+            "                    G.id AS movieid,\n" +
+            "                    G.title,\n" +
+            "                    G.year,\n" +
+            "                    G.director,\n" +
+            "                    ratings.rating\n" +
+            "                FROM\n" +
+            "                    ";
+
+        String later =       
+            "                INNER JOIN ratings ON G.id = ratings.movieId\n" +
+            "                ORDER BY\n" +
+            "                    -ratings.rating\n" +
+            "                LIMIT\n" +
+            "                    20\n" +
+            "            ) AS A\n" +
+            "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
+            "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
+            "    ) AS B\n" +
+            "INNER JOIN genres ON genres.id = B.genreId\n" +
+            "INNER JOIN stars ON stars.id = B.starId;";
+
             String query = "SELECT * FROM movies WHERE 1=1";
             if (title != null && !title.equals("")) {query += " and title like ?";}
             if (year != null ) {query += " and year =?";}
             if (director != null&& !director.equals("")) {query += " and director like ?";}
             System.out.println(query);
-            PreparedStatement statement = conn.prepareStatement(query);
+
+            PreparedStatement statement = conn.prepareStatement(biggerquery + "(" + query + ")as G"+ later);
             // a decision tree on where to insert parameters
             if(title == null){
                 if(year == null){
@@ -135,24 +185,25 @@ public class SearchInputServlet extends HttpServlet {
             JsonArray jsonArray = new JsonArray();
 
             while (rs.next()) {
-                String id = rs.getString("id");
+                String did = rs.getString("movieid");
                 String dtitle = rs.getString("title");
                 String dyear = rs.getString("year");
+                String drating = rs.getString("rating");
                 String ddirector = rs.getString("director");
-                //String genre = rs.getString("genrename");
-                //String star = rs.getString("starname");
-                //String starid = rs.getString("starId");
+                String dgenre = rs.getString("genrename");
+                String dstar = rs.getString("starname");
+                String dstarid = rs.getString("starId");
 
                 // Create a JsonObject based on the data we retrieve from rs
                 JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("id", id);
+                jsonObject.addProperty("id", did);
                 jsonObject.addProperty("title", dtitle);
                 jsonObject.addProperty("year", dyear);
                 jsonObject.addProperty("director", ddirector);
-                //jsonObject.addProperty("rating", rating);
-                //jsonObject.addProperty("genre", genre);
-                //jsonObject.addProperty("star", star);
-                //jsonObject.addProperty("starid", starid);
+                jsonObject.addProperty("rating", drating);
+                jsonObject.addProperty("genre", dgenre);
+                jsonObject.addProperty("star", dstar);
+                jsonObject.addProperty("starid", dstarid);
 
                 jsonArray.add(jsonObject);
             }
