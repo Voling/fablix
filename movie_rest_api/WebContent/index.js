@@ -101,18 +101,25 @@ $(document).ready(function() {
             }
         })
     })
-    $("#search").on("submit", function(event) {
+    $("#searchSubmit").click(function(event) {
         event.preventDefault();
-
-        let formData = $(this).serializeArray();
+        console.log($("#search"));
+        let formData = $("#search").serializeArray();
+        console.log("form" + formData);
         let data = {};
 
         for (let field of formData) {
-            if (field.type === "TEXT") {
-                data[field.name] = `%${field.value}%`; // Wrap the title value with % characters
-            } else {
-                data[field.name] = field.value;
+            if (field.value === "") {
+
             }
+            else {
+                if (field.type === "TEXT") {
+                    //data[field.name] = "%" + field.value + "%"; // Wrap the title value with % characters
+                } else {
+                    data[field.name] = field.value;
+                }
+            }
+
         }
         console.log("here!hey")
         $.ajax({
