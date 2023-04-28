@@ -60,7 +60,7 @@ public class SearchInputServlet extends HttpServlet {
             System.out.println(title);
             String year = request.getParameter("year");
             String director = request.getParameter("director");
-            //String starName = request.getParameter("star");
+            String starname = request.getParameter("star");
             // Generate a SQL query
             String biggerquery =  "SELECT\n" +
             "    B.movieid,\n" +
@@ -91,8 +91,10 @@ public class SearchInputServlet extends HttpServlet {
             "                    ratings.rating\n" +
             "                FROM\n" +
             "                    ";
-
-        String later =       
+        String later = "";
+        String query = "";
+        if(starname == null){
+        later =       
             "                INNER JOIN ratings ON G.id = ratings.movieId\n" +
             "                ORDER BY\n" +
             "                    -ratings.rating\n" +
@@ -105,31 +107,75 @@ public class SearchInputServlet extends HttpServlet {
             "INNER JOIN genres ON genres.id = B.genreId\n" +
             "INNER JOIN stars ON stars.id = B.starId;";
 
-            String query = "SELECT * FROM movies WHERE 1=1";
+            query = "SELECT * FROM movies WHERE 1=1";
             if (title != null && !title.equals("")) {query += " and title like ?";}
             if (year != null ) {query += " and year =?";}
             if (director != null&& !director.equals("")) {query += " and director like ?";}
             System.out.println(query);
+            
+        }
+        else{
+            later =       
+            "                INNER JOIN ratings ON G.id = ratings.movieId\n" +
+            "                ORDER BY\n" +
+            "                    -ratings.rating\n" +
+            "            ) AS A\n" +
+            "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
+            "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
+            "    ) AS B\n" +
+            "INNER JOIN genres ON genres.id = B.genreId\n" +
+            "INNER JOIN stars ON stars.id = B.starId where stars.name like ?"+
+            "                LIMIT\n" +
+            "                    20;" ;
 
-            PreparedStatement statement = conn.prepareStatement(biggerquery + "(" + query + ")as G"+ later);
+            query = "SELECT * FROM movies WHERE 1=1";
+            if (title != null && !title.equals("")) {query += " and title like ?";}
+            if (year != null ) {query += " and year =?";}
+            if (director != null&& !director.equals("")) {query += " and director like ?";}
+            System.out.println(query);
+        }
+        PreparedStatement statement = conn.prepareStatement(biggerquery + "(" + query + ")as G"+ later);
             // a decision tree on where to insert parameters
             if(title == null){
                 if(year == null){
                     if (director == null){
-
+                        if(starname == null){
+                           
+                        }
+                        else{
+                            statement.setString(1, starname);
+                        }
                     }
                     else{
                         statement.setString(1, director);
+                        if(starname == null){
+                           
+                        }
+                        else{
+                            statement.setString(2, starname);
+                        }
 
                     }
                 }
                 else{
                     statement.setString(1, year);
                     if (director == null){
+                        if(starname == null){
+                           
+                        }
+                        else{
+                            statement.setString(2, starname);
+                        }
 
                     }
                     else{
                         statement.setString(2, director);
+                        if(starname == null){
+                            
+                        }
+                        else{
+                            statement.setString(3, starname);
+                        }
 
                     }
 
@@ -140,20 +186,42 @@ public class SearchInputServlet extends HttpServlet {
                 statement.setString(1, title);
                 if(year == null){
                     if (director == null){
-
+                        if(starname == null){
+                           
+                        }
+                        else{
+                            statement.setString(2, starname);
+                        }
                     }
                     else{
                         statement.setString(2, director);
+                        if(starname == null){
+                           
+                        }
+                        else{
+                            statement.setString(3, starname);
+                        }
 
                     }
                 }
                 else{
                     statement.setString(2, year);
                     if (director == null){
-
+                        if(starname == null){
+                           
+                        }
+                        else{
+                            statement.setString(3, starname);
+                        }
                     }
                     else{
                         statement.setString(3, director);
+                        if(starname == null){
+                           
+                        }
+                        else{
+                            statement.setString(4, starname);
+                        }
 
                     }
 
