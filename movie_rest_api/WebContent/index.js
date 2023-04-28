@@ -14,6 +14,9 @@
  * @param resultData jsonObject
  */
 
+
+
+
 function handle(resultData){
 
     handleMovieResult(transformdata(resultData));
@@ -98,6 +101,28 @@ $(document).ready(function() {
             }
         })
     })
+    $("#search").on("submit", function(event) {
+        event.preventDefault();
+
+        let formData = $(this).serializeArray();
+        let data = {};
+
+        for (let field of formData) {
+            if (field.type === "TEXT") {
+                data[field.name] = `%${field.value}%`; // Wrap the title value with % characters
+            } else {
+                data[field.name] = field.value;
+            }
+        }
+        console.log("here!hey")
+        $.ajax({
+            url: "/search", // Your server-side script that processes the search
+            type: "GET",
+            data: data,
+            success: (resultData) => handle(resultData)
+        });
+    });
+
 })
 /**
  * Once this .js is loaded, following scripts will be executed by the browser

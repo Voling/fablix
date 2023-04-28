@@ -27,9 +27,9 @@
 
 <h1 style = "color:#ffc107">Top movies</h1>
 <button id="logoutButton">Log Out</button> <!-- button has jquery attached -->
-<form ACTION="form" METHOD="GET"> <!-- search form, HTTP GET to SearchInputServlet-->
+<form id = "search" ACTION="form" METHOD="GET"> <!-- search form, HTTP GET to SearchInputServlet-->
     Title: <input TYPE="TEXT" name="title"> <br>
-    Year: <input TYPE="TEXT" name="year"> <br>
+    Year: <input TYPE="number" name="year"> <br>
     Director: <input TYPE="TEXT" name="director"> <br>
     Star name: <input TYPE="TEXT" name="star"> <br>
     <input TYPE="SUBMIT" VALUE="Search Movies">
