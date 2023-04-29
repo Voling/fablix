@@ -63,9 +63,10 @@ function handleMovieResult(resultData) {
   let starTableBodyElement = jQuery("#movie_table_body");
   console.log(resultData);
   // Iterate through resultData, no more than 10 entries
+  let rowHTML = "";
   for (let i = 0; i < Math.min(20, resultData.length); i++) {
     // Concatenate the html tags with resultData jsonObject
-    let rowHTML = "";
+    console.log(`index${i}`);
     rowHTML += "<tr>";
     rowHTML +=
       '<th class="rounded-th">' +
@@ -79,32 +80,41 @@ function handleMovieResult(resultData) {
     rowHTML += '<th class="rounded-th">' + resultData[i]["year"] + "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["director"] + "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["genres"] + "</th>";
-    rowHTML +=
-      '<th class="rounded-th">' +
-      '<a href="single-star.html?id=' +
-      resultData[i]["cast"][0][1] +
-      '">' +
-      resultData[i]["cast"][0][0] + // display star_name for the link text
-      "</a>" +
-      " " +
-      '<a href="single-star.html?id=' +
-      resultData[i]["cast"][1][1] +
-      '">' +
-      resultData[i]["cast"][1][0] + // display star_name for the link text
-      "</a>" +
-      " " +
-      '<a href="single-star.html?id=' +
-      resultData[i]["cast"][2][1] +
-      '">' +
-      resultData[i]["cast"][2][0] + // display star_name for the link text
-      "</a>" +
-      "</th>";
+    //console.log(resultData[i]["cast"]);
+    rowHTML += '<th class="rounded-th">';
+    if (resultData[i]["cast"][0] != null) {
+      rowHTML +=
+        '<a href="single-star.html?id=' +
+        resultData[i]["cast"][0][1] +
+        '">' +
+        resultData[i]["cast"][0][0] + // display star_name for the link text
+        "</a>";
+    }
+    if (resultData[i]["cast"][1] != null) {
+      rowHTML +=
+        " " +
+        '<a href="single-star.html?id=' +
+        resultData[i]["cast"][1][1] +
+        '">' +
+        resultData[i]["cast"][1][0] + // display star_name for the link text
+        "</a>";
+    }
+    if (resultData[i]["cast"][2] != null) {
+      rowHTML +=
+        " " +
+        '<a href="single-star.html?id=' +
+        resultData[i]["cast"][2][1] +
+        '">' +
+        resultData[i]["cast"][2][0] + // display star_name for the link text
+        "</a>" +
+        "</th>";
+    }
     rowHTML += '<th class="rounded-th">' + resultData[i]["rating"] + "</th>";
     rowHTML += "</tr>";
 
     // Append the row created to the table body, which will refresh the page
-    starTableBodyElement.append(rowHTML);
   }
+  starTableBodyElement.html(rowHTML);
 }
 $(document).ready(function () {
   //find button and attach logout fx to it
