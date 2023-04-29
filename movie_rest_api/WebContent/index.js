@@ -176,7 +176,7 @@ $(document).ready(function () {
 jQuery.ajax({
   dataType: "json", // Setting return data type
   method: "GET", // Setting request method
-  url: "api/movies", // Setting request url, which is mapped by StarsServlet in Stars.java
+  url: "api/movies?page=1", // Setting request url, which is mapped by StarsServlet in Stars.java
   success: (resultData) => {
     console.log(resultData);
     handle(resultData);

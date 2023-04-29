@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 
 // Declaring a WebServlet called StarsServlet, which maps to url "/api/stars"
@@ -38,7 +38,8 @@ public class movieroute extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         response.setContentType("application/json"); // Response mime type
-
+        String page = request.getParameter("page");
+        int pagenum = Integer.parseInt(page);
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
 
@@ -46,8 +47,7 @@ public class movieroute extends HttpServlet {
         try (Connection conn = dataSource.getConnection()) {
 
             // Declare our statement
-            Statement statement = conn.createStatement();
-
+           
             String query = "SELECT\n" +
                     "    B.movieid,\n" +
                     "    B.title,\n" +
@@ -82,6 +82,7 @@ public class movieroute extends HttpServlet {
                     "                    -ratings.rating\n" +
                     "                LIMIT\n" +
                     "                    20\n" +
+                    "OFFSET ?"+
                     "            ) AS A\n" +
                     "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
                     "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
@@ -89,11 +90,13 @@ public class movieroute extends HttpServlet {
                     "INNER JOIN genres ON genres.id = B.genreId\n" +
                     "INNER JOIN stars ON stars.id = B.starId;";
 
+            PreparedStatement statement = conn.prepareStatement(query);
+            int offset = (pagenum-1)*20;
+            statement.setInt(1, offset);
 
-
-            System.out.println(query);
+            System.out.println(statement.toString());
             // Perform the query
-            ResultSet rs = statement.executeQuery(query);
+            ResultSet rs = statement.executeQuery();
 
             JsonArray jsonArray = new JsonArray();
 

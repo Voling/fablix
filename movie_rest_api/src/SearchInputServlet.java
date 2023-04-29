@@ -57,10 +57,19 @@ public class SearchInputServlet extends HttpServlet {
             //Statement statement = dbCon.createStatement();
             // Retrieve parameter "name" from the http request, which refers to the value of <input name="name"> in index.html
             String title = request.getParameter("title");
-            System.out.println(title);
+            //System.out.println(title);
             String year = request.getParameter("year");
             String director = request.getParameter("director");
             String starname = request.getParameter("star");
+            String page = request.getParameter("page");
+            int pagenum;
+            if(page == null){
+                pagenum = 1;
+            }
+            else{
+            pagenum = Integer.parseInt(page) - 1 ;
+            }
+            int offset = (pagenum-1)*20;
             // Generate a SQL query
             String biggerquery =  "SELECT\n" +
             "    B.movieid,\n" +
@@ -93,6 +102,11 @@ public class SearchInputServlet extends HttpServlet {
             "                    ";
         String later = "";
         String query = "";
+        int count = 1;
+        int yearindex = -1;
+        int directorindex = -1;
+        int starindex = -1;
+        int pageindex = -1;
         if(starname == null){
         later =       
             "                INNER JOIN ratings ON G.id = ratings.movieId\n" +
@@ -100,6 +114,7 @@ public class SearchInputServlet extends HttpServlet {
             "                    -ratings.rating\n" +
             "                LIMIT\n" +
             "                    20\n" +
+            "OFFSET ?"+
             "            ) AS A\n" +
             "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
             "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
@@ -108,10 +123,13 @@ public class SearchInputServlet extends HttpServlet {
             "INNER JOIN stars ON stars.id = B.starId;";
 
             query = "SELECT * FROM movies WHERE 1=1";
-            if (title != null && !title.equals("")) {query += " and title like ?";}
-            if (year != null ) {query += " and year =?";}
-            if (director != null&& !director.equals("")) {query += " and director like ?";}
-            System.out.println(query);
+            if (title != null && !title.equals("")) {query += " and title like ?"; count +=1;}
+            if (year != null ) {query += " and year =?"; yearindex = count;count += 1;}
+            if (director != null&& !director.equals("")) {query += " and director like ?"; directorindex = count;count+=1;}
+            pageindex = count;
+           
+            
+           
             
         }
         else{
@@ -126,16 +144,33 @@ public class SearchInputServlet extends HttpServlet {
             "INNER JOIN genres ON genres.id = B.genreId\n" +
             "INNER JOIN stars ON stars.id = B.starId where stars.name like ?"+
             "                LIMIT\n" +
-            "                    20;" ;
+            "                    20   OFFSET ?;" ;
 
             query = "SELECT * FROM movies WHERE 1=1";
-            if (title != null && !title.equals("")) {query += " and title like ?";}
-            if (year != null ) {query += " and year =?";}
-            if (director != null&& !director.equals("")) {query += " and director like ?";}
-            System.out.println(query);
+            
+            if (title != null && !title.equals("")) {query += " and title like ?"; count +=1;}
+            if (year != null ) {query += " and year =?"; yearindex = count;count += 1;}
+            if (director != null&& !director.equals("")) {query += " and director like ?"; directorindex = count;count+=1;}
+            starindex = count;
+            pageindex = count+1;
         }
         PreparedStatement statement = conn.prepareStatement(biggerquery + "(" + query + ")as G"+ later);
+        if(title!= null){
+            statement.setString(1, title);
+        }
+        if(yearindex != -1){
+            statement.setString(yearindex, year);
+        }
+        if(directorindex != -1){
+            statement.setString(directorindex, director);
+        }
+        statement.setInt(pageindex, offset);
+        if(starindex != -1){
+            statement.setString(starindex, starname);
+        }
             // a decision tree on where to insert parameters
+            //statement.setInt(count+1, pagenum);
+            /* 
             if(title == null){
                 if(year == null){
                     if (director == null){
@@ -225,12 +260,11 @@ public class SearchInputServlet extends HttpServlet {
 
                     }
 
-
                 }
 
 
-
             }
+            */
             System.out.println(statement.toString());
             ResultSet rs = statement.executeQuery();
             //if title, year, director present then add them to query
