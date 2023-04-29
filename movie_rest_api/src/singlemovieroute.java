@@ -156,6 +156,7 @@ public class singlemovieroute extends HttpServlet {
             out.write(jsonArray.toString());
             // Set response status to 200 (OK)
             response.setStatus(200);
+            conn.close();
 
         } catch (Exception e) {
             // Write error message JSON object to output

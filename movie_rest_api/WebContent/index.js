@@ -12,7 +12,8 @@
  * Handles the data returned by the API, read the jsonObject and populate data into html elements
  * @param resultData jsonObject
  */
-
+let pagenum = 1;
+let lastused = "";
 function handle(resultData) {
   handleMovieResult(transformdata(resultData));
 }
@@ -116,6 +117,47 @@ function handleMovieResult(resultData) {
   }
   starTableBodyElement.html(rowHTML);
 }
+function submitsearch(event) {
+  event.preventDefault();
+  console.log($("#search"));
+  let formData = $("#search").serializeArray();
+  console.log("form" + formData);
+  let data = "";
+  let counter = 0;
+  for (let field of formData) {
+    //console.log(`type:${field.TYPE}`)
+    if (field.value === "") {
+    } else {
+      if (counter != 0) {
+        data += "&";
+      }
+      if (
+        field.name === "title" ||
+        field.name === "director" ||
+        field.name === "star"
+      ) {
+        console.log("hey soul sister");
+        //data[field.name] = "%" + field.value + "%"; // Wrap the title value with % characters
+        data += field.name + "=%25" + field.value + "%25";
+      } else {
+        data += field.name + "=" + field.value;
+      }
+      counter += 1;
+    }
+  }
+  data += `&page=${pagenum}`;
+  console.log("here!hey");
+  console.log(data);
+  jQuery.ajax({
+    dataType: "json",
+    url: "search?" + data, // Your server-side script that processes the search
+    type: "GET",
+    success: (resultData) => {
+      console.log(resultData);
+      handle(resultData);
+    },
+  });
+}
 $(document).ready(function () {
   //find button and attach logout fx to it
   $("#logoutButton").click(function () {
@@ -155,6 +197,10 @@ $(document).ready(function () {
         counter += 1;
       }
     }
+    if (lastused != "search") {
+      lastused = "search";
+      pagenum = 1;
+    }
     console.log("here!hey");
     console.log(data);
     jQuery.ajax({
@@ -166,6 +212,52 @@ $(document).ready(function () {
         handle(resultData);
       },
     });
+  });
+
+  $("#prev").click((event) => {
+    event.preventDefault();
+    if (pagenum != 1) {
+      if (lastused == "") {
+        pagenum -= 1;
+        jQuery.ajax({
+          dataType: "json", // Setting return data type
+          method: "GET", // Setting request method
+          url: `api/movies?page=${pagenum}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+          success: (resultData) => {
+            console.log(resultData);
+            handle(resultData);
+          }, // Setting callback function to handle data returned successfully by the StarsServlet
+        });
+      }
+      if (lastused == "search") {
+        pagenum -= 1;
+        submitsearch(event);
+      }
+      if (lastused == "browse") {
+      }
+    }
+  });
+
+  $("#next").click((event) => {
+    event.preventDefault();
+    if (lastused == "") {
+      pagenum += 1;
+      jQuery.ajax({
+        dataType: "json", // Setting return data type
+        method: "GET", // Setting request method
+        url: `api/movies?page=${pagenum}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+        success: (resultData) => {
+          console.log(resultData);
+          handle(resultData);
+        }, // Setting callback function to handle data returned successfully by the StarsServlet
+      });
+    }
+    if (lastused == "search") {
+      pagenum += 1;
+      submitsearch(event);
+    }
+    if (lastused == "browse") {
+    }
   });
 });
 /**
@@ -179,6 +271,10 @@ jQuery.ajax({
   url: "api/movies?page=1", // Setting request url, which is mapped by StarsServlet in Stars.java
   success: (resultData) => {
     console.log(resultData);
+    if (lastused != "") {
+      pagenum = 1;
+      lastused = "";
+    }
     handle(resultData);
   }, // Setting callback function to handle data returned successfully by the StarsServlet
 });

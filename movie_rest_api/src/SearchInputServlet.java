@@ -49,8 +49,7 @@ public class SearchInputServlet extends HttpServlet {
             
             //select * from movies inner join(select movieId FROM stars inner join stars_in_movies on stars.id = stars_in_movies.starId where stars.name like '%d%')as
             //A on movies.id = A.movieId;
-
-            
+            System.out.println("resquest gotten");            
             // Create a new connection to database
             Connection conn = dataSource.getConnection();
             // Declare a new statement
@@ -67,9 +66,10 @@ public class SearchInputServlet extends HttpServlet {
                 pagenum = 1;
             }
             else{
-            pagenum = Integer.parseInt(page) - 1 ;
+            pagenum = Integer.parseInt(page);
             }
             int offset = (pagenum-1)*20;
+            System.out.println("got here 1");  
             // Generate a SQL query
             String biggerquery =  "SELECT\n" +
             "    B.movieid,\n" +
@@ -319,6 +319,7 @@ public class SearchInputServlet extends HttpServlet {
             out.write(jsonArray.toString());
             // Set response status to 200 (OK)
             response.setStatus(200);
+            conn.close();
 
         } catch (Exception e) {
             /*
