@@ -23,7 +23,9 @@ function transformdata(resultdata) {
   let prevgenre = "";
   let array = [];
   let length = -1;
+
   for (let i = 0; i < resultdata.length; i++) {
+    console.log(resultdata[i]);
     if (resultdata[i].id != movie) {
       array.push({
         title: resultdata[i].title,
@@ -46,11 +48,11 @@ function transformdata(resultdata) {
       if (resultdata[i].star != prevstar) {
         array[length].cast.push([resultdata[i].star, resultdata[i].starid]);
         prevstar = resultdata[i].star;
-        console.log(resultdata[i].starid);
+        //console.log(resultdata[i].starid);
       }
     }
   }
-  console.log(array);
+  console.log(`beforehandle: ${JSON.stringify(array)}`);
   return array;
 }
 function handleMovieResult(resultData) {
@@ -145,7 +147,8 @@ $(document).ready(function () {
     }
     console.log("here!hey");
     console.log(data);
-    $.ajax({
+    jQuery.ajax({
+      dataType: "json",
       url: "search?" + data, // Your server-side script that processes the search
       type: "GET",
       success: (resultData) => {
@@ -164,5 +167,8 @@ jQuery.ajax({
   dataType: "json", // Setting return data type
   method: "GET", // Setting request method
   url: "api/movies", // Setting request url, which is mapped by StarsServlet in Stars.java
-  success: (resultData) => handle(resultData), // Setting callback function to handle data returned successfully by the StarsServlet
+  success: (resultData) => {
+    console.log(resultData);
+    handle(resultData);
+  }, // Setting callback function to handle data returned successfully by the StarsServlet
 });

@@ -41,9 +41,9 @@ public class SearchInputServlet extends HttpServlet {
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
         // Building page head with title
-        out.println("Found Records");
+        //out.println("Found Records");
         // Building page body
-        out.println("Found Records");
+        //out.println("Found Records");
         try {
             
             
