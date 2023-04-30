@@ -5,5 +5,8 @@ public class user {
     public user(String email) {
         this.email = email;
     }
+    public String getemail(){
+        return email;
+    }
 
 }

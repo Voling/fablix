@@ -51,7 +51,7 @@ function handleCartArray(resultArray) {
     console.log(`index${i}`);
     //let eacharray = JSON.parse(resultArray[i]);
     console.log(eacharray);
-    rowHTML += `<tr class= "row${i}">`;
+    rowHTML += `<tr class= "row${i} entire">`;
     rowHTML +=
       `<th class="rounded-th movietitle row${i}">` +
       // Add a link to single-star.html with id passed with GET url parameter
@@ -71,42 +71,15 @@ function handleCartArray(resultArray) {
       `<th class="rounded-th movieamount row${i}">` +
       eacharray["amount"] +
       "</th>";
-    rowHTML +=
+      rowHTML +=
+      `<th class="rounded-th movieid row${i}">` + eacharray["movieid"] + "</th>";
+      rowHTML +=
       `<th class="rounded-th movieaction row${i}">` +
-      `<button id="plus"  onclick="increment(\'` +
-      eacharray["movieid"] +
-      "', '" +
-      eacharray["title"] +
-      ", " +
-      eacharray["year"] +
-      ", '" +
-      eacharray["director"] +
-      "', " +
-      eacharray["amount"] +
-      `,${i})">+</button>` +
-      `<button id="minus"  onclick="decrement(\'` +
-      eacharray["movieid"] +
-      "', '" +
-      eacharray["title"] +
-      "', " +
-      eacharray["year"] +
-      ", '" +
-      eacharray["director"] +
-      "', " +
-      eacharray["amount"] +
-      `,${i})">-</button>` +
-      '<button id="del"onclick="delete(\'' +
-      eacharray["movieid"] +
-      "', '" +
-      eacharray["title"] +
-      "', " +
-      eacharray["year"] +
-      ", '" +
-      eacharray["director"] +
-      "', " +
-      eacharray["amount"] +
-      `,${i})">deleta all</button>` +
+      `<button class="plus"  data-row="${i}">+</button>` +
+      `<button class="minus"  data-row="${i}">-</button>` +
+      `<button class="del" data-row="${i}">deleta all</button>` +
       "</th>";
+    
     rowHTML += "<tr>";
 
     // each item will be in a bullet point
@@ -116,6 +89,66 @@ function handleCartArray(resultArray) {
   // clear the old array and show the new array in the frontend
   item_list.append(rowHTML);
 }
+
+$(document).ready(function () {
+    /*
+    $(".plus").click((event)=>{
+        const i = event.target.getAttribute('data-row');
+        console.log(i)
+    })
+    $(".minus").click((event)=>{
+        const i = event.target.getAttribute('data-row');
+        console.log(i)
+    })
+    $(".del").click((event)=>{
+        const i = event.target.getAttribute('data-row');
+        console.log(i)
+    })
+    */
+    $('body').on('click', '.plus', (event) => {
+        const i = event.target.getAttribute('data-row');
+        let movieid = $(`.movieid.row${i}`).html();
+        console.log(movieid);
+        console.log(i);
+        let title = $(`.movietitle.row${i}`).html();
+        let year = $(`.movieyear.row${i}`).html();
+        let director = $(`.moviedirector.row${i}`).html();
+        let amount = $(`.movieamount.row${i}`).html();
+        increment(movieid,title,year,director,amount,i);
+        
+
+
+      });
+    
+      $('body').on('click', '.minus', (event) => {
+        const i = event.target.getAttribute('data-row');
+        console.log(i);
+        //console.log(movieid);
+        //console.log(i);
+        let movieid = $(`.movieid.row${i}`).html();
+        console.log(movieid);
+        let title = $(`.movietitle.row${i}`).html();
+        let year = $(`.movieyear.row${i}`).html();
+        let director = $(`.moviedirector.row${i}`).html();
+        let amount = $(`.movieamount.row${i}`).html();
+        decrement(movieid,title,year,director,amount,i);
+      });
+    
+      $('body').on('click', '.del', (event) => {
+        const i = event.target.getAttribute('data-row');
+        console.log(i);
+        let movieid = $(`.movieid.row${i}`).html();
+        console.log(movieid);
+        //console.log(i);
+        let title = $(`.movietitle.row${i}`).html();
+        let year = $(`.movieyear.row${i}`).html();
+        let director = $(`.moviedirector.row${i}`).html();
+        let amount = $(`.movieamount.row${i}`).html();
+        remove(movieid,title,year,director,amount,i);
+      });
+    
+})
+
 function increment(movieid, title, year, director, amount, i) {
   jQuery.ajax("cart", {
     dataType: "json", // Setting return data type
@@ -127,8 +160,10 @@ function increment(movieid, title, year, director, amount, i) {
       year: year,
       operation: "add",
     },
-    success: () => {
-      $(`.movieamount .row${i}`).html(`${amount + 1}`);
+    success: () => {console.log("success")
+    amount = parseInt(amount)
+    console.log(amount+1)
+      $(`.movieamount.row${i}`).html(`${amount+1}`);
     },
   });
 }
@@ -144,11 +179,13 @@ function decrement(movieid, title, year, director, amount, i) {
       operation: "minus",
     },
     success: () => {
-      $(`.movieamount .row${i}`).html(`${amount - 1}`);
+        amount = parseInt(amount)
+      $(`.movieamount.row${i}`).html(`${amount-1}`);
     },
   });
 }
 function remove(movieid, title, year, director, amount, i) {
+    console.log("deleted")
   jQuery.ajax("cart", {
     dataType: "json", // Setting return data type
     method: "POST",
@@ -160,7 +197,7 @@ function remove(movieid, title, year, director, amount, i) {
       operation: "remove",
     },
     success: () => {
-      $(`.row${i} tr`).html("");
+      $(`.row${i}.entire`).html("");
     },
   });
 }

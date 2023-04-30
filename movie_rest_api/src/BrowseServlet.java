@@ -35,6 +35,8 @@ public class BrowseServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String browseType = request.getParameter("type"); //movie/title
         String browseTerm = request.getParameter("term"); //letter if title,
+        String pagesize = request.getParameter("pagesize");
+        int psize = Integer.parseInt(pagesize);
         String page = request.getParameter("page");
             int pagenum;
             if(page == null){
@@ -43,7 +45,7 @@ public class BrowseServlet extends HttpServlet {
             else{
             pagenum = Integer.parseInt(page);
             }
-            int offset = (pagenum-1)*20;
+            int offset = (pagenum-1)*psize;
             ResultSet rs;
              JsonArray result = new JsonArray();
 
@@ -52,11 +54,11 @@ public class BrowseServlet extends HttpServlet {
             Connection conn = dataSource.getConnection();
             PreparedStatement statement = conn.prepareStatement("select * from movies;");
             if (browseType.equals("title")) {
-                rs = browseByTitle(browseTerm,offset, conn, statement);
+                rs = browseByTitle(browseTerm,offset, conn, statement,psize);
 
             } //browsing by title
             else {
-                rs = browseByGenre(browseTerm,offset, conn,statement);
+                rs = browseByGenre(browseTerm,offset, conn,statement,psize);
             }
             System.out.println(statement.toString());
             //browsing by genre
@@ -98,7 +100,7 @@ public class BrowseServlet extends HttpServlet {
         out.close();
         response.setStatus(200);
     }
-    private ResultSet browseByGenre(String browseTerm, int offset, Connection conn, PreparedStatement statement) throws ServletException {
+    private ResultSet browseByGenre(String browseTerm, int offset, Connection conn, PreparedStatement statement,int psize) throws ServletException {
         //<String> movieList = new ArrayList<>();
         String query = 
         "SELECT * "   +
@@ -131,7 +133,7 @@ public class BrowseServlet extends HttpServlet {
         //"INNER JOIN stars ON stars.id = B.starId" +
         " where genres.name = ?" +
         "                LIMIT\n" +
-        "                    20" +
+        "                    ?" +
         " OFFSET ?"+
         ") as T" +
         " INNER JOIN stars_in_movies ON T.movieid = stars_in_movies.movieId\n" +
@@ -144,7 +146,8 @@ public class BrowseServlet extends HttpServlet {
         try {
             
             statement = conn.prepareStatement(query);
-            statement.setInt(2, offset);
+            statement.setInt(3, offset);
+            statement.setInt(2, psize);
             statement.setString(1,browseTerm);
             System.out.println(statement.toString());
             ResultSet rs = statement.executeQuery();
@@ -157,7 +160,7 @@ public class BrowseServlet extends HttpServlet {
 
 
     }
-    private ResultSet browseByTitle(String browseTerm, int offset, Connection conn, PreparedStatement statement) throws ServletException {
+    private ResultSet browseByTitle(String browseTerm, int offset, Connection conn, PreparedStatement statement,int psize) throws ServletException {
         //ArrayList<String> genreList = new ArrayList<>();
         String query = "SELECT\n" +
         "    B.movieid,\n" +
@@ -193,7 +196,7 @@ public class BrowseServlet extends HttpServlet {
         "                ORDER BY\n" +
         "                    -ratings.rating\n" +
         "                LIMIT\n" +
-        "                    20\n" +
+        "                    ?\n" +
         "OFFSET ?"+
         "            ) AS A\n" +
         "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
@@ -203,7 +206,8 @@ public class BrowseServlet extends HttpServlet {
         "INNER JOIN stars ON stars.id = B.starId;";
         try {
             statement = conn.prepareStatement(query);
-            statement.setInt(2, offset);
+            statement.setInt(3, offset);
+            statement.setInt(2,psize);
             statement.setString(1,browseTerm);
             ResultSet rs = statement.executeQuery();
             //statement.close();

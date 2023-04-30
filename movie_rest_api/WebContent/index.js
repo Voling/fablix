@@ -15,6 +15,7 @@
 let pagenum = 1;
 let lastused = "";
 let lastbrowsed = "";
+let pagesize = 20;
 function handle(resultData) {
   handleMovieResult(transformdata(resultData));
 }
@@ -35,7 +36,7 @@ function transformdata(resultdata) {
         year: resultdata[i].year,
         director: resultdata[i].director,
         rating: resultdata[i].rating,
-        genres: resultdata[i].genre,
+        genres: [resultdata[i].genre],
         cast: [[resultdata[i].star, resultdata[i].starid]],
       });
       movie = resultdata[i].id;
@@ -44,7 +45,7 @@ function transformdata(resultdata) {
       length += 1;
     } else {
       if (resultdata[i].genre != prevgenre) {
-        array[length].genres += " " + resultdata[i].genre;
+        array[length].genres.push(resultdata[i].genre);
         prevgenre = resultdata[i].genre;
       }
       if (resultdata[i].star != prevstar) {
@@ -53,6 +54,9 @@ function transformdata(resultdata) {
         //console.log(resultdata[i].starid);
       }
     }
+  }
+  for(let b = 0; b< array.length; b++){
+    array[b].genres.sort()
   }
   console.log(`beforehandle: ${JSON.stringify(array)}`);
   return array;
@@ -66,7 +70,7 @@ function handleMovieResult(resultData) {
   console.log(resultData);
   // Iterate through resultData, no more than 10 entries
   let rowHTML = "";
-  for (let i = 0; i < Math.min(20, resultData.length); i++) {
+  for (let i = 0; i < resultData.length; i++) {
     // Concatenate the html tags with resultData jsonObject
     console.log(`index${i}`);
     rowHTML += "<tr>";
@@ -81,7 +85,11 @@ function handleMovieResult(resultData) {
       "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["year"] + "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["director"] + "</th>";
-    rowHTML += '<th class="rounded-th">' + resultData[i]["genres"] + "</th>";
+    rowHTML += '<th class="rounded-th">';
+    for (let a = 0; a < resultData[i]["genres"].length; a++){    
+      rowHTML += resultData[i]["genres"][a] + " " ;
+    }
+    rowHTML += "</th>";
     //console.log(resultData[i]["cast"]);
     rowHTML += '<th class="rounded-th">';
     if (resultData[i]["cast"][0] != null) {
@@ -147,6 +155,7 @@ function submitsearch(event) {
     }
   }
   data += `&page=${pagenum}`;
+  data += `&pagesize=${pagesize}`
   console.log("here!hey");
   console.log(data);
   jQuery.ajax({
@@ -164,12 +173,17 @@ function submitbrowse(event) {
   jQuery.ajax({
     dataType: "json", // Setting return data type
     method: "GET", // Setting request method
-    url: `browse?page=${pagenum}&type=genre&term=${lastbrowsed}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    url: `browse?page=${pagenum}&type=genre&term=${lastbrowsed}&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
     success: (resultData) => {
       console.log(resultData);
       handle(resultData);
     }, // Setting callback function to handle data returned successfully by the StarsServlet
   });
+}
+function updatepagesize(){
+  const selectElement = document.getElementById("numberSelect");
+  console.log("updating")
+  pagesize = parseInt(selectElement.value);
 }
 $(document).ready(function () {
   //find button and attach logout fx to it
@@ -210,6 +224,7 @@ $(document).ready(function () {
         counter += 1;
       }
     }
+    data += `&pagesize=${pagesize}`
     if (lastused != "search") {
       lastused = "search";
       pagenum = 1;
@@ -292,7 +307,7 @@ $(document).ready(function () {
     jQuery.ajax({
       dataType: "json", // Setting return data type
       method: "GET", // Setting request method
-      url: `browse?page=${pagenum}&type=genre&term=${selectedItemText}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      url: `browse?page=${pagenum}&type=genre&term=${selectedItemText}&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
       success: (resultData) => {
         console.log(resultData);
         handle(resultData);
@@ -308,7 +323,7 @@ $(document).ready(function () {
 jQuery.ajax({
   dataType: "json", // Setting return data type
   method: "GET", // Setting request method
-  url: "api/movies?page=1", // Setting request url, which is mapped by StarsServlet in Stars.java
+  url: "api/movies?page=1&pagesize=20", // Setting request url, which is mapped by StarsServlet in Stars.java
   success: (resultData) => {
     console.log(resultData);
     if (lastused != "") {

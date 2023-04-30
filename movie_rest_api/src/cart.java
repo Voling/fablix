@@ -62,7 +62,7 @@ public class cart extends HttpServlet {
         */
         for(int i = 0; i < previtems.size(); i++){
             if(previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())){
-                int original = previtems.get(i).getAsJsonObject().get("movieid").getAsInt();
+                int original = previtems.get(i).getAsJsonObject().get("amount").getAsInt();
                 previtems.get(i).getAsJsonObject().addProperty("amount", original+1);
                 return true;
             }
@@ -90,7 +90,7 @@ public class cart extends HttpServlet {
         */
         for(int i = 0; i < previtems.size(); i++){
             if(previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())){
-                int original = previtems.get(i).getAsJsonObject().get("movieid").getAsInt();
+                int original = previtems.get(i).getAsJsonObject().get("amount").getAsInt();
                 if(original>0){
                 previtems.get(i).getAsJsonObject().addProperty("amount", original-1);
                 }
