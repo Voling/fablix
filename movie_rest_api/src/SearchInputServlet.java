@@ -61,6 +61,9 @@ public class SearchInputServlet extends HttpServlet {
             String director = request.getParameter("director");
             String starname = request.getParameter("star");
             String page = request.getParameter("page");
+            String pagesize = request.getParameter("pagesize");
+            int psize = Integer.parseInt(pagesize);
+            
             int pagenum;
             if(page == null){
                 pagenum = 1;
@@ -68,7 +71,7 @@ public class SearchInputServlet extends HttpServlet {
             else{
             pagenum = Integer.parseInt(page);
             }
-            int offset = (pagenum-1)*20;
+            int offset = (pagenum-1)*psize;
             System.out.println("got here 1");  
             // Generate a SQL query
             String biggerquery =  "SELECT\n" +
@@ -107,13 +110,14 @@ public class SearchInputServlet extends HttpServlet {
         int directorindex = -1;
         int starindex = -1;
         int pageindex = -1;
+        int pagesizeindex = -1;
         if(starname == null){
         later =       
             "                INNER JOIN ratings ON G.id = ratings.movieId\n" +
             "                ORDER BY\n" +
             "                    -ratings.rating\n" +
             "                LIMIT\n" +
-            "                    20\n" +
+            "                    ?\n" +
             "OFFSET ?"+
             "            ) AS A\n" +
             "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
@@ -126,6 +130,8 @@ public class SearchInputServlet extends HttpServlet {
             if (title != null && !title.equals("")) {query += " and title like ?"; count +=1;}
             if (year != null ) {query += " and year =?"; yearindex = count;count += 1;}
             if (director != null&& !director.equals("")) {query += " and director like ?"; directorindex = count;count+=1;}
+            pagesizeindex = count;
+            count += 1;
             pageindex = count;
            
             
@@ -145,7 +151,7 @@ public class SearchInputServlet extends HttpServlet {
             "                ORDER BY\n" +
             "                    -B.rating\n" +
             "                LIMIT\n" +
-            "                    20   OFFSET ?;" ;
+            "                    ?  OFFSET ?;" ;
 
             query = "SELECT * FROM movies WHERE 1=1";
             
@@ -153,7 +159,10 @@ public class SearchInputServlet extends HttpServlet {
             if (year != null ) {query += " and year =?"; yearindex = count;count += 1;}
             if (director != null&& !director.equals("")) {query += " and director like ?"; directorindex = count;count+=1;}
             starindex = count;
-            pageindex = count+1;
+            count+=1;
+            pagesizeindex = count;
+            count += 1;
+            pageindex = count;
         }
         PreparedStatement statement = conn.prepareStatement(biggerquery + "(" + query + ")as G"+ later);
         if(title!= null){
@@ -166,6 +175,7 @@ public class SearchInputServlet extends HttpServlet {
             statement.setString(directorindex, director);
         }
         statement.setInt(pageindex, offset);
+        statement.setInt(pagesizeindex,psize);
         if(starindex != -1){
             statement.setString(starindex, starname);
         }
