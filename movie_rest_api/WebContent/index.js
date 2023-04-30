@@ -36,7 +36,7 @@ function transformdata(resultdata) {
         year: resultdata[i].year,
         director: resultdata[i].director,
         rating: resultdata[i].rating,
-        genres: resultdata[i].genre,
+        genres: [resultdata[i].genre],
         cast: [[resultdata[i].star, resultdata[i].starid]],
       });
       movie = resultdata[i].id;
@@ -45,7 +45,7 @@ function transformdata(resultdata) {
       length += 1;
     } else {
       if (resultdata[i].genre != prevgenre) {
-        array[length].genres += " " + resultdata[i].genre;
+        array[length].genres.push(resultdata[i].genre);
         prevgenre = resultdata[i].genre;
       }
       if (resultdata[i].star != prevstar) {
@@ -54,6 +54,9 @@ function transformdata(resultdata) {
         //console.log(resultdata[i].starid);
       }
     }
+  }
+  for(let b = 0; b< array.length; b++){
+    array[b].genres.sort()
   }
   console.log(`beforehandle: ${JSON.stringify(array)}`);
   return array;
@@ -82,7 +85,11 @@ function handleMovieResult(resultData) {
       "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["year"] + "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["director"] + "</th>";
-    rowHTML += '<th class="rounded-th">' + resultData[i]["genres"] + "</th>";
+    rowHTML += '<th class="rounded-th">';
+    for (let a = 0; a < resultData[i]["genres"].length; a++){    
+      rowHTML += resultData[i]["genres"][a] + " " ;
+    }
+    rowHTML += "</th>";
     //console.log(resultData[i]["cast"]);
     rowHTML += '<th class="rounded-th">';
     if (resultData[i]["cast"][0] != null) {

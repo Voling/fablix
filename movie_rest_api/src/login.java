@@ -55,7 +55,36 @@ public class login extends HttpServlet {
 
 
     }
+    private String verifycustomer(String email, String password, Connection conn){
 
+        String query = "select password from customers where email = ?;";
+        String info = "error";
+        try {
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, email);
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            String supposedpw = rs.getString("password");
+            System.out.println("password:");
+            System.out.println(supposedpw);
+            if (supposedpw == null) {
+                info = "notexist";
+                System.out.println("notexist");
+                return info;
+            }
+            if (password.equals(supposedpw)) {
+                info = "found";
+                return info;
+            } else {
+                return "incorrect";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return info;
+
+
+    }
     private String verifyuser(String email, String password, Connection conn) {
         // String matched = "";
         String info = "error";
@@ -108,6 +137,9 @@ public class login extends HttpServlet {
         String info = "";
         try (Connection conn = dataSource.getConnection()) {
             info = verifyuser(email, password, conn);
+            if(info != "found"){
+                info = verifycustomer(email, password, conn);
+            }
             conn.close();
         } catch (Exception e) {
             // Write error message JSON object to output
