@@ -53,7 +53,7 @@ public class PaymentServlet extends HttpServlet {
                 transactionTrack.setString(1, firstName);
                 transactionTrack.setString(2, lastName);
                 transactionTrack.setString(3, cardNumber);
-                transactionTrack.setString(4, cartMovieID);
+                transactionTrack.setString(4, "");
 
                 transactionTrack.close();
             }
