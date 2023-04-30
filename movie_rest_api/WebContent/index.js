@@ -14,6 +14,7 @@
  */
 let pagenum = 1;
 let lastused = "";
+let lastbrowsed = "";
 function handle(resultData) {
   handleMovieResult(transformdata(resultData));
 }
@@ -158,6 +159,18 @@ function submitsearch(event) {
     },
   });
 }
+function submitbrowse(event) {
+  console.log(pagenum);
+  jQuery.ajax({
+    dataType: "json", // Setting return data type
+    method: "GET", // Setting request method
+    url: `browse?page=${pagenum}&type=genre&term=${lastbrowsed}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    success: (resultData) => {
+      console.log(resultData);
+      handle(resultData);
+    }, // Setting callback function to handle data returned successfully by the StarsServlet
+  });
+}
 $(document).ready(function () {
   //find button and attach logout fx to it
   $("#logoutButton").click(function () {
@@ -234,6 +247,8 @@ $(document).ready(function () {
         submitsearch(event);
       }
       if (lastused == "browse") {
+        pagenum -= 1;
+        submitbrowse(event);
       }
     }
   });
@@ -257,7 +272,28 @@ $(document).ready(function () {
       submitsearch(event);
     }
     if (lastused == "browse") {
+      pagenum += 1;
+      submitbrowse(event);
     }
+  });
+  $(".agenre").click((event) => {
+    let selectedItemText = $(event.target).text();
+
+    //let decodedText = decodeURIComponent(selectedItemText);
+    if (lastused != "browse" || lastbrowsed != selectedItemText) {
+      lastused = "browse";
+      lastbrowsed = selectedItemText;
+      pagenum = 1;
+    }
+    jQuery.ajax({
+      dataType: "json", // Setting return data type
+      method: "GET", // Setting request method
+      url: `browse?page=${pagenum}&type=genre&term=${selectedItemText}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      success: (resultData) => {
+        console.log(resultData);
+        handle(resultData);
+      }, // Setting callback function to handle data returned successfully by the StarsServlet
+    });
   });
 });
 /**

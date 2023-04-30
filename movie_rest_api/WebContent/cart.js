@@ -47,7 +47,7 @@ function handleCartArray(resultArray) {
   // change it to html list
   let rowHTML = "";
   for (let i = 0; i < resultArray.length; i++) {
-    let eacharray = JSON.parse(resultArray[i]);
+    let eacharray = resultArray[i];
     console.log(`index${i}`);
     //let eacharray = JSON.parse(resultArray[i]);
     console.log(eacharray);

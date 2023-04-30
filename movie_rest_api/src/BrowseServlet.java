@@ -61,14 +61,14 @@ public class BrowseServlet extends HttpServlet {
             System.out.println(statement.toString());
             //browsing by genre
             while (rs.next()) {
-                String did = rs.getString("movieid");
-                String dtitle = rs.getString("title");
-                String dyear = rs.getString("year");
-                String ddirector = rs.getString("director");
-                String drating = rs.getString("rating");
-                String dgenre = rs.getString("genrename");
-                String dstar = rs.getString("starname");
-                String dstarid = rs.getString("starId");
+                String did = rs.getString("T.movieid");
+                String dtitle = rs.getString("T.title");
+                String dyear = rs.getString("T.year");
+                String ddirector = rs.getString("T.director");
+                String drating = rs.getString("T.rating");
+                String dgenre = rs.getString("genres.name");
+                String dstar = rs.getString("stars.name");
+                String dstarid = rs.getString("stars.id");
 
 
                 JsonObject jsonObject = new JsonObject();
@@ -77,6 +77,10 @@ public class BrowseServlet extends HttpServlet {
                 jsonObject.addProperty("year", dyear);
                 jsonObject.addProperty("director", ddirector);
                 jsonObject.addProperty("rating", drating);
+                jsonObject.addProperty("genre", dgenre);
+                jsonObject.addProperty("star", dstar);
+                jsonObject.addProperty("starid", dstarid);
+
 
                 result.add(jsonObject);
             }
@@ -96,25 +100,17 @@ public class BrowseServlet extends HttpServlet {
     }
     private ResultSet browseByGenre(String browseTerm, int offset, Connection conn, PreparedStatement statement) throws ServletException {
         //<String> movieList = new ArrayList<>();
-        String query = "SELECT\n" +
-        "    B.movieid,\n" +
-        "    B.title,\n" +
-        "    B.year,\n" +
-        "    B.director,\n" +
-        "    B.rating,\n" +
-        "    genres.name AS genrename,\n" +
-        "    stars.name AS starname,\n" +
-        "    B.starId " +
-        "FROM\n" +
-        "    (\n" +
+        String query = 
+        "SELECT * "   +
+      
+        "from" +
+        "("+
         "        SELECT\n" +
         "            A.movieid,\n" +
         "            A.title,\n" +
         "            A.year,\n" +
         "            A.director,\n" +
-        "            A.rating,\n" +
-        "            genres_in_movies.genreId,\n" +
-        "            stars_in_movies.starId\n" +
+        "            A.rating\n" +
         "        FROM\n" +
         "            (\n" +
         "                SELECT\n" +
@@ -128,22 +124,29 @@ public class BrowseServlet extends HttpServlet {
         "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
         "                ORDER BY\n" +
         "                    -ratings.rating\n" +
-        "OFFSET ?"+
         "            ) AS A\n" +
         "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
-        "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
-        "    ) AS B\n" +
-        "INNER JOIN genres ON genres.id = B.genreId\n" +
-        "INNER JOIN stars ON stars.id = B.starId" +
-        "where genres.name like ?" +
+       // "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
+        " INNER JOIN genres ON genres.id = genres_in_movies.genreId\n" +
+        //"INNER JOIN stars ON stars.id = B.starId" +
+        " where genres.name = ?" +
         "                LIMIT\n" +
-        "                    20;";
+        "                    20" +
+        " OFFSET ?"+
+        ") as T" +
+        " INNER JOIN stars_in_movies ON T.movieid = stars_in_movies.movieId\n" +
+        " INNER JOIN stars ON stars.id = stars_in_movies.starId"+
+        " INNER JOIN genres_in_movies ON T.movieid = genres_in_movies.movieId\n" +
+        " INNER JOIN genres ON genres.id = genres_in_movies.genreId;";
+
+       
         //Connection conn;
         try {
             
             statement = conn.prepareStatement(query);
-            statement.setInt(1, offset);
-            statement.setString(2,browseTerm);
+            statement.setInt(2, offset);
+            statement.setString(1,browseTerm);
+            System.out.println(statement.toString());
             ResultSet rs = statement.executeQuery();
             //statement.close();
             //conn.close();
