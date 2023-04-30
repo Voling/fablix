@@ -259,6 +259,10 @@ $(document).ready(function () {
     if (lastused == "browse") {
     }
   });
+
+  $("#checkout-button").onclick(function(){
+    window.location.replace("cart.html");
+  }); //checkout
 });
 /**
  * Once this .js is loaded, following scripts will be executed by the browser

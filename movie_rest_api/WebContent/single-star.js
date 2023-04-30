@@ -83,7 +83,11 @@ function handleResult(resultData) {
 let starId = getParameterByName('id');
 console.log("starid");
 console.log(starId);
-
+$(document).ready(() => {
+    $("#checkout-button").onclick(function(){
+        window.location.replace("cart.html");
+    }); //checkout
+})
 // Makes the HTTP GET request and registers on success callback function handleResult
 jQuery.ajax({
     dataType: "json",  // Setting return data type
