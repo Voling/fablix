@@ -108,6 +108,7 @@ public class login extends HttpServlet {
         String info = "";
         try (Connection conn = dataSource.getConnection()) {
             info = verifyuser(email, password, conn);
+            conn.close();
         } catch (Exception e) {
             // Write error message JSON object to output
             JsonObject jsonObject = new JsonObject();
@@ -143,5 +144,6 @@ public class login extends HttpServlet {
             }
         }
         response.getWriter().write(responseJsonObject.toString());
+       
     }
 }

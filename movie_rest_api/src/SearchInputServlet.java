@@ -135,14 +135,15 @@ public class SearchInputServlet extends HttpServlet {
         else{
             later =       
             "                INNER JOIN ratings ON G.id = ratings.movieId\n" +
-            "                ORDER BY\n" +
-            "                    -ratings.rating\n" +
+            
             "            ) AS A\n" +
             "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
             "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
             "    ) AS B\n" +
             "INNER JOIN genres ON genres.id = B.genreId\n" +
             "INNER JOIN stars ON stars.id = B.starId where stars.name like ?"+
+            "                ORDER BY\n" +
+            "                    -B.rating\n" +
             "                LIMIT\n" +
             "                    20   OFFSET ?;" ;
 

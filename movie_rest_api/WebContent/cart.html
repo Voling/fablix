@@ -1,0 +1,48 @@
+<!-- This page will be seen if you logged in -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fablix</title>
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <style>
+    body {
+      background-color: #343a40; /* Change this to the desired color */
+    }
+  </style>
+  </head>
+  <body>
+    Welcome to Fablix!
+    <p id="sessionID"></p>
+    <p id="lastAccessTime"></p>
+    <form action="#" id="cart" method="post">
+      <label>Item Purchased</label>
+      <br />
+      <label>
+        <input name="item" required="required" type="text" />
+      </label>
+      <input type="submit" value="add" />
+    </form>
+    <table id="item_list" class="table table-striped table-dark table-hover">
+        <!-- Create a table header -->
+        <thead>
+          <tr>
+            <!-- Titles of each column-->
+            <th>title</th>
+            <th>year</th>
+            <th>director</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+    <!-- include your own JS file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="cart.js"></script>
+  </body>
+</html>
