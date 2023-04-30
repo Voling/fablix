@@ -106,13 +106,19 @@ $(document).ready(() => {
       year: theyear,
     };
     // Stringify the object to prepare it for sending in the request
-    const movieObjectString = JSON.stringify(movieObject);
+    // const movieObjectString = JSON.stringify(movieObject);
     jQuery.ajax(
       "cart",
       {
         dataType: "json", // Setting return data type
         method: "POST",
-        data: { item: movieObjectString },
+        data: {
+          movieid: movieId,
+          title: thetitle,
+          director: thedirector,
+          year: theyear,
+          operation: "add",
+        },
         // Setting request method
         //url: "api/cart", // Setting request url, which is mapped by StarsServlet in Stars.java
         success: () => window.location.replace("cart.html"),
