@@ -1,5 +1,6 @@
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mysql.cj.xdevapi.Statement;
 import java.io.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import javax.xml.stream.events.StartElement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -39,7 +41,9 @@ public class movieroute extends HttpServlet {
 
         response.setContentType("application/json"); // Response mime type
         String page = request.getParameter("page");
+        String pagesize = request.getParameter("pagesize");
         int pagenum = Integer.parseInt(page);
+        int psize = Integer.parseInt(pagesize);
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
 
@@ -81,7 +85,7 @@ public class movieroute extends HttpServlet {
                     "                ORDER BY\n" +
                     "                    -ratings.rating\n" +
                     "                LIMIT\n" +
-                    "                    20\n" +
+                    "                    ?\n" +
                     "OFFSET ?"+
                     "            ) AS A\n" +
                     "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
@@ -92,7 +96,8 @@ public class movieroute extends HttpServlet {
 
             PreparedStatement statement = conn.prepareStatement(query);
             int offset = (pagenum-1)*20;
-            statement.setInt(1, offset);
+            statement.setInt(1,psize);
+            statement.setInt(2, offset);
 
             System.out.println(statement.toString());
             // Perform the query

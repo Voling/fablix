@@ -83,6 +83,19 @@
         </div>
       </div>
     </div>
+    <div id = "page size" class="container mt-5">
+        
+            <div class="form-group">
+                <label for="numberSelect">Select a number</label>
+                <select class="form-control" id="numberSelect"  onchange="updatepagesize()">
+                   
+                    <option>20</option>
+                    <option>10</option>
+                    <option>30</option>
+                    <option>40</option>
+                </select>
+            </div>
+    </div>
 
     <!-- Id "star_table" is useful for jQuery to find the html element with id, class here is mapping to Bootstrap defined class CSS -->
     <table id="movie_table" class="table table-striped table-dark table-hover">
