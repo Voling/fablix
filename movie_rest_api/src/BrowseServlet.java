@@ -54,6 +54,7 @@ public class BrowseServlet extends HttpServlet {
             Connection conn = dataSource.getConnection();
             PreparedStatement statement = conn.prepareStatement("select * from movies;");
             if (browseType.equals("title")) {
+                System.out.println("in title");
                 rs = browseByTitle(browseTerm,offset, conn, statement,psize);
 
             } //browsing by title
@@ -63,14 +64,14 @@ public class BrowseServlet extends HttpServlet {
             System.out.println(statement.toString());
             //browsing by genre
             while (rs.next()) {
-                String did = rs.getString("T.movieid");
-                String dtitle = rs.getString("T.title");
-                String dyear = rs.getString("T.year");
-                String ddirector = rs.getString("T.director");
-                String drating = rs.getString("T.rating");
-                String dgenre = rs.getString("genres.name");
-                String dstar = rs.getString("stars.name");
-                String dstarid = rs.getString("stars.id");
+                String did = rs.getString("movieid");
+                String dtitle = rs.getString("title");
+                String dyear = rs.getString("year");
+                String ddirector = rs.getString("director");
+                String drating = rs.getString("rating");
+                String dgenre = rs.getString("genrename");
+                String dstar = rs.getString("starname");
+                String dstarid = rs.getString("starId");
 
 
                 JsonObject jsonObject = new JsonObject();
@@ -103,7 +104,15 @@ public class BrowseServlet extends HttpServlet {
     private ResultSet browseByGenre(String browseTerm, int offset, Connection conn, PreparedStatement statement,int psize) throws ServletException {
         //<String> movieList = new ArrayList<>();
         String query = 
-        "SELECT * "   +
+        "SELECT \n"   +
+        "T.movieid as movieid, \n"+
+        "T.title as title, \n"+
+        "T.year as year, \n" +
+        "T.director as director, \n" +
+        "T.rating as rating, \n"+
+        "genres.name AS genrename,\n" +
+        "stars.name AS starname,\n" +
+        "stars_in_movies.starId as starId \n"+
       
         "from" +
         "("+
@@ -163,14 +172,14 @@ public class BrowseServlet extends HttpServlet {
     private ResultSet browseByTitle(String browseTerm, int offset, Connection conn, PreparedStatement statement,int psize) throws ServletException {
         //ArrayList<String> genreList = new ArrayList<>();
         String query = "SELECT\n" +
-        "    B.movieid,\n" +
-        "    B.title,\n" +
-        "    B.year,\n" +
-        "    B.director,\n" +
-        "    B.rating,\n" +
+        "    B.movieid as movieid,\n" +
+        "    B.title as title,\n" +
+        "    B.year as year,\n" +
+        "    B.director as director,\n" +
+        "    B.rating as rating,\n" +
         "    genres.name AS genrename,\n" +
         "    stars.name AS starname,\n" +
-        "    B.starId " +
+        "    B.starId as starId " +
         "FROM\n" +
         "    (\n" +
         "        SELECT\n" +
@@ -209,6 +218,7 @@ public class BrowseServlet extends HttpServlet {
             statement.setInt(3, offset);
             statement.setInt(2,psize);
             statement.setString(1,browseTerm);
+            System.out.println(statement.toString());
             ResultSet rs = statement.executeQuery();
             //statement.close();
             //conn.close();
