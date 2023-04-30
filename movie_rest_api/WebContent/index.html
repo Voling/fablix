@@ -27,22 +27,26 @@
     <style>
       body {
         background-color: #343a40; /* Change this to the desired color */
+        color: #ffc107;
+        justify-content:center;
       }
     </style>
   </head>
   <body>
     <h1 style="color: #ffc107">Top movies</h1>
-    <button id="logoutButton">Log Out</button>
+    <button class="btn btn-danger" id="logoutButton">Log Out</button>
     <!-- button has jquery attached -->
-    <form id="search" action="form" method="GET">
+    <form class="mx-auto d-block " style="text-align:center" id="search" action="form" method="GET">
       <!-- search form, HTTP GET to SearchInputServlet-->
-      Title: <input type="TEXT" name="title" /> <br />
-      Year: <input type="number" name="year" /> <br />
-      Director: <input type="TEXT" name="director" /> <br />
-      Star name: <input type="TEXT" name="star" /> <br />
-      <button id="prev">prev</button>
-      <button id="next">next</button>
-      <input id="searchSubmit" type="SUBMIT" value="Search Movies" />
+      <div class="col-lg-6">Title: <input type="TEXT" name="title"/><br/></div>
+      <div class="col-lg-6">Year: <input type="number" name="year"/><br/></div>
+      <div class="col-lg-6">Director: <input type="TEXT" name="director"/><br/></div>
+      <div class="col-lg-6">Star name: <input type="TEXT" name="star"/><br/></div>
+      <div class="col-lg-6"> <button class="btn btn-primary" id="prev">Previous</button>
+        <button class="btn btn-primary"  id="next">Next</button>
+      </div>
+      <br>
+      <input class="btn btn-primary" id="searchSubmit" type="SUBMIT" value="Search Movies" />
     </form>
     <div id="genredropdown" class="container">
       <div class="dropdown">
@@ -53,6 +57,7 @@
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
+          style="right:0;"
         >
           Genres
         </button>
@@ -90,12 +95,12 @@
       <thead>
         <tr>
           <!-- Titles of each column-->
-          <th>title</th>
-          <th>year</th>
-          <th>director</th>
-          <th>genres</th>
-          <th>cast</th>
-          <th>rating</th>
+          <th>Title</th>
+          <th>Year</th>
+          <th>Director</th>
+          <th>Genres</th>
+          <th>Cast</th>
+          <th>Rating</th>
         </tr>
       </thead>
       <!-- Table body is left empty here, will be populated with the data retrieved with index.js -->

@@ -277,7 +277,8 @@ $(document).ready(function () {
     }
   });
   $("#checkout-button").onclick(function(){
-    window.location.replace("cart.html");
+    console.log("GOING TO CART")
+    window.location.href("/cart.html");
   }); //checkout
   $(".agenre").click((event) => {
     let selectedItemText = $(event.target).text();

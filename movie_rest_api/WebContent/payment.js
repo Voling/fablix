@@ -5,7 +5,7 @@ $(document).ready(function () {
             url: "api/payment",
             type: "POST",
             success: function (response) {
-                window.location.replace("paymentSuccess.html");
+                window.location.replace("paymentSuccess.html"); //dne
             },
         });
     });

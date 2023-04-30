@@ -1,33 +1,58 @@
 <!-- This page will be redirected from any url if you are not logged in -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+    />
+    <style>
+        body {
+            background-color: #343a40; /* Change this to the desired color */
+            color: white;
+            justify-content:center;
+            font-size:2vw;
+        }
+        .btn {
+            font-size: 1vw;
+            padding: 1vw 1.5vw;
+        }
+    </style>
     <title>Login to Fablix</title>
-  </head>
-  <body>
-    <h2>Login to Fablix</h2>
-    <!-- Set the method to POST to avoid showing the username/password in the URL
-     The default action is disabled to allow your own implementation. -->
-    <form id="login_form" method="post" action="#">
-      <label><b>Username</b></label>
-      <label>
-        <input name="email" placeholder="Enter Email" type="text" />
-      </label>
-      <br />
-      <label><b>Password</b></label>
-      <label>
-        <input name="password" placeholder="Enter Password" type="password" />
-      </label>
-      <br />
-      <input type="submit" value="Login" />
+</head>
+<body>
+<h2 class="justify-content-center" style="text-align:center;">Login to Fablix</h2>
+<!-- Set the method to POST to avoid showing the username/password in the URL
+ The default action is disabled to allow your own implementation. -->
+<div class="text-center justify-content-center" >
+    <form class="inline-block row" id="login_form" method="post" action="#">
+        <div class="form-group col-sm-6">
+            <label><b>Username</b></label>
+            <input class="btn btn-primary form-control" name="email" placeholder="Enter Email" type="text"/>
+        </div>
+        <div class="form-group col-sm-6">
+            <label><b>Password</b></label>
+            <input class="btn btn-primary form-control" name="password" placeholder="Enter Password" type="password"/>
+        </div>
+        <input class="btn btn-primary col-sm-1 mx-auto d-block" style="font-size: 24px; padding: 12px 24px;" type="submit" value="Login"/>
     </form>
+</div>
 
-    <div id="login_error_message"></div>
 
-    <!-- include jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- include our own JS file -->
-    <script src="./login.js"></script>
-  </body>
+<div id="login_error_message"></div>
+
+<!-- include jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- include our own JS file -->
+<script src="./login.js"></script>
+</body>
 </html>
