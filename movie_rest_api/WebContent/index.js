@@ -36,7 +36,7 @@ function transformdata(resultdata) {
         year: resultdata[i].year,
         director: resultdata[i].director,
         rating: resultdata[i].rating,
-        genres: resultdata[i].genre,
+        genres: [resultdata[i].genre],
         cast: [[resultdata[i].star, resultdata[i].starid]],
       });
       movie = resultdata[i].id;
@@ -45,7 +45,7 @@ function transformdata(resultdata) {
       length += 1;
     } else {
       if (resultdata[i].genre != prevgenre) {
-        array[length].genres += " " + resultdata[i].genre;
+        array[length].genres.push(resultdata[i].genre);
         prevgenre = resultdata[i].genre;
       }
       if (resultdata[i].star != prevstar) {
@@ -54,6 +54,9 @@ function transformdata(resultdata) {
         //console.log(resultdata[i].starid);
       }
     }
+  }
+  for(let b = 0; b< array.length; b++){
+    array[b].genres.sort()
   }
   console.log(`beforehandle: ${JSON.stringify(array)}`);
   return array;
@@ -82,7 +85,11 @@ function handleMovieResult(resultData) {
       "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["year"] + "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["director"] + "</th>";
-    rowHTML += '<th class="rounded-th">' + resultData[i]["genres"] + "</th>";
+    rowHTML += '<th class="rounded-th">';
+    for (let a = 0; a < resultData[i]["genres"].length; a++){    
+      rowHTML += resultData[i]["genres"][a] + " " ;
+    }
+    rowHTML += "</th>";
     //console.log(resultData[i]["cast"]);
     rowHTML += '<th class="rounded-th">';
     if (resultData[i]["cast"][0] != null) {
@@ -167,6 +174,30 @@ function submitbrowse(event) {
     dataType: "json", // Setting return data type
     method: "GET", // Setting request method
     url: `browse?page=${pagenum}&type=genre&term=${lastbrowsed}&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    success: (resultData) => {
+      console.log(resultData);
+      handle(resultData);
+    }, // Setting callback function to handle data returned successfully by the StarsServlet
+  });
+}
+function submitbrowsetitle(event) {
+  console.log(pagenum);
+  jQuery.ajax({
+    dataType: "json", // Setting return data type
+    method: "GET", // Setting request method
+    url: `browse?page=${pagenum}&type=title&term=%25${lastbrowsed}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    success: (resultData) => {
+      console.log(resultData);
+      handle(resultData);
+    }, // Setting callback function to handle data returned successfully by the StarsServlet
+  });
+}
+function submitbrowsetitlea(event) {
+  console.log(pagenum);
+  jQuery.ajax({
+    dataType: "json", // Setting return data type
+    method: "GET", // Setting request method
+    url: `browse?page=${pagenum}&type=title&term=${lastbrowsed}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
     success: (resultData) => {
       console.log(resultData);
       handle(resultData);
@@ -258,6 +289,16 @@ $(document).ready(function () {
         pagenum -= 1;
         submitbrowse(event);
       }
+      if(lastused == "browsetitle"){
+        pagenum -= 1;
+        submitbrowsetitle(event);
+  
+      }
+      if(lastused == "browsetitle-a"){
+        pagenum -= 1;
+        submitbrowsetitlea(event);
+  
+      }
     }
   });
 
@@ -283,6 +324,16 @@ $(document).ready(function () {
       pagenum += 1;
       submitbrowse(event);
     }
+    if(lastused == "browsetitle"){
+      pagenum += 1;
+      submitbrowsetitle(event);
+
+    }
+    if(lastused == "browsetitle-a"){
+      pagenum += 1;
+      submitbrowsetitlea(event);
+
+    }
   });
   $("#checkout-button").onclick(function(){
     console.log("GOING TO CART")
@@ -307,6 +358,42 @@ $(document).ready(function () {
       }, // Setting callback function to handle data returned successfully by the StarsServlet
     });
   });
+  $(".title-n").click((event) => {
+    let selectedItemText = $(event.target).text();
+    if (lastused != "browsetitle" || lastbrowsed != selectedItemText) {
+      lastused = "browsetitle";
+      lastbrowsed = selectedItemText;
+      pagenum = 1;
+    }
+    jQuery.ajax({
+      dataType: "json", // Setting return data type
+      method: "GET", // Setting request method
+      url: `browse?page=${pagenum}&type=title&term=%25${selectedItemText}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      success: (resultData) => {
+        console.log(resultData);
+        handle(resultData);
+      }, // Setting callback function to handle data returned successfully by the StarsServlet
+    });
+
+  })
+  $(".title-a").click((event) => {
+    let selectedItemText = $(event.target).text();
+    if (lastused != "browsetitle-a" || lastbrowsed != selectedItemText) {
+      lastused = "browsetitle-a";
+      lastbrowsed = selectedItemText;
+      pagenum = 1;
+    }
+    jQuery.ajax({
+      dataType: "json", // Setting return data type
+      method: "GET", // Setting request method
+      url: `browse?page=${pagenum}&type=title&term=${selectedItemText}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      success: (resultData) => {
+        console.log(resultData);
+        handle(resultData);
+      }, // Setting callback function to handle data returned successfully by the StarsServlet
+    });
+
+  })
 });
 /**
  * Once this .js is loaded, following scripts will be executed by the browser
