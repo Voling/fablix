@@ -1,3 +1,4 @@
+import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -5,6 +6,7 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,13 +22,14 @@ public class PaymentServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String cardNumber = request.getParameter("cardNumber");
         String expiration = request.getParameter("expiration");
+        String[] moviesInCart = request.getParameterValues("cartMovieIDs");
+        //NEED TO RETRIEVE INFO FROM CART
         PrintWriter out = response.getWriter();
-        boolean validCredentials = false;
         try {
             Connection conn = dataSource.getConnection();
-            String ccquery = "SELECT id, firstName, lastName, expiration FROM creditcards WHERE" +
-                    "? == id" +
-                    "? == firstName" +
+            String ccquery = "SELECT * FROM creditcards WHERE" +
+                    "? = id" +
+                    "? = firstName" +
                     "? = lastName" +
                     "? = expiration";
             PreparedStatement statement = conn.prepareStatement(ccquery);
@@ -38,8 +41,26 @@ public class PaymentServlet extends HttpServlet {
             ResultSet rs = statement.executeQuery();
             int rowsAffected = statement.executeUpdate();
 
-            validCredentials = rs.next(); //credentials are correct
+            if (rs.next()) { //credentials are correct;
+                String salesInsertion = "INSERT INTO sales (customerid, movieid, saledate)\n" +
+                        "VALUES (\n" +
+                        "    (SELECT id FROM customers WHERE firstName = ? AND lastName = ? AND ccid = ?),\n" +
+                        "    ?,\n" +
+                        "    CURRENT_TIMESTAMP\n" +
+                        ");";
+                //join customers with credit card info
+                PreparedStatement transactionTrack = conn.prepareStatement(salesInsertion);
+                transactionTrack.setString(1, firstName);
+                transactionTrack.setString(2, lastName);
+                transactionTrack.setString(3, cardNumber);
+                transactionTrack.setString(4, cartMovieID);
+
+                transactionTrack.close();
+            }
+
+
             conn.close();
+            statement.close();
 
         }
         catch (Exception e) {

@@ -29,6 +29,7 @@
         background-color: #343a40; /* Change this to the desired color */
         color: #ffc107;
         justify-content:center;
+        text-align:center;
       }
     </style>
   </head>
@@ -38,11 +39,11 @@
     <!-- button has jquery attached -->
     <form class="mx-auto d-block " style="text-align:center" id="search" action="form" method="GET">
       <!-- search form, HTTP GET to SearchInputServlet-->
-      <div class="col-lg-6">Title: <input type="TEXT" name="title"/><br/></div>
-      <div class="col-lg-6">Year: <input type="number" name="year"/><br/></div>
-      <div class="col-lg-6">Director: <input type="TEXT" name="director"/><br/></div>
-      <div class="col-lg-6">Star name: <input type="TEXT" name="star"/><br/></div>
-      <div class="col-lg-6"> <button class="btn btn-primary" id="prev">Previous</button>
+      <div>Title: <input type="TEXT" name="title"/><br/></div>
+      <div>Year: <input type="number" name="year"/><br/></div>
+      <div>Director: <input type="TEXT" name="director"/><br/></div>
+      <div>Star name: <input type="TEXT" name="star"/><br/></div>
+      <div> <button class="btn btn-primary" id="prev">Previous</button>
         <button class="btn btn-primary"  id="next">Next</button>
       </div>
       <br>
