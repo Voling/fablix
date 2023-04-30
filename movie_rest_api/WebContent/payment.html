@@ -1,0 +1,44 @@
+<!-- This page will be seen if you logged in -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Payment</title>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #343a40; /* Change this to the desired color */
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="/process-payment">
+    <label for="card-number">Card Number:</label>
+    <input type="text" id="card-number" name="card-number">
+    <br>
+    <label for="card-holder-first-name">Card Holder First Name:</label>
+    <input type="text" id="card-holder-first-name" name="card-holder-name">
+    <br>
+    <label for="card-holder-last-name">Card Holder First Name:</label>
+    <input type="text" id="card-holder-last-name" name="card-holder-name">
+    <br>
+    <label for="expiration-date">Expiration Date:</label>
+    <input type="month" id="expiration-date" name="expiration-date">
+    <input id="submitPaymentInfo" type="submit" value="Pay">
+</form>
+<!--- checkout button -->
+<button id="checkout-button" type="button" class="btn btn-primary" style="position:fixed;right:0;bottom:0;">Checkout</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="./payment.js"></script>
+</body>
+
+</html>

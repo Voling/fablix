@@ -124,6 +124,9 @@ $(document).ready(() => {
         success: () => window.location.replace("cart.html"),
       } // Setting callback function to handle data returned successfully by the StarsServlet
     );
+    $("#checkout-button").onclick(function(){
+      window.location.href("/cart.html");
+    });
   });
 });
 /**
