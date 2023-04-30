@@ -180,6 +180,30 @@ function submitbrowse(event) {
     }, // Setting callback function to handle data returned successfully by the StarsServlet
   });
 }
+function submitbrowsetitle(event) {
+  console.log(pagenum);
+  jQuery.ajax({
+    dataType: "json", // Setting return data type
+    method: "GET", // Setting request method
+    url: `browse?page=${pagenum}&type=title&term=%25${lastbrowsed}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    success: (resultData) => {
+      console.log(resultData);
+      handle(resultData);
+    }, // Setting callback function to handle data returned successfully by the StarsServlet
+  });
+}
+function submitbrowsetitlea(event) {
+  console.log(pagenum);
+  jQuery.ajax({
+    dataType: "json", // Setting return data type
+    method: "GET", // Setting request method
+    url: `browse?page=${pagenum}&type=title&term=${lastbrowsed}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    success: (resultData) => {
+      console.log(resultData);
+      handle(resultData);
+    }, // Setting callback function to handle data returned successfully by the StarsServlet
+  });
+}
 function updatepagesize(){
   const selectElement = document.getElementById("numberSelect");
   console.log("updating")
@@ -265,6 +289,16 @@ $(document).ready(function () {
         pagenum -= 1;
         submitbrowse(event);
       }
+      if(lastused == "browsetitle"){
+        pagenum -= 1;
+        submitbrowsetitle(event);
+  
+      }
+      if(lastused == "browsetitle-a"){
+        pagenum -= 1;
+        submitbrowsetitlea(event);
+  
+      }
     }
   });
 
@@ -290,10 +324,20 @@ $(document).ready(function () {
       pagenum += 1;
       submitbrowse(event);
     }
+    if(lastused == "browsetitle"){
+      pagenum += 1;
+      submitbrowsetitle(event);
+
+    }
+    if(lastused == "browsetitle-a"){
+      pagenum += 1;
+      submitbrowsetitlea(event);
+
+    }
   });
   $("#checkout-button").onclick(function(){
     console.log("GOING TO CART")
-    window.location.href("/cart.html");
+    window.open(window.location.href + "/cart.html");
   }); //checkout
   $(".agenre").click((event) => {
     let selectedItemText = $(event.target).text();
@@ -314,6 +358,42 @@ $(document).ready(function () {
       }, // Setting callback function to handle data returned successfully by the StarsServlet
     });
   });
+  $(".title-n").click((event) => {
+    let selectedItemText = $(event.target).text();
+    if (lastused != "browsetitle" || lastbrowsed != selectedItemText) {
+      lastused = "browsetitle";
+      lastbrowsed = selectedItemText;
+      pagenum = 1;
+    }
+    jQuery.ajax({
+      dataType: "json", // Setting return data type
+      method: "GET", // Setting request method
+      url: `browse?page=${pagenum}&type=title&term=%25${selectedItemText}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      success: (resultData) => {
+        console.log(resultData);
+        handle(resultData);
+      }, // Setting callback function to handle data returned successfully by the StarsServlet
+    });
+
+  })
+  $(".title-a").click((event) => {
+    let selectedItemText = $(event.target).text();
+    if (lastused != "browsetitle-a" || lastbrowsed != selectedItemText) {
+      lastused = "browsetitle-a";
+      lastbrowsed = selectedItemText;
+      pagenum = 1;
+    }
+    jQuery.ajax({
+      dataType: "json", // Setting return data type
+      method: "GET", // Setting request method
+      url: `browse?page=${pagenum}&type=title&term=${selectedItemText}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      success: (resultData) => {
+        console.log(resultData);
+        handle(resultData);
+      }, // Setting callback function to handle data returned successfully by the StarsServlet
+    });
+
+  })
 });
 /**
  * Once this .js is loaded, following scripts will be executed by the browser

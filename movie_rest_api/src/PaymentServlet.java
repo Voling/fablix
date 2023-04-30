@@ -39,7 +39,6 @@ public class PaymentServlet extends HttpServlet {
             statement.setString(4, expiration);
 
             ResultSet rs = statement.executeQuery();
-            int rowsAffected = statement.executeUpdate();
 
             if (rs.next()) { //credentials are correct;
                 String salesInsertion = "INSERT INTO sales (customerid, movieid, saledate)\n" +
@@ -54,7 +53,7 @@ public class PaymentServlet extends HttpServlet {
                 transactionTrack.setString(2, lastName);
                 transactionTrack.setString(3, cardNumber);
                 transactionTrack.setString(4, "");
-
+                //use email from session to fetch first,lastname,exp date from
                 transactionTrack.close();
             }
 

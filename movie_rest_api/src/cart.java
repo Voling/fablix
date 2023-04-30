@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,8 +22,8 @@ public class cart extends HttpServlet {
     /**
      * handles GET requests to store session information
      */
-    
-    class purchaserecord{
+
+    class purchaserecord {
         public String movieid;
         public int amount;
         public String title;
@@ -30,6 +31,7 @@ public class cart extends HttpServlet {
         public String year;
 
     }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         String sessionId = session.getId();
@@ -54,51 +56,54 @@ public class cart extends HttpServlet {
     /**
      * handles POST requests to add and show the item list information
      */
-    private boolean ifcontains(JsonArray previtems,JsonObject newrecord){
+    private boolean ifcontains(JsonArray previtems, JsonObject newrecord) {
         /* 
         for(int i = 0; i < previtems.size(); i++){
             if(item[0]["movieid"] == previtems[i])
         }
         */
-        for(int i = 0; i < previtems.size(); i++){
-            if(previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())){
+        for (int i = 0; i < previtems.size(); i++) {
+            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())) {
                 int original = previtems.get(i).getAsJsonObject().get("amount").getAsInt();
-                previtems.get(i).getAsJsonObject().addProperty("amount", original+1);
+                previtems.get(i).getAsJsonObject().addProperty("amount", original + 1);
                 return true;
             }
         }
         return false;
     }
-    private boolean delcontains(JsonArray previtems,JsonObject newrecord){
+
+    private boolean delcontains(JsonArray previtems, JsonObject newrecord) {
         /* 
         for(int i = 0; i < previtems.size(); i++){
             if(item[0]["movieid"] == previtems[i])
         }
         */
-        for(int i = 0; i < previtems.size(); i++){
-            if(previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())){
-               previtems.remove(i);
+        for (int i = 0; i < previtems.size(); i++) {
+            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())) {
+                previtems.remove(i);
             }
         }
         return false;
     }
-    private boolean mincontains(JsonArray previtems,JsonObject newrecord){
+
+    private boolean mincontains(JsonArray previtems, JsonObject newrecord) {
         /* 
         for(int i = 0; i < previtems.size(); i++){
             if(item[0]["movieid"] == previtems[i])
         }
         */
-        for(int i = 0; i < previtems.size(); i++){
-            if(previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())){
+        for (int i = 0; i < previtems.size(); i++) {
+            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())) {
                 int original = previtems.get(i).getAsJsonObject().get("amount").getAsInt();
-                if(original>0){
-                previtems.get(i).getAsJsonObject().addProperty("amount", original-1);
+                if (original > 0) {
+                    previtems.get(i).getAsJsonObject().addProperty("amount", original - 1);
                 }
                 return true;
             }
         }
         return false;
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String movieid = request.getParameter("movieid");
         String title = request.getParameter("title");
@@ -110,88 +115,82 @@ public class cart extends HttpServlet {
         // get the previous items in a ArrayList
         JsonArray previousItems = (JsonArray) session.getAttribute("previousItems");
         JsonObject responseJsonObject = new JsonObject();
-        if(operation.equals("add")){
-        if (previousItems == null) {
-            previousItems = new JsonArray();
-            JsonObject newrecord = new JsonObject();
-            newrecord.addProperty("movieid", movieid);
-            newrecord.addProperty("year", year);
-            newrecord.addProperty("director", director);
-            newrecord.addProperty("title", title);
-            newrecord.addProperty("amount", 1);
-            previousItems.add(newrecord);
-            session.setAttribute("previousItems", previousItems);
-            responseJsonObject.addProperty("status", "success");
-        } else {
-            // prevent corrupted states through sharing under multi-threads
-            // will only be executed by one thread at a time
-            synchronized (previousItems) {
-
-              
+        if (operation.equals("add")) {
+            if (previousItems == null) {
+                previousItems = new JsonArray();
                 JsonObject newrecord = new JsonObject();
                 newrecord.addProperty("movieid", movieid);
                 newrecord.addProperty("year", year);
                 newrecord.addProperty("director", director);
                 newrecord.addProperty("title", title);
                 newrecord.addProperty("amount", 1);
-                if(!ifcontains(previousItems,newrecord)){
                 previousItems.add(newrecord);
                 session.setAttribute("previousItems", previousItems);
                 responseJsonObject.addProperty("status", "success");
+            } else {
+                // prevent corrupted states through sharing under multi-threads
+                // will only be executed by one thread at a time
+                synchronized (previousItems) {
+
+
+                    JsonObject newrecord = new JsonObject();
+                    newrecord.addProperty("movieid", movieid);
+                    newrecord.addProperty("year", year);
+                    newrecord.addProperty("director", director);
+                    newrecord.addProperty("title", title);
+                    newrecord.addProperty("amount", 1);
+                    if (!ifcontains(previousItems, newrecord)) {
+                        previousItems.add(newrecord);
+                        session.setAttribute("previousItems", previousItems);
+                        responseJsonObject.addProperty("status", "success");
+                    }
                 }
             }
         }
-    }
-    if(operation.equals("minus")){
-        if(previousItems != null){
-            synchronized (previousItems) {
+        if (operation.equals("minus")) {
+            if (previousItems != null) {
+                synchronized (previousItems) {
+                    JsonObject newrecord = new JsonObject();
+                    newrecord.addProperty("movieid", movieid);
+                    newrecord.addProperty("year", year);
+                    newrecord.addProperty("director", director);
+                    newrecord.addProperty("title", title);
+                    newrecord.addProperty("amount", 1);
+                    if (mincontains(previousItems, newrecord)) {
+                        session.setAttribute("previousItems", previousItems);
+                        responseJsonObject.addProperty("status", "success");
+
+                    } else {
+                        System.out.println("not exist");
+                    }
+
+                }
+            } else {
+                System.out.println("array empty");
+            }
+        }
+        if (operation.equals("remove")) {
+            if (previousItems != null) {
                 JsonObject newrecord = new JsonObject();
                 newrecord.addProperty("movieid", movieid);
                 newrecord.addProperty("year", year);
                 newrecord.addProperty("director", director);
                 newrecord.addProperty("title", title);
                 newrecord.addProperty("amount", 1);
-                if(mincontains(previousItems,newrecord)){
+                if (delcontains(previousItems, newrecord)) {
                     session.setAttribute("previousItems", previousItems);
                     responseJsonObject.addProperty("status", "success");
 
-                }
-                else{
+                } else {
                     System.out.println("not exist");
                 }
-
+            } else {
+                System.out.println("array empty");
             }
-        }
-        else{
-            System.out.println("array empty");
-        }
-    }
-    if(operation.equals("remove")){
-        if(previousItems != null){
-            JsonObject newrecord = new JsonObject();
-                newrecord.addProperty("movieid", movieid);
-                newrecord.addProperty("year", year);
-                newrecord.addProperty("director", director);
-                newrecord.addProperty("title", title);
-                newrecord.addProperty("amount", 1);
-                if(delcontains(previousItems,newrecord)){
-                    session.setAttribute("previousItems", previousItems);
-                    responseJsonObject.addProperty("status", "success");
 
-                }
-                else{
-                    System.out.println("not exist");
-                }
-        }
-        else{
-            System.out.println("array empty");
         }
 
-    }
 
-        
-
-       
         responseJsonObject.add("previousItems", previousItems);
 
         response.getWriter().write(responseJsonObject.toString());
