@@ -51,9 +51,9 @@ function handleCartArray(resultArray) {
     console.log(`index${i}`);
     //let eacharray = JSON.parse(resultArray[i]);
     console.log(eacharray);
-    rowHTML += "<tr>";
+    rowHTML += `<tr class= "row${i}">`;
     rowHTML +=
-      '<th class="rounded-th">' +
+      `<th class="rounded-th movietitle row${i}">` +
       // Add a link to single-star.html with id passed with GET url parameter
       '<a href="single-movie.html?id=' +
       eacharray["movieid"] +
@@ -61,9 +61,52 @@ function handleCartArray(resultArray) {
       eacharray["title"] + // display star_name for the link text
       "</a>" +
       "</th>";
-    rowHTML += '<th class="rounded-th">' + eacharray["year"] + "</th>";
-    rowHTML += '<th class="rounded-th">' + eacharray["director"] + "</th>";
-    rowHTML += '<th class="rounded-th">' + eacharray["amount"] + "</th>";
+    rowHTML +=
+      `<th class="rounded-th movieyear row${i}">` + eacharray["year"] + "</th>";
+    rowHTML +=
+      `<th class="rounded-th moviedirector row${i}">` +
+      eacharray["director"] +
+      "</th>";
+    rowHTML +=
+      `<th class="rounded-th movieamount row${i}">` +
+      eacharray["amount"] +
+      "</th>";
+    rowHTML +=
+      `<th class="rounded-th movieaction row${i}">` +
+      `<button id="plus"  onclick="increment(\'` +
+      eacharray["movieid"] +
+      "', '" +
+      eacharray["title"] +
+      ", " +
+      eacharray["year"] +
+      ", '" +
+      eacharray["director"] +
+      "', " +
+      eacharray["amount"] +
+      `,${i})">+</button>` +
+      `<button id="minus"  onclick="decrement(\'` +
+      eacharray["movieid"] +
+      "', '" +
+      eacharray["title"] +
+      "', " +
+      eacharray["year"] +
+      ", '" +
+      eacharray["director"] +
+      "', " +
+      eacharray["amount"] +
+      `,${i})">-</button>` +
+      '<button id="del"onclick="delete(\'' +
+      eacharray["movieid"] +
+      "', '" +
+      eacharray["title"] +
+      "', " +
+      eacharray["year"] +
+      ", '" +
+      eacharray["director"] +
+      "', " +
+      eacharray["amount"] +
+      `,${i})">deleta all</button>` +
+      "</th>";
     rowHTML += "<tr>";
 
     // each item will be in a bullet point
@@ -73,7 +116,54 @@ function handleCartArray(resultArray) {
   // clear the old array and show the new array in the frontend
   item_list.append(rowHTML);
 }
-
+function increment(movieid, title, year, director, amount, i) {
+  jQuery.ajax("cart", {
+    dataType: "json", // Setting return data type
+    method: "POST",
+    data: {
+      movieid: movieid,
+      title: title,
+      director: director,
+      year: year,
+      operation: "add",
+    },
+    success: () => {
+      $(`.movieamount .row${i}`).html(`${amount + 1}`);
+    },
+  });
+}
+function decrement(movieid, title, year, director, amount, i) {
+  jQuery.ajax("cart", {
+    dataType: "json", // Setting return data type
+    method: "POST",
+    data: {
+      movieid: movieid,
+      title: title,
+      director: director,
+      year: year,
+      operation: "minus",
+    },
+    success: () => {
+      $(`.movieamount .row${i}`).html(`${amount - 1}`);
+    },
+  });
+}
+function remove(movieid, title, year, director, amount, i) {
+  jQuery.ajax("cart", {
+    dataType: "json", // Setting return data type
+    method: "POST",
+    data: {
+      movieid: movieid,
+      title: title,
+      director: director,
+      year: year,
+      operation: "remove",
+    },
+    success: () => {
+      $(`.row${i} tr`).html("");
+    },
+  });
+}
 /**
  * Submit form content with POST method
  * @param cartEvent

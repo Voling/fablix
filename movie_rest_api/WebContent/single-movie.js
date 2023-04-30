@@ -117,6 +117,7 @@ $(document).ready(() => {
           title: thetitle,
           director: thedirector,
           year: theyear,
+          operation: "add",
         },
         // Setting request method
         //url: "api/cart", // Setting request url, which is mapped by StarsServlet in Stars.java
