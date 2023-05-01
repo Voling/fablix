@@ -19,6 +19,8 @@
   </style>
   </head>
   <body>
+  <button id="home" type="button" class="btn btn-primary" style="left:0;top:0;">Return Home</button>
+  <br>
     Welcome to Fablix!
     <p id="sessionID"></p>
     <p id="lastAccessTime"></p>
@@ -43,5 +45,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="cart.js"></script>
+  <script>
+    $('#home').click(function () {
+      window.location.href = 'index.html';
+    });
+  </script>
   </body>
 </html>
