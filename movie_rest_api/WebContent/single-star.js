@@ -84,6 +84,9 @@ let starId = getParameterByName('id');
 console.log("starid");
 console.log(starId);
 $(document).ready(() => {
+    $('#checkout-button').click(function() {
+        window.location.href = 'cart.html';
+    });
 })
 // Makes the HTTP GET request and registers on success callback function handleResult
 jQuery.ajax({

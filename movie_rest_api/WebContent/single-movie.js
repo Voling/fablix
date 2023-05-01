@@ -132,6 +132,9 @@ $(document).ready(() => {
       } // Setting callback function to handle data returned successfully by the StarsServlet
     );
   });
+  $('#checkout-button').click(function() {
+    window.location.href = 'cart.html';
+  });
 });
 /**
  * Once this .js is loaded, following scripts will be executed by the browser\
