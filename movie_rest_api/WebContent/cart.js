@@ -109,6 +109,9 @@ $(document).ready(function () {
         console.log(i)
     })
     */
+    $('body').on('click', '#checkout-button', (event) => {
+        window.location.replace("payment.html");
+     });
     $('body').on('click', '.plus', (event) => {
         const i = event.target.getAttribute('data-row');
         let movieid = $(`.movieid.row${i}`).html();
