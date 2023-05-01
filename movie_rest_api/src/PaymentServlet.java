@@ -1,3 +1,5 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,18 +8,21 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import javax.sql.DataSource;
 
-@WebServlet(name= "paymentServlet", urlPatterns="/paymentInfo")
+@WebServlet(name= "paymentServlet", urlPatterns="/payment")
 public class PaymentServlet extends HttpServlet {
     private DataSource dataSource;
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String cardNumber = request.getParameter("cardNumber");
@@ -25,6 +30,7 @@ public class PaymentServlet extends HttpServlet {
         String[] moviesInCart = request.getParameterValues("cartMovieIDs");
         //NEED TO RETRIEVE INFO FROM CART
         PrintWriter out = response.getWriter();
+
         try {
             Connection conn = dataSource.getConnection();
             String ccquery = "SELECT * FROM creditcards WHERE" +
@@ -37,13 +43,16 @@ public class PaymentServlet extends HttpServlet {
             statement.setString(2, firstName);
             statement.setString(3, lastName);
             statement.setString(4, expiration);
-
+            //verify
             ResultSet rs = statement.executeQuery();
-
             if (rs.next()) { //credentials are correct;
-                String salesInsertion = "INSERT INTO sales (customerid, movieid, saledate)\n" +
+                HttpSession session = request.getSession();
+                String email = session.getAttribute("email").toString();
+
+                String salesInsertion = "INSERT INTO sales (customerid, movieid, quantity, saledate)\n" +
                         "VALUES (\n" +
                         "    (SELECT id FROM customers WHERE firstName = ? AND lastName = ? AND ccid = ?),\n" +
+                        "    ?,\n" +
                         "    ?,\n" +
                         "    CURRENT_TIMESTAMP\n" +
                         ");";
@@ -51,13 +60,23 @@ public class PaymentServlet extends HttpServlet {
                 PreparedStatement transactionTrack = conn.prepareStatement(salesInsertion);
                 transactionTrack.setString(1, firstName);
                 transactionTrack.setString(2, lastName);
-                transactionTrack.setString(3, cardNumber);
-                transactionTrack.setString(4, "");
-                //use email from session to fetch first,lastname,exp date from
+                transactionTrack.setString(3, cardNumber); //set all parameters
+                JsonArray allCartItems = (JsonArray)session.getAttribute("previousItems");
+                ArrayList<String> ab  = new ArrayList<>();
+
+
+                //use email from session to fetch first,lastname,exp date from customer
+                String customerToCC = "SELECT firstName, lastName, ccid, expiration FROM customer WHERE email = ?" +
+                        "LEFT INNER JOIN creditcards " +
+                        "ON customer.ccid = creditcards.id AND" +
+                        " customer.firstName = creditcards.firstName AND" +
+                        " customer.lastName = creditcards.lastName";
+                PreparedStatement findCustomerWithCC  = conn.prepareStatement(customerToCC);
+                findCustomerWithCC.setString(1, email);
+                ResultSet customerInfo = findCustomerWithCC.executeQuery();
+
                 transactionTrack.close();
             }
-
-
             conn.close();
             statement.close();
 
