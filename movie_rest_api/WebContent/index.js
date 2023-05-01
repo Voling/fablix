@@ -394,6 +394,9 @@ $(document).ready(function () {
     });
 
   })
+  $('#checkout-button').click(function() {
+    window.location.href = 'cart.html';
+  });
 });
 /**
  * Once this .js is loaded, following scripts will be executed by the browser
