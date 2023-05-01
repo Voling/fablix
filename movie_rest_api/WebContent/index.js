@@ -335,10 +335,6 @@ $(document).ready(function () {
 
     }
   });
-  $("#checkout-button").onclick(function(){
-    console.log("GOING TO CART")
-    window.open(window.location.href + "/cart.html");
-  }); //checkout
   $(".agenre").click((event) => {
     let selectedItemText = $(event.target).text();
 
@@ -360,6 +356,7 @@ $(document).ready(function () {
   });
   $(".title-n").click((event) => {
     let selectedItemText = $(event.target).text();
+    console.log(selectedItemText);
     if (lastused != "browsetitle" || lastbrowsed != selectedItemText) {
       lastused = "browsetitle";
       lastbrowsed = selectedItemText;
@@ -378,6 +375,7 @@ $(document).ready(function () {
   })
   $(".title-a").click((event) => {
     let selectedItemText = $(event.target).text();
+    console.log(selectedItemText);
     if (lastused != "browsetitle-a" || lastbrowsed != selectedItemText) {
       lastused = "browsetitle-a";
       lastbrowsed = selectedItemText;

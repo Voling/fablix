@@ -226,10 +226,6 @@ function handleCartInfo(cartEvent) {
   // clear input form
   cart[0].reset();
 }
-$("#checkout-button").onclick(function(){
-
-  window.open(window.location.href("/cart.html"));
-}); //checkout button
 $.ajax("cart", {
   method: "GET",
   dataType: "json",
