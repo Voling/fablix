@@ -5,10 +5,20 @@ $(document).ready(function () {
         $.ajax({
             url: "payment",
             type: "POST",
+            dataType:"json",
             data: $("#paysub").serialize(),
             success: function (response) {
-                window.location.replace("paymentSuccess.html"); //dne
+                console.log(response)
+                if(response['status'] === "success"){
+                window.location.replace("paymentSuccessful.html"); //dne
+                }
+                else{
+                    $("#response").html("not correct");
+                }
             },
+            failure: ()=>{ $("#response").html("not correct");
+
+            }
         });
     });
 });
