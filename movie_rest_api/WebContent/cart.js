@@ -226,7 +226,6 @@ function handleCartInfo(cartEvent) {
   // clear input form
   cart[0].reset();
 }
-
 $.ajax("cart", {
   method: "GET",
   dataType: "json",

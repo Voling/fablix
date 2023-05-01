@@ -356,6 +356,7 @@ $(document).ready(function () {
   });
   $(".title-n").click((event) => {
     let selectedItemText = $(event.target).text();
+    console.log(selectedItemText);
     if (lastused != "browsetitle" || lastbrowsed != selectedItemText) {
       lastused = "browsetitle";
       lastbrowsed = selectedItemText;
@@ -374,6 +375,7 @@ $(document).ready(function () {
   })
   $(".title-a").click((event) => {
     let selectedItemText = $(event.target).text();
+    console.log(selectedItemText);
     if (lastused != "browsetitle-a" || lastbrowsed != selectedItemText) {
       lastused = "browsetitle-a";
       lastbrowsed = selectedItemText;
