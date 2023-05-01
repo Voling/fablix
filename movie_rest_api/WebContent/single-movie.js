@@ -17,6 +17,7 @@
 let thetitle = "";
 let theyear = -1;
 let thedirector = "";
+let price = -1;
 //let the_id = "";
 function getParameterByName(target) {
   // Get request URL
@@ -49,6 +50,7 @@ function handle(resultData) {
   thetitle = resultData[0]["movie_title"];
   theyear = resultData[0]["movie_year"];
   thedirector = resultData[0]["movie_director"];
+  price = parseFloat(resultData[0]["movie_price"]);
   for (let i = 0; i < resultData[0]["movie_genres"].length; i++) {
     allGenres += resultData[0]["movie_genres"][i] + " ";
   }
@@ -68,6 +70,9 @@ function handle(resultData) {
       "</p>" +
       '<p style = "color:#ffc107" id = "thedirector">Director: ' +
       resultData[0]["movie_director"] +
+      "</p>" +
+      '<p style = "color:#ffc107" id = "theprice">Price: ' +
+      resultData[0]["movie_price"] +
       "</p>"
   );
 
@@ -104,6 +109,7 @@ $(document).ready(() => {
       title: thetitle,
       director: thedirector,
       year: theyear,
+      price:price,
     };
     // Stringify the object to prepare it for sending in the request
     // const movieObjectString = JSON.stringify(movieObject);
@@ -118,6 +124,7 @@ $(document).ready(() => {
           director: thedirector,
           year: theyear,
           operation: "add",
+          price:price,
         },
         // Setting request method
         //url: "api/cart", // Setting request url, which is mapped by StarsServlet in Stars.java

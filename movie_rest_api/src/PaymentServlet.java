@@ -1,4 +1,5 @@
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,6 +8,7 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,33 +47,36 @@ public class PaymentServlet extends HttpServlet {
             ResultSet rs = statement.executeQuery();
             if (rs.next()) { //credentials are correct;
                 HttpSession session = request.getSession();
-                JsonArray allCartItems = (JsonArray)session.getAttribute("previousItems");
+                String email = session.getAttribute("email").toString();
 
-                String salesInsertion = "INSERT INTO sales (customerid, movieid, saledate)\n" +
+                String salesInsertion = "INSERT INTO sales (customerid, movieid, quantity, saledate)\n" +
                         "VALUES (\n" +
                         "    (SELECT id FROM customers WHERE firstName = ? AND lastName = ? AND ccid = ?),\n" +
+                        "    ?,\n" +
                         "    ?,\n" +
                         "    CURRENT_TIMESTAMP\n" +
                         ");";
                 //join customers with credit card info
                 PreparedStatement transactionTrack = conn.prepareStatement(salesInsertion);
-
                 transactionTrack.setString(1, firstName);
                 transactionTrack.setString(2, lastName);
-                transactionTrack.setString(3, cardNumber);
-                transactionTrack.setString(4, "");
+                transactionTrack.setString(3, cardNumber); //set all parameters
+                JsonArray allCartItems = (JsonArray)session.getAttribute("previousItems");
+                ArrayList<String> ab  = new ArrayList<>();
+
+
                 //use email from session to fetch first,lastname,exp date from customer
                 String customerToCC = "SELECT firstName, lastName, ccid, expiration FROM customer WHERE email = ?" +
                         "LEFT INNER JOIN creditcards " +
-                            "ON customer.ccid = creditcards.id AND" +
-                            " customer.firstName = creditcards.firstName AND" +
-                            " customer.lastName = creditcards.lastName";
-                PreparedStatement findCCwithCustomer = conn.prepareStatement(customerToCC);
+                        "ON customer.ccid = creditcards.id AND" +
+                        " customer.firstName = creditcards.firstName AND" +
+                        " customer.lastName = creditcards.lastName";
+                PreparedStatement findCustomerWithCC  = conn.prepareStatement(customerToCC);
+                findCustomerWithCC.setString(1, email);
+                ResultSet customerInfo = findCustomerWithCC.executeQuery();
 
                 transactionTrack.close();
             }
-
-
             conn.close();
             statement.close();
 

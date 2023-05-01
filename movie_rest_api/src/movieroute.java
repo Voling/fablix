@@ -58,6 +58,7 @@ public class movieroute extends HttpServlet {
                     "    B.year,\n" +
                     "    B.director,\n" +
                     "    B.rating,\n" +
+                    "    B.price," +
                     "    genres.name AS genrename,\n" +
                     "    stars.name AS starname,\n" +
                     "    B.starId " +
@@ -69,6 +70,7 @@ public class movieroute extends HttpServlet {
                     "            A.year,\n" +
                     "            A.director,\n" +
                     "            A.rating,\n" +
+                    "            A.price," +
                     "            genres_in_movies.genreId,\n" +
                     "            stars_in_movies.starId\n" +
                     "        FROM\n" +
@@ -78,6 +80,7 @@ public class movieroute extends HttpServlet {
                     "                    movies.title,\n" +
                     "                    movies.year,\n" +
                     "                    movies.director,\n" +
+                    "                    movies.price,"+
                     "                    ratings.rating\n" +
                     "                FROM\n" +
                     "                    movies\n" +
@@ -115,6 +118,7 @@ public class movieroute extends HttpServlet {
                 String genre = rs.getString("genrename");
                 String star = rs.getString("starname");
                 String starid = rs.getString("starId");
+                String price = rs.getString("price");
 
                 // Create a JsonObject based on the data we retrieve from rs
                 JsonObject jsonObject = new JsonObject();
@@ -126,6 +130,7 @@ public class movieroute extends HttpServlet {
                 jsonObject.addProperty("genre", genre);
                 jsonObject.addProperty("star", star);
                 jsonObject.addProperty("starid", starid);
+                jsonObject.addProperty("price", price);
 
                 jsonArray.add(jsonObject);
             }

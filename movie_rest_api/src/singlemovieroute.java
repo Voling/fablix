@@ -64,6 +64,7 @@ public class singlemovieroute extends HttpServlet {
                    "    B.year,\n" +
                    "    B.director,\n" +
                    "    B.rating,\n" +
+                   "    B.price," +
                    "    genres.name AS genrename,\n" +
                    "    stars.name AS starname,\n" +
                    "    B.starId " +
@@ -75,6 +76,7 @@ public class singlemovieroute extends HttpServlet {
                    "            A.year,\n" +
                    "            A.director,\n" +
                    "            A.rating,\n" +
+                   "            A.price, \n" +
                    "            genres_in_movies.genreId,\n" +
                    "            stars_in_movies.starId\n" +
                    "        FROM\n" +
@@ -84,6 +86,7 @@ public class singlemovieroute extends HttpServlet {
                    "                    movies.title,\n" +
                    "                    movies.year,\n" +
                    "                    movies.director,\n" +
+                   "                    movies.price," +
                    "                    ratings.rating\n" +
                    "                FROM\n" +
                    "                    movies\n" +
@@ -119,6 +122,7 @@ public class singlemovieroute extends HttpServlet {
                     String movieYear = rs.getString("year");
                     String movieDirector = rs.getString("director");
                     String movieRating = rs.getString("rating");
+                    String movieprice = rs.getString("price");
                     //String movieGenres = rs.getString("genrename");
 
                     // Create a JsonObject based on the data we retrieve from rs
@@ -128,6 +132,7 @@ public class singlemovieroute extends HttpServlet {
                     jsonObject.addProperty("movie_year", movieYear);
                     jsonObject.addProperty("movie_director", movieDirector);
                     jsonObject.addProperty("movie_rating", movieRating);
+                    jsonObject.addProperty("movie_price", movieprice);
                     //jsonObject.addProperty("movie_genres", movieGenres);
                     jsonObject.add("starsInMovie", starsInMovie); //create jsonarray in jsonobj
 
