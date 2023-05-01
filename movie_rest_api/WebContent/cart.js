@@ -12,6 +12,8 @@ function handleSessionData(resultDataJson) {
   console.log("handle session response");
   console.log(resultDataJson);
   console.log(resultDataJson["sessionID"]);
+  console.log(resultDataJson["total"]);
+  $("#totalprice").html(`Total price${resultDataJson["total"]}`)
 
   // show the session information
   $("#sessionID").text("Session ID: " + resultDataJson["sessionID"]);
@@ -74,6 +76,8 @@ function handleCartArray(resultArray) {
       rowHTML +=
       `<th class="rounded-th movieid row${i}">` + eacharray["movieid"] + "</th>";
       rowHTML +=
+      `<th class="rounded-th movieprice row${i}">` + eacharray["price"] + "</th>";
+      rowHTML +=
       `<th class="rounded-th movieaction row${i}">` +
       `<button class="plus"  data-row="${i}">+</button>` +
       `<button class="minus"  data-row="${i}">-</button>` +
@@ -114,7 +118,8 @@ $(document).ready(function () {
         let year = $(`.movieyear.row${i}`).html();
         let director = $(`.moviedirector.row${i}`).html();
         let amount = $(`.movieamount.row${i}`).html();
-        increment(movieid,title,year,director,amount,i);
+        let price = $(`.movieprice.row${i}`).html();
+        increment(movieid,title,year,director,amount,i,price);
         
 
 
@@ -131,7 +136,8 @@ $(document).ready(function () {
         let year = $(`.movieyear.row${i}`).html();
         let director = $(`.moviedirector.row${i}`).html();
         let amount = $(`.movieamount.row${i}`).html();
-        decrement(movieid,title,year,director,amount,i);
+        let price = $(`.movieprice.row${i}`).html();
+        decrement(movieid,title,year,director,amount,i,price);
       });
     
       $('body').on('click', '.del', (event) => {
@@ -144,12 +150,13 @@ $(document).ready(function () {
         let year = $(`.movieyear.row${i}`).html();
         let director = $(`.moviedirector.row${i}`).html();
         let amount = $(`.movieamount.row${i}`).html();
-        remove(movieid,title,year,director,amount,i);
+        let price = $(`.movieprice.row${i}`).html();
+        remove(movieid,title,year,director,amount,i,price);
       });
     
 })
 
-function increment(movieid, title, year, director, amount, i) {
+function increment(movieid, title, year, director, amount, i,price) {
   jQuery.ajax("cart", {
     dataType: "json", // Setting return data type
     method: "POST",
@@ -158,16 +165,18 @@ function increment(movieid, title, year, director, amount, i) {
       title: title,
       director: director,
       year: year,
+      price: price,
       operation: "add",
     },
-    success: () => {console.log("success")
+    success: (data) => {console.log("success")
     amount = parseInt(amount)
     console.log(amount+1)
       $(`.movieamount.row${i}`).html(`${amount+1}`);
+      $("#totalprice").html(`Total price${data["total"]}`)
     },
   });
 }
-function decrement(movieid, title, year, director, amount, i) {
+function decrement(movieid, title, year, director, amount, i,price) {
   jQuery.ajax("cart", {
     dataType: "json", // Setting return data type
     method: "POST",
@@ -176,15 +185,17 @@ function decrement(movieid, title, year, director, amount, i) {
       title: title,
       director: director,
       year: year,
+      price:price,
       operation: "minus",
     },
-    success: () => {
+    success: (data) => {
         amount = parseInt(amount)
       $(`.movieamount.row${i}`).html(`${amount-1}`);
+      $("#totalprice").html(`Total price${data["total"]}`)
     },
   });
 }
-function remove(movieid, title, year, director, amount, i) {
+function remove(movieid, title, year, director, amount, i,price) {
     console.log("deleted")
   jQuery.ajax("cart", {
     dataType: "json", // Setting return data type
@@ -194,10 +205,12 @@ function remove(movieid, title, year, director, amount, i) {
       title: title,
       director: director,
       year: year,
+      price:price,
       operation: "remove",
     },
-    success: () => {
+    success: (data) => {
       $(`.row${i}.entire`).html("");
+      $("#totalprice").html(`Total price${data["total"]}`)
     },
   });
 }
