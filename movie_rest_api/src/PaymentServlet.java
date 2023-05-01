@@ -83,12 +83,38 @@ public class PaymentServlet extends HttpServlet {
                         transactionTrack.setString(3, cardNumber); // set all parameters
                         transactionTrack.setString(4, movieid);
 
-                        transactionTrack.executeQuery();
+                        transactionTrack.executeUpdate();
                         transactionTrack.close();
                     }
 
 
                 }
+                // save all salesid in session
+                /* 
+                previousItems = new JsonArray();
+                for (JsonElement movie : previousItems) {
+
+                    // get customer ID
+                    String query1 = "select * from sales inner join (SELECT id FROM customers WHERE firstName = ? AND lastName = ? AND ccid = ?) as A on sales"
+                    // join customers with credit card info
+                    int amount = movie.getAsJsonObject().get("amount").getAsInt();
+                    String movieid = movie.getAsJsonObject().get("movieid").getAsString();
+                    System.out.println(movieid);
+                    for (int i = 0; i < amount; i++) {
+                        PreparedStatement transactionTrack = conn.prepareStatement(salesInsertion);
+                        transactionTrack.setString(1, firstName);
+                        transactionTrack.setString(2, lastName);
+                        transactionTrack.setString(3, cardNumber); // set all parameters
+                        transactionTrack.setString(4, movieid);
+
+                        transactionTrack.executeUpdate();
+                        transactionTrack.close();
+                    }
+
+
+                }
+
+                JsonObject newrecord = new JsonObject();
 
 
                 // use email from session to fetch first,lastname,exp date from customer
@@ -113,6 +139,7 @@ public class PaymentServlet extends HttpServlet {
             
             conn.close();
             statement.close();
+            response.getWriter().write(responseJsonObject.toString());
 
         } catch (Exception e) {
             e.printStackTrace();

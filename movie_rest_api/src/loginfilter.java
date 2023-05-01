@@ -33,6 +33,7 @@ public class loginfilter implements Filter {
         if (httpRequest.getSession().getAttribute("user") == null) {
 
             httpResponse.sendRedirect("login.html");
+            System.out.println("redirected");
         } else {
             chain.doFilter(request, response);
             System.out.println("session checked");

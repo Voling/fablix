@@ -130,6 +130,7 @@ public class cart extends HttpServlet {
         JsonObject responseJsonObject = new JsonObject();
         if (operation.equals("add")) {
             if (previousItems == null) {
+                System.out.println("clear");
                 previousItems = new JsonArray();
                 JsonObject newrecord = new JsonObject();
                 newrecord.addProperty("movieid", movieid);
