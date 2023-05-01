@@ -38,6 +38,7 @@ function transformdata(resultdata) {
         rating: resultdata[i].rating,
         genres: [resultdata[i].genre],
         cast: [[resultdata[i].star, resultdata[i].starid]],
+        price: resultdata[i].price,
       });
       movie = resultdata[i].id;
       prevgenre = resultdata[i].genre;
@@ -120,6 +121,7 @@ function handleMovieResult(resultData) {
         "</th>";
     }
     rowHTML += '<th class="rounded-th">' + resultData[i]["rating"] + "</th>";
+    rowHTML += '<th class="rounded-th">' + resultData[i]["price"] + "</th>";
     rowHTML += "</tr>";
 
     // Append the row created to the table body, which will refresh the page

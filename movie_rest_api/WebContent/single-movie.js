@@ -68,6 +68,9 @@ function handle(resultData) {
       "</p>" +
       '<p style = "color:#ffc107" id = "thedirector">Director: ' +
       resultData[0]["movie_director"] +
+      "</p>" +
+      '<p style = "color:#ffc107" id = "thedirector">Director: ' +
+      resultData[0]["movie_price"] +
       "</p>"
   );
 

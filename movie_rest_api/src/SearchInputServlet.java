@@ -82,7 +82,8 @@ public class SearchInputServlet extends HttpServlet {
             "    B.rating,\n" +
             "    genres.name AS genrename,\n" +
             "    stars.name AS starname,\n" +
-            "    B.starId " +
+            "    B.starId," +
+            "    B.price \n" +
             "FROM\n" +
             "    (\n" +
             "        SELECT\n" +
@@ -91,6 +92,7 @@ public class SearchInputServlet extends HttpServlet {
             "            A.year,\n" +
             "            A.director,\n" +
             "            A.rating,\n" +
+            "            A.price, \n" +
             "            genres_in_movies.genreId,\n" +
             "            stars_in_movies.starId\n" +
             "        FROM\n" +
@@ -100,6 +102,7 @@ public class SearchInputServlet extends HttpServlet {
             "                    G.title,\n" +
             "                    G.year,\n" +
             "                    G.director,\n" +
+            "                    G.price,\n      " +
             "                    ratings.rating\n" +
             "                FROM\n" +
             "                    ";
@@ -141,8 +144,7 @@ public class SearchInputServlet extends HttpServlet {
         }
         else{
             later =       
-            "                INNER JOIN ratings ON G.id = ratings.movieId\n" +
-            
+            "                INNER JOIN ratings ON G.id = ratings.movieId\n" +        
             "            ) AS A\n" +
             "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
             "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
@@ -164,7 +166,8 @@ public class SearchInputServlet extends HttpServlet {
             "ratings.rating as rating, \n"+
             "genres.name AS genrename,\n" +
             "stars.name AS starname,\n" +
-            "stars_in_movies.starId as starId \n"+
+            "stars_in_movies.starId as starId,\n"+
+            "movies.price as price \n"+
             "from" +
             "("+
             "        SELECT\n" +
@@ -182,6 +185,7 @@ public class SearchInputServlet extends HttpServlet {
             "                    movies.title,\n" +
             "                    movies.year,\n" +
             "                    movies.director,\n" +
+            "                    movies.price," +
             "                    ratings.rating\n" +
             "                FROM\n" +
             "                    movies\n"+
@@ -360,6 +364,7 @@ public class SearchInputServlet extends HttpServlet {
                 String dgenre = rs.getString("genrename");
                 String dstar = rs.getString("starname");
                 String dstarid = rs.getString("starId");
+                String dprice = rs.getString("price");
 
                 // Create a JsonObject based on the data we retrieve from rs
                 JsonObject jsonObject = new JsonObject();
@@ -371,7 +376,7 @@ public class SearchInputServlet extends HttpServlet {
                 jsonObject.addProperty("genre", dgenre);
                 jsonObject.addProperty("star", dstar);
                 jsonObject.addProperty("starid", dstarid);
-
+                jsonObject.addProperty("price",dprice);
                 jsonArray.add(jsonObject);
             }
             rs.close();

@@ -72,6 +72,7 @@ public class BrowseServlet extends HttpServlet {
                 String dgenre = rs.getString("genrename");
                 String dstar = rs.getString("starname");
                 String dstarid = rs.getString("starId");
+                String dprice = rs.getString("price");
 
 
                 JsonObject jsonObject = new JsonObject();
@@ -83,6 +84,7 @@ public class BrowseServlet extends HttpServlet {
                 jsonObject.addProperty("genre", dgenre);
                 jsonObject.addProperty("star", dstar);
                 jsonObject.addProperty("starid", dstarid);
+                jsonObject.addProperty("price", dprice);
 
 
                 result.add(jsonObject);
@@ -110,6 +112,7 @@ public class BrowseServlet extends HttpServlet {
         "T.year as year, \n" +
         "T.director as director, \n" +
         "T.rating as rating, \n"+
+        "T.price as price, \n"+
         "genres.name AS genrename,\n" +
         "stars.name AS starname,\n" +
         "stars_in_movies.starId as starId \n"+
@@ -121,7 +124,8 @@ public class BrowseServlet extends HttpServlet {
         "            A.title,\n" +
         "            A.year,\n" +
         "            A.director,\n" +
-        "            A.rating\n" +
+        "            A.rating,\n" +
+        "            A.price \n" +
         "        FROM\n" +
         "            (\n" +
         "                SELECT\n" +
@@ -129,6 +133,7 @@ public class BrowseServlet extends HttpServlet {
         "                    movies.title,\n" +
         "                    movies.year,\n" +
         "                    movies.director,\n" +
+        "                    movies.price, \n" +
         "                    ratings.rating\n" +
         "                FROM\n" +
         "                    movies\n" +
@@ -179,7 +184,8 @@ public class BrowseServlet extends HttpServlet {
         "    B.rating as rating,\n" +
         "    genres.name AS genrename,\n" +
         "    stars.name AS starname,\n" +
-        "    B.starId as starId " +
+        "    B.starId as starId, " +
+        "    B.price \n"+
         "FROM\n" +
         "    (\n" +
         "        SELECT\n" +
@@ -188,6 +194,7 @@ public class BrowseServlet extends HttpServlet {
         "            A.year,\n" +
         "            A.director,\n" +
         "            A.rating,\n" +
+        "            A.price, \n" +
         "            genres_in_movies.genreId,\n" +
         "            stars_in_movies.starId\n" +
         "        FROM\n" +
@@ -197,6 +204,7 @@ public class BrowseServlet extends HttpServlet {
         "                    movies.title,\n" +
         "                    movies.year,\n" +
         "                    movies.director,\n" +
+        "                    movies.price, \n" +
         "                    ratings.rating\n" +
         "                FROM\n" +
         "                    movies\n" +
