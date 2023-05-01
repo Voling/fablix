@@ -19,18 +19,18 @@
     </style>
 </head>
 <body>
-<form method="post" action="/process-payment">
+<form id = "paysub"method="post">
     <label for="card-number">Card Number:</label>
-    <input type="text" id="card-number" name="card-number">
+    <input type="text" id="card-number" name="cardnumber">
     <br>
     <label for="card-holder-first-name">Card Holder First Name:</label>
-    <input type="text" id="card-holder-first-name" name="card-holder-name">
+    <input type="text" id="card-holder-first-name" name="firstname">
     <br>
     <label for="card-holder-last-name">Card Holder First Name:</label>
-    <input type="text" id="card-holder-last-name" name="card-holder-name">
+    <input type="text" id="card-holder-last-name" name="lastname">
     <br>
-    <label for="expiration-date">Expiration Date:</label>
-    <input type="month" id="expiration-date" name="expiration-date">
+    <label for="expirationdate">Expiration Date:</label>
+    <input type="month" id="expiration-date" name="expiration">
     <input id="submitPaymentInfo" type="submit" value="Pay">
 </form>
 <!--- checkout button -->
