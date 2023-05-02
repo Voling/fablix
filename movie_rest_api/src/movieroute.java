@@ -42,6 +42,8 @@ public class movieroute extends HttpServlet {
         response.setContentType("application/json"); // Response mime type
         String page = request.getParameter("page");
         String pagesize = request.getParameter("pagesize");
+        String sortmethod = request.getParameter("sort");
+        String sortorder = request.getParameter("order");
         int pagenum = Integer.parseInt(page);
         int psize = Integer.parseInt(pagesize);
         // Output stream to STDOUT
@@ -85,9 +87,21 @@ public class movieroute extends HttpServlet {
                     "                FROM\n" +
                     "                    movies\n" +
                     "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
-                    "                ORDER BY\n" +
-                    "                    -ratings.rating\n" +
-                    "                LIMIT\n" +
+                    "                ORDER BY\n";
+                    if(sortmethod.equals("title")){
+                        query += " movies.title ";
+                    }
+                    else{
+                        query += " ratings.rating ";
+                    }
+                    if(sortorder.equals("ASC")){
+                        query += " ASC ";
+                    }
+                    else{
+                        query += " DESC ";
+                    }
+                    //"                    -ratings.rating\n" +
+                   query += "                LIMIT\n" +
                     "                    ?\n" +
                     "OFFSET ?"+
                     "            ) AS A\n" +
