@@ -24,6 +24,8 @@
     </style>
 </head>
 <body>
+<button id="home" type="button" class="btn btn-primary" style="position:fixed; left:0;top:0;">Return Home</button>
+<br>
 <form id = "paysub"method="post">
     <label for="card-number">Card Number:</label>
     <input type="text" id="card-number" name="cardnumber">
@@ -35,16 +37,21 @@
     <input type="text" id="card-holder-last-name" name="lastname">
     <br>
     <label for="expirationdate">Expiration Date:</label>
-    <input type="month" id="expiration-date" name="expiration">
+    <input type="date" id="expiration-date" name="expiration">
     <input id="submitPaymentInfo" type="submit" value="Pay">
 </form>
 <div id ="response"></div>
 <!--- checkout button -->
-<button id="checkout-button" type="button" class="btn btn-primary" style="position:fixed;right:0;bottom:0;">Checkout</button>
+<button id="checkout-button" type="button" class="btn btn-primary" style="position:fixed;right:0;bottom:0;">Place Order</button>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="./payment.js"></script>
+<script>
+    $('#home').click(function () {
+        window.location.href = 'index.html';
+    });
+    </script>
 </body>
 
 </html>
