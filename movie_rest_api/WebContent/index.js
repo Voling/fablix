@@ -16,6 +16,8 @@ let pagenum = 1;
 let lastused = "";
 let lastbrowsed = "";
 let pagesize = 20;
+let sorttype = "ranking";
+let sortorder = "DESC";
 function handle(resultData) {
   handleMovieResult(transformdata(resultData));
 }
@@ -157,7 +159,7 @@ function submitsearch(event) {
     }
   }
   data += `&page=${pagenum}`;
-  data += `&pagesize=${pagesize}`
+  data += `&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`
   console.log("here!hey");
   console.log(data);
   jQuery.ajax({
@@ -175,7 +177,7 @@ function submitbrowse(event) {
   jQuery.ajax({
     dataType: "json", // Setting return data type
     method: "GET", // Setting request method
-    url: `browse?page=${pagenum}&type=genre&term=${lastbrowsed}&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    url: `browse?page=${pagenum}&type=genre&term=${lastbrowsed}&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`, // Setting request url, which is mapped by StarsServlet in Stars.java
     success: (resultData) => {
       console.log(resultData);
       handle(resultData);
@@ -187,7 +189,7 @@ function submitbrowsetitle(event) {
   jQuery.ajax({
     dataType: "json", // Setting return data type
     method: "GET", // Setting request method
-    url: `browse?page=${pagenum}&type=title&term=%25${lastbrowsed}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    url: `browse?page=${pagenum}&type=title&term=%25${lastbrowsed}%25&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`, // Setting request url, which is mapped by StarsServlet in Stars.java
     success: (resultData) => {
       console.log(resultData);
       handle(resultData);
@@ -199,7 +201,7 @@ function submitbrowsetitlea(event) {
   jQuery.ajax({
     dataType: "json", // Setting return data type
     method: "GET", // Setting request method
-    url: `browse?page=${pagenum}&type=title&term=${lastbrowsed}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+    url: `browse?page=${pagenum}&type=title&term=${lastbrowsed}%25&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`, // Setting request url, which is mapped by StarsServlet in Stars.java
     success: (resultData) => {
       console.log(resultData);
       handle(resultData);
@@ -210,6 +212,17 @@ function updatepagesize(){
   const selectElement = document.getElementById("numberSelect");
   console.log("updating")
   pagesize = parseInt(selectElement.value);
+}
+function updatesorttype(){
+  const selectElement = document.getElementById("typeselect");
+  console.log(selectElement.value)
+  sorttype = selectElement.value;
+}
+function updatesortorder(){
+  const selectElement = document.getElementById("orderselect");
+
+  console.log(selectElement.value)
+  sortorder = selectElement.value
 }
 $(document).ready(function () {
   //find button and attach logout fx to it
@@ -250,7 +263,7 @@ $(document).ready(function () {
         counter += 1;
       }
     }
-    data += `&pagesize=${pagesize}`
+    data += `&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`
     if (lastused != "search") {
       lastused = "search";
       pagenum = 1;
@@ -276,7 +289,7 @@ $(document).ready(function () {
         jQuery.ajax({
           dataType: "json", // Setting return data type
           method: "GET", // Setting request method
-          url: `api/movies?page=${pagenum}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+          url: `api/movies?page=${pagenum}&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`, // Setting request url, which is mapped by StarsServlet in Stars.java
           success: (resultData) => {
             console.log(resultData);
             handle(resultData);
@@ -311,7 +324,7 @@ $(document).ready(function () {
       jQuery.ajax({
         dataType: "json", // Setting return data type
         method: "GET", // Setting request method
-        url: `api/movies?page=${pagenum}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+        url: `api/movies?page=${pagenum}&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`, // Setting request url, which is mapped by StarsServlet in Stars.java
         success: (resultData) => {
           console.log(resultData);
           handle(resultData);
@@ -349,7 +362,7 @@ $(document).ready(function () {
     jQuery.ajax({
       dataType: "json", // Setting return data type
       method: "GET", // Setting request method
-      url: `browse?page=${pagenum}&type=genre&term=${selectedItemText}&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      url: `browse?page=${pagenum}&type=genre&term=${selectedItemText}&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`, // Setting request url, which is mapped by StarsServlet in Stars.java
       success: (resultData) => {
         console.log(resultData);
         handle(resultData);
@@ -367,7 +380,7 @@ $(document).ready(function () {
     jQuery.ajax({
       dataType: "json", // Setting return data type
       method: "GET", // Setting request method
-      url: `browse?page=${pagenum}&type=title&term=%25${selectedItemText}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      url: `browse?page=${pagenum}&type=title&term=%25${selectedItemText}%25&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`, // Setting request url, which is mapped by StarsServlet in Stars.java
       success: (resultData) => {
         console.log(resultData);
         handle(resultData);
@@ -386,7 +399,7 @@ $(document).ready(function () {
     jQuery.ajax({
       dataType: "json", // Setting return data type
       method: "GET", // Setting request method
-      url: `browse?page=${pagenum}&type=title&term=${selectedItemText}%25&pagesize=${pagesize}`, // Setting request url, which is mapped by StarsServlet in Stars.java
+      url: `browse?page=${pagenum}&type=title&term=${selectedItemText}%25&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`, // Setting request url, which is mapped by StarsServlet in Stars.java
       success: (resultData) => {
         console.log(resultData);
         handle(resultData);
@@ -406,7 +419,7 @@ $(document).ready(function () {
 jQuery.ajax({
   dataType: "json", // Setting return data type
   method: "GET", // Setting request method
-  url: "api/movies?page=1&pagesize=20", // Setting request url, which is mapped by StarsServlet in Stars.java
+  url: "api/movies?page=1&pagesize=20&sort=ranking&order=DESC", // Setting request url, which is mapped by StarsServlet in Stars.java
   success: (resultData) => {
     console.log(resultData);
     if (lastused != "") {

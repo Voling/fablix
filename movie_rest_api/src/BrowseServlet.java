@@ -36,6 +36,8 @@ public class BrowseServlet extends HttpServlet {
         String browseType = request.getParameter("type"); //movie/title
         String browseTerm = request.getParameter("term"); //letter if title,
         String pagesize = request.getParameter("pagesize");
+        String sortmethod = request.getParameter("sort");
+        String sortorder = request.getParameter("order");
         int psize = Integer.parseInt(pagesize);
         String page = request.getParameter("page");
             int pagenum;
@@ -55,11 +57,11 @@ public class BrowseServlet extends HttpServlet {
             PreparedStatement statement = conn.prepareStatement("select * from movies;");
             if (browseType.equals("title")) {
                 System.out.println("in title");
-                rs = browseByTitle(browseTerm,offset, conn, statement,psize);
+                rs = browseByTitle(browseTerm,offset, conn, statement,psize, sortmethod, sortorder);
 
             } //browsing by title
             else {
-                rs = browseByGenre(browseTerm,offset, conn,statement,psize);
+                rs = browseByGenre(browseTerm,offset, conn,statement,psize,sortmethod,sortorder);
             }
             System.out.println(statement.toString());
             //browsing by genre
@@ -103,7 +105,7 @@ public class BrowseServlet extends HttpServlet {
         out.close();
         response.setStatus(200);
     }
-    private ResultSet browseByGenre(String browseTerm, int offset, Connection conn, PreparedStatement statement,int psize) throws ServletException {
+    private ResultSet browseByGenre(String browseTerm, int offset, Connection conn, PreparedStatement statement,int psize, String sortmethod, String sortorder) throws ServletException {
         //<String> movieList = new ArrayList<>();
         String query = 
         "SELECT \n"   +
@@ -138,8 +140,21 @@ public class BrowseServlet extends HttpServlet {
         "                FROM\n" +
         "                    movies\n" +
         "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
-        "                ORDER BY\n" +
-        "                    -ratings.rating\n" +
+        "                ORDER BY\n";
+        if(sortmethod.equals("title")){
+            query += " movies.title ";
+        }
+        else{
+            query += " ratings.rating ";
+        }
+        if(sortorder.equals("ASC")){
+            query += " ASC ";
+        }
+        else{
+            query += " DESC ";
+        }
+
+        query += "                    -ratings.rating\n" +
         "            ) AS A\n" +
         "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
        // "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
@@ -174,7 +189,7 @@ public class BrowseServlet extends HttpServlet {
 
 
     }
-    private ResultSet browseByTitle(String browseTerm, int offset, Connection conn, PreparedStatement statement,int psize) throws ServletException {
+    private ResultSet browseByTitle(String browseTerm, int offset, Connection conn, PreparedStatement statement,int psize, String sortmethod, String sortorder) throws ServletException {
         //ArrayList<String> genreList = new ArrayList<>();
         String query = "SELECT\n" +
         "    B.movieid as movieid,\n" +
@@ -210,8 +225,21 @@ public class BrowseServlet extends HttpServlet {
         "                    movies\n" +
         "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
         "where movies.title like ?"+
-        "                ORDER BY\n" +
-        "                    -ratings.rating\n" +
+        "                ORDER BY\n";
+        if(sortmethod.equals("title")){
+            query += " movies.title ";
+        }
+        else{
+            query += " ratings.rating ";
+        }
+        if(sortorder.equals("ASC")){
+            query += " ASC ";
+        }
+        else{
+            query += " DESC ";
+        }
+       query += 
+       // "                    -ratings.rating\n" +
         "                LIMIT\n" +
         "                    ?\n" +
         "OFFSET ?"+

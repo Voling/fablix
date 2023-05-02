@@ -62,6 +62,8 @@ public class SearchInputServlet extends HttpServlet {
             String starname = request.getParameter("star");
             String page = request.getParameter("page");
             String pagesize = request.getParameter("pagesize");
+            String sortmethod = request.getParameter("sort");
+            String sortorder = request.getParameter("order");
             int psize = Integer.parseInt(pagesize);
             
             int pagenum;
@@ -117,8 +119,20 @@ public class SearchInputServlet extends HttpServlet {
         if(starname == null){
         later =       
             "                INNER JOIN ratings ON G.id = ratings.movieId\n" +
-            "                ORDER BY\n" +
-            "                    -ratings.rating\n" +
+            "                ORDER BY\n";
+            if(sortmethod.equals("title")){
+                later += " movies.title ";
+            }
+            else{
+                later += " ratings.rating ";
+            }
+            if(sortorder.equals("ASC")){
+                later += " ASC ";
+            }
+            else{
+                later += " DESC ";
+            }
+            later +=
             "                LIMIT\n" +
             "                    ?\n" +
             "OFFSET ?"+
@@ -191,8 +205,20 @@ public class SearchInputServlet extends HttpServlet {
             "                    movies\n"+
 
             "                INNER JOIN ratings ON movies.id = ratings.movieId \n";
-           String later1 =  "                ORDER BY\n" +
-            "                    -ratings.rating\n" +
+           String later1 =  "                ORDER BY\n";
+           if(sortmethod.equals("title")){
+            later1 += " movies.title ";
+        }
+        else{
+            later1 += " ratings.rating ";
+        }
+        if(sortorder.equals("ASC")){
+            later1 += " ASC ";
+        }
+        else{
+            later1 += " DESC ";
+        }
+        later1 +=
             "            ) AS A\n" +
             "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
             // "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
