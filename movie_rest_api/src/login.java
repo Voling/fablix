@@ -124,6 +124,16 @@ public class login extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+        String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+        try { //captcha
+            LoginRecaptcha.verify(gRecaptchaResponse);
+        }
+        catch (Exception e) {
+            System.out.println("hi");
+            return; //immediately fail post if captcha not done
+        }
+
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         System.out.println(email);
