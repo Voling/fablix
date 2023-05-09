@@ -205,20 +205,8 @@ public class SearchInputServlet extends HttpServlet {
             "                    movies\n"+
 
             "                INNER JOIN ratings ON movies.id = ratings.movieId \n";
-           String later1 =  "                ORDER BY\n";
-           if(sortmethod.equals("title")){
-            later1 += " movies.title ";
-        }
-        else{
-            later1 += " ratings.rating ";
-        }
-        if(sortorder.equals("ASC")){
-            later1 += " ASC ";
-        }
-        else{
-            later1 += " DESC ";
-        }
-        later1 +=
+         
+        String later1 =
             "            ) AS A\n" +
             "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
             // "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
@@ -234,8 +222,22 @@ public class SearchInputServlet extends HttpServlet {
             " INNER JOIN genres_in_movies ON T.movieid = genres_in_movies.movieId\n" +
             " INNER JOIN genres ON genres.id = genres_in_movies.genreId\n" +
             " INNER JOIN movies on T.movieid = movies.id\n" +
-            " INNER JOIN ratings ON T.movieid = ratings.movieId;"
-            ;
+            " INNER JOIN ratings ON T.movieid = ratings.movieId ";
+        later1 +=  "                ORDER BY\n";
+            if(sortmethod.equals("title")){
+             later1 += " title ";
+         }
+         else{
+             later1 += " rating ";
+         }
+         if(sortorder.equals("ASC")){
+             later1 += " ASC ";
+         }
+         else{
+             later1 += " DESC ";
+         }
+            
+         later1 += ";";
             later = later1;
             biggerquery = query1;
             if (title != null && !title.equals("")) {query += " and title like ?"; count +=1;}

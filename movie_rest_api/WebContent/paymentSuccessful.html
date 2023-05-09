@@ -34,6 +34,7 @@
     <th scope="col">Movies</th>
     <th scope="col">amount</th>
     <th scope="col">Total</th>
+    <th scope="col">salesid</th>
     </thead>
     <tbody id="tableBody">
     <!--populate here -->
@@ -53,24 +54,7 @@
         window.location.href = 'cart.html';
     });
 
-    let items = JSON.parse(sessionStorage.getItem("previousItems"));
-
-    // Get a reference to the table element
-    let table = document.querySelector("table");
-
-    // Add a row for each item in the cart
-    items.forEach(item => {
-        let row = table.insertRow();
-        let title = row.insertCell();
-        let price = row.insertCell();
-        let quantity = row.insertCell();
-        title.innerText = item.title;
-        price.innerText = item.price;
-        quantity.innerText = item.quantity;
-    });
-
-    // Clear the cart from session storage
-    sessionStorage.removeItem("cart");
+    
 </script>
 </body>
 </html>
