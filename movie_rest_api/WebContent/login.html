@@ -27,6 +27,7 @@
             padding: 1vw 1.5vw;
         }
     </style>
+    <script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>
     <title>Login to Fablix</title>
 </head>
 <body>
@@ -43,11 +44,10 @@
             <label><b>Password</b></label>
             <input class="btn btn-primary form-control" name="password" placeholder="Enter Password" type="password"/>
         </div>
+        <div class="g-recaptcha col-sm-1" data-sitekey="6LfVpfMlAAAAAPuRCmzVr07S3Ivc0PNVFIlW7KJL"></div>
         <input class="btn btn-primary col-sm-1 mx-auto d-block" style="font-size: 24px; padding: 12px 24px;" type="submit" value="Login"/>
     </form>
 </div>
-
-
 <div id="login_error_message"></div>
 
 <!-- include jQuery-->
