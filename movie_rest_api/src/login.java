@@ -125,11 +125,21 @@ public class login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+        if (gRecaptchaResponse == null){
+            JsonObject responseJsonObject = new JsonObject();
+            responseJsonObject.addProperty("status", "fail");
+            responseJsonObject.addProperty("message", "pls do recaptcha bro");
+            response.getWriter().write(responseJsonObject.toString());
+            return;
+        }
         try { //captcha
             LoginRecaptcha.verify(gRecaptchaResponse);
         }
         catch (Exception e) {
-            System.out.println("hi");
+            JsonObject responseJsonObject = new JsonObject();
+            responseJsonObject.addProperty("status", "fail");
+            responseJsonObject.addProperty("message","pls do recaptcha bro");
+            response.getWriter().write(responseJsonObject.toString());
             return; //immediately fail post if captcha not done
         }
 
