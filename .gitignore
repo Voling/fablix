@@ -23,7 +23,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-
+encrypt.java
 # External tool builders
 .externalToolBuilders/
 

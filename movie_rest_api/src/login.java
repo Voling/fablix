@@ -21,6 +21,8 @@ import java.io.*;
 import java.util.HashMap;
 import java.sql.PreparedStatement;
 import java.io.*;
+import org.jasypt.util.password.PasswordEncryptor;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 
 
 
@@ -55,11 +57,14 @@ public class login extends HttpServlet {
 
 
     }
-    private String verifycustomer(String email, String password, Connection conn){
+    private String verifycustomer(String email, String password, Connection conn,PasswordEncryptor pencrypt){
 
         String query = "select password from customers where email = ?;";
         String info = "error";
         try {
+            String encryptedPassword = pencrypt.encryptPassword(password);
+    
+            System.out.println(encryptedPassword);
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, email);
             ResultSet rs = statement.executeQuery();
@@ -72,7 +77,7 @@ public class login extends HttpServlet {
                 System.out.println("notexist");
                 return info;
             }
-            if (password.equals(supposedpw)) {
+            if (pencrypt.checkPassword(password, supposedpw)) {
                 info = "found";
                 return info;
             } else {
@@ -142,6 +147,7 @@ public class login extends HttpServlet {
             response.getWriter().write(responseJsonObject.toString());
             return; //immediately fail post if captcha not done
         }
+        PasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
 
         String email = request.getParameter("email");
@@ -156,10 +162,10 @@ public class login extends HttpServlet {
         JsonObject responseJsonObject = new JsonObject();
         String info = "";
         try (Connection conn = dataSource.getConnection()) {
-            info = verifyuser(email, password, conn);
-            if(info != "found"){
-                info = verifycustomer(email, password, conn);
-            }
+            //info = verifyuser(email, password, conn);
+           
+                info = verifycustomer(email, password, conn, passwordEncryptor);
+            
             conn.close();
         } catch (Exception e) {
             // Write error message JSON object to output
