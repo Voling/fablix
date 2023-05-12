@@ -66,12 +66,16 @@ public class clearcart extends HttpServlet {
                 // Log to localhost log
                 request.getServletContext().log("getting " + previousItems.size() + " items");
                 responseJsonObject.add("previousItems", previousItems);
+                responseJsonObject.add("salesid",(JsonArray) session.getAttribute("salesid"));
                 //session.setAttribute("previousItems", null);
                 session.removeAttribute("previousItems");
+                session.removeAttribute("salesid");
                 System.out.println("removed");
         
                 // write all the data into the jsonObject
+                System.out.println(responseJsonObject.toString());
                 response.getWriter().write(responseJsonObject.toString());
+                //response.getWriter().write(session.getAttribute("salesid").toString());
         
        
     }

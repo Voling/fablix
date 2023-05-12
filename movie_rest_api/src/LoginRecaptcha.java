@@ -40,6 +40,7 @@ public class LoginRecaptcha {
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 
         JsonObject jsonObject = new Gson().fromJson(inputStreamReader, JsonObject.class);
+        System.out.println(jsonObject);
 
         inputStreamReader.close();
 

@@ -17,6 +17,8 @@ import jakarta.servlet.http.HttpSession;
 import javax.naming.NamingException;
 import jakarta.servlet.ServletConfig;
 import javax.sql.DataSource;
+import java.sql.Statement;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "paymentServlet", urlPatterns = "/payment")
 public class PaymentServlet extends HttpServlet {
@@ -39,7 +41,7 @@ public class PaymentServlet extends HttpServlet {
         expiration += "%";
         HttpSession session = request.getSession();
         JsonArray previousItems = (JsonArray) session.getAttribute("previousItems");
-
+        //HttpSession session = request.getSession();
         // NEED TO RETRIEVE INFO FROM CART
         PrintWriter out = response.getWriter();
 
@@ -63,6 +65,8 @@ public class PaymentServlet extends HttpServlet {
             JsonObject responseJsonObject = new JsonObject();
             
             ResultSet rs = statement.executeQuery();
+            JsonArray jsonArray = new JsonArray();
+
             if (rs.next()) { // credentials are correct;
                 // HttpSession session = request.getSession();
 
@@ -77,13 +81,23 @@ public class PaymentServlet extends HttpServlet {
                     String movieid = movie.getAsJsonObject().get("movieid").getAsString();
                     System.out.println(movieid);
                     for (int i = 0; i < amount; i++) {
-                        PreparedStatement transactionTrack = conn.prepareStatement(salesInsertion);
+                        PreparedStatement transactionTrack = conn.prepareStatement(salesInsertion, Statement.RETURN_GENERATED_KEYS);
                         transactionTrack.setString(1, firstName);
                         transactionTrack.setString(2, lastName);
                         transactionTrack.setString(3, cardNumber); // set all parameters
                         transactionTrack.setString(4, movieid);
 
                         transactionTrack.executeUpdate();
+                        ResultSet rs1 = transactionTrack.getGeneratedKeys();
+                       
+                        while(rs1.next()){
+                            int salesId = rs1.getInt(1);
+                            JsonObject jsonObject = new JsonObject();
+                            jsonObject.addProperty("id", salesId);
+                            jsonArray.add(jsonObject);
+
+                        }
+                        //
                         transactionTrack.close();
                     }
 
@@ -131,6 +145,8 @@ public class PaymentServlet extends HttpServlet {
                 */
 
                 responseJsonObject.addProperty("status", "success");
+                //responseJsonObject.addProperty("saleids", jsonArray.toString());
+                session.setAttribute("salesid", jsonArray);
             }
             else{
                 responseJsonObject.addProperty("status", "failure");

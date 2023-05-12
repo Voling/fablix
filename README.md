@@ -1,4 +1,12 @@
 # s23-122b-tryna_find_a_teammate
+https://youtu.be/1dwAGfKLXsc
+
+IMPORTANT
+Our database username and password are different from 'mytestuser' 'My6$Password'
+
+ASSUMPTIONS
+We assume that a credit card user may only use the card linked to them in creditcards.
+
 
 
 Contributions:

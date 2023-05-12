@@ -154,7 +154,7 @@ public class BrowseServlet extends HttpServlet {
             query += " DESC ";
         }
 
-        query += "                    -ratings.rating\n" +
+        query += 
         "            ) AS A\n" +
         "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
        // "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +

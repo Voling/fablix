@@ -9,6 +9,7 @@ jQuery.ajax({
         $(document).ready(function() {
             let tableBody = $("#tableBody");
             previousItems = resultData.previousItems; //has previous items key
+            salesid = resultData.salesid;
             let allMovies = new Map();
 
             for (let i = 0; i < previousItems.length; i++) {
@@ -16,6 +17,7 @@ jQuery.ajax({
                 row.append($("<td>").text(previousItems[i].title));
                 row.append($("<td>").text(previousItems[i].amount));
                 row.append($("<td>").text(previousItems[i].price));
+                row.append($("<td>").text(salesid[i].id));
                 tableBody.append(row);
             }
             let row = $("<tr>");
