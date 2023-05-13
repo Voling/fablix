@@ -35,7 +35,33 @@ $(document).ready(function () {
 $.ajax({
   url: "dashboard",
   method: "GET",
+  dataType: "json",
   success: function (response) {
-    let metadataTable = $("#metadataTable tbody");
+    let metadataTable = $("#metadataTable");
+    let rowHTML = "";
+    console.log(response);
+    for (const tablename in response) {
+      rowHTML += "<tr>";
+      rowHTML += '<th class="rounded-th">' + tablename + "</th>";
+      attribute_array = response[tablename];
+      for (let i = 0; i < attribute_array.length; i++) {
+        if (i === 0) {
+          rowHTML +=
+            '<th class="rounded-th">' + attribute_array[i]["name"] + "</th>";
+          rowHTML +=
+            '<th class="rounded-th">' + attribute_array[i]["type"] + "</th>";
+        } else {
+          rowHTML += "</tr>";
+          rowHTML += '<th class="rounded-th">' + " " + "</th>";
+          rowHTML +=
+            '<th class="rounded-th">' + attribute_array[i]["name"] + "</th>";
+          rowHTML +=
+            '<th class="rounded-th">' + attribute_array[i]["type"] + "</th>";
+        }
+        rowHTML += "</tr>";
+      }
+    }
+
+    metadataTable.html(rowHTML);
   },
 });
