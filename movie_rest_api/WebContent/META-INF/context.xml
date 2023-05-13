@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Context>
+<Context path= "/">
 
     <!-- Defines a Data Source Connecting to localhost moviedbexample-->
     <Resource name="jdbc/moviedb"
@@ -9,5 +9,5 @@
               type="javax.sql.DataSource"
               username="root"
               password="3t1415926"
-              url="jdbc:mysql://localhost:3306/moviedb"/>
+              url="jdbc:mysql://localhost:3306/moviedb?allowMultiQueries=true"/>
 </Context>

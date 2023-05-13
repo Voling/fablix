@@ -19,10 +19,11 @@ import java.sql.SQLException;
 import java.io.*;
 import java.util.HashMap;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
-@WebServlet(name = "DashboardServlet", urlPatterns = "/api/_dashboard")
-public class _dashboardServlet extends HttpServlet {
+@WebServlet(name = "DashboardServlet", urlPatterns = "/dashboard")
+public class dashboardServlet extends HttpServlet {
     private DataSource dataSource;
 
     public void init(ServletConfig config) {
@@ -35,63 +36,66 @@ public class _dashboardServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject responseJsonObject = new JsonObject();
-        if (request.getSession().getAttribute("user") != null) { //check user logged in
-            String action = request.getParameter("action");
-
-            if (action != null) {
-                if (action.equals("insertStar")) {
-                    insertStar(request, response);
-                } else if (action.equals("getMetadata")) {
-                    getMetadata(response);
-                } else {
-                    responseJsonObject.addProperty("error", "No action specified");
+       
+            System.out.println("herehere");
+          
+                    insertStar(request, response,responseJsonObject);
+                   
+                   
                     response.getWriter().write(responseJsonObject.toString());
-                }
-            } else {
-                responseJsonObject.addProperty("error", "No action specified");
-                response.getWriter().write(responseJsonObject.toString());
-            } //
-        } else {
-            responseJsonObject.addProperty("error", "User not logged in");
-            response.getWriter().write(responseJsonObject.toString());
-        } //user not logged in error
+
+               
+          
+        
     }
-    private void insertStar(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void insertStar(HttpServletRequest request, HttpServletResponse response,JsonObject responseJsonObject) throws IOException {
         String starName = request.getParameter("name");
         String birthYear = request.getParameter("birthYear");
+        System.out.println(starName);
+        System.out.println(birthYear);
 
         //require star name
-        if (starName == null || starName.isEmpty()) {
-            JsonObject responseJsonObject = new JsonObject();
-            responseJsonObject.addProperty("error", "Star name required");
-            response.getWriter().write(responseJsonObject.toString());
+        if (starName == null || starName.equals("")) {
+            responseJsonObject.addProperty("status", "failed");
+            responseJsonObject.addProperty("message ","null name");
             return;
         }
 
         //perform insertion
         try (Connection conn = dataSource.getConnection()) {
-            String query = "INSERT INTO stars (name, birthYear) VALUES (?, ?)";
+            String query = "SELECT add_star(?, ?);";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, starName);
 
-            if (birthYear != null && !birthYear.isEmpty()) {
+            if (birthYear != null && !birthYear.equals("")) {
                 statement.setInt(2, Integer.parseInt(birthYear));
             } else {
                 statement.setNull(2, java.sql.Types.INTEGER);
             }
+            System.out.println(statement.toString());
+            boolean ifrs = statement.execute();
+            if (ifrs){
+                System.out.println(statement.getResultSet().toString());
+            }
+          
 
-            JsonObject responseJsonObject = new JsonObject();
+            responseJsonObject.addProperty("status", "success");
             responseJsonObject.addProperty("message", "Star inserted successfully");
+            statement.close();
+            conn.close();
 
-            response.getWriter().write(responseJsonObject.toString());
+
         } catch (SQLException e) {
             e.printStackTrace();
+            
+           
             //JsonObject responseJsonObject = new JsonObject();
             //responseJsonObject.addProperty("message", "Star insertion failed");
         }
+       
 
     }
-    private void getMetadata(HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
         // Retrieve metadata from the database
         String metadataQuery = "SHOW TABLES";
 
