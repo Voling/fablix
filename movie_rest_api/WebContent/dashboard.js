@@ -29,6 +29,42 @@ $(document).ready(function () {
       },
     });
   });
+
+  $("#insertmoviebutton").click(function (event) {
+    event.preventDefault();
+    let title = $("#movietitle").val();
+    let year = $("#movieyear").val();
+    let director = $("#moviedirector").val();
+    let star = $("#moviestar").val();
+    let genre = $("#moviegenre").val();
+    console.log(title);
+    console.log(year);
+    // clear prev messages
+    //$("#errorMsg").remove();
+
+    //star insertion
+    $.ajax("insertmovie", {
+      method: "POST",
+      dataType: "json",
+      // Serialize the login form to the data sent by POST request
+      data: {
+        title: title,
+        year: year,
+        director: director,
+        star: star,
+        genre: genre,
+      },
+
+      success: function (resultDataJson) {
+        console.log(resultDataJson);
+        if (resultDataJson["status"] === "success") {
+          $("#errorMsgmovie").text("success");
+        } else {
+          $("#errorMsgmovie").text(`error${resultDataJson["message"]}`);
+        }
+      },
+    });
+  });
 });
 
 //display metadata
