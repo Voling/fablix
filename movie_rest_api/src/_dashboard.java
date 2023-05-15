@@ -75,7 +75,8 @@ public class _dashboard extends HttpServlet {
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, email);
             ResultSet rs = statement.executeQuery();
-            rs.next();
+           if( rs.next()){
+        
             String supposedpw = rs.getString("password");
             System.out.println("password:");
             System.out.println(supposedpw);
@@ -90,6 +91,10 @@ public class _dashboard extends HttpServlet {
             } else {
                 return "incorrect";
             }
+        }
+        else{
+            return "notexist";
+        }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -146,6 +151,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             responseJsonObject.addProperty("message", "incorrect password");
         }
     }
+    System.out.println(responseJsonObject.toString());
     response.getWriter().write(responseJsonObject.toString());
    
 

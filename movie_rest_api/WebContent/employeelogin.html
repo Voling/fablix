@@ -12,13 +12,21 @@
           $.ajax({
             url: "_dashboard",
             method: "POST",
+            dataType: "json",
             data: { email: email, password: password },
-            success: function () {
-              alert("Login successful");
-              window.location.href = "dashboard.html"; // Replace with the URL you want to redirect to
+            success: function (response) {
+              console.log(response);
+              if (response["status"] === "success") {
+                alert("Login successful");
+                window.location.href = "dashboard.html";
+              } // Replace with the URL you want to redirect to
+              else {
+                alert("Login failed, please try again.");
+                promptLogin();
+              }
             },
             error: function () {
-              alert("Login failed, please try again.");
+              alert("something went wrong");
               promptLogin();
             },
           });

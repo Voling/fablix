@@ -63,6 +63,23 @@ public class dashboardServlet extends HttpServlet {
 
         //perform insertion
         try (Connection conn = dataSource.getConnection()) {
+            String query1 = "select * from stars where name = ?;";
+            PreparedStatement statement1 = conn.prepareStatement(query1);
+            statement1.setString(1,starName);
+            ResultSet rs = statement1.executeQuery();
+            if (rs.next()){
+                responseJsonObject.addProperty("status", "fail");
+                responseJsonObject.addProperty("message", "movie already exists");
+                statement1.close();
+                conn.close();
+                //response.getWriter().write(responseJsonObject.toString());
+
+                return;
+            }
+            statement1.close();
+
+
+
             String query = "SELECT add_star(?, ?);";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, starName);
