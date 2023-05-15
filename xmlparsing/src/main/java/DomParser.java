@@ -264,7 +264,7 @@ public class DomParser {
                 Element film = (Element) allDirectorFilmsDetails.item(j);
                 //System.out.println(film.toString());
                 if(getTextValue(film, "fid") == null || getTextValue(film, "t") == null){
-                    //logger.log(Level.WARNING, "Inconsistent movie data: " + getTextValue(film, "t") + " - ", getTextValue(film, "fid"));
+                    logger.log(Level.WARNING, "Inconsistent movie data: " + getTextValue(film, "t") + " - ", getTextValue(film, "fid"));
                     continue;
                 }
                 else{
