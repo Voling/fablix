@@ -51,7 +51,7 @@ public class DomParser {
     //but do NOT load existing movies and stars from database. we will deplete ram
     Document dom;
 
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/moviesqlback";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/moviedb";
     private static final String DATABASE_USER = "root";
     //mytestuser
     private static final String DATABASE_PASSWORD = "3t1415926"; 
