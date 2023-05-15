@@ -24,3 +24,6 @@ two optimization techniques:
         to them later.
     2. batch inssertion
         we did 500 insertion per batch
+files that use prepared statement:
+all endpoint files use all prepared statements, even for our xml parsing files(which is unnecessary I know but we are just used to it)
+
