@@ -58,13 +58,14 @@ public class singlemovieroute extends HttpServlet {
             // Construct a query with parameter represented by "?"
 
             // Declare our statement
+        /* 
            String query = "SELECT\n" +
-                   "    B.movieid,\n" +
-                   "    B.title,\n" +
-                   "    B.year,\n" +
-                   "    B.director,\n" +
-                   "    B.rating,\n" +
-                   "    B.price," +
+                   "    A.movieid,\n" +
+                   "    A.title,\n" +
+                   "    A.year,\n" +
+                   "    A.director,\n" +
+                  
+                   "    A.price," +
                    "    genres.name AS genrename,\n" +
                    "    stars.name AS starname,\n" +
                    "    B.starId " +
@@ -75,7 +76,7 @@ public class singlemovieroute extends HttpServlet {
                    "            A.title,\n" +
                    "            A.year,\n" +
                    "            A.director,\n" +
-                   "            A.rating,\n" +
+                
                    "            A.price, \n" +
                    "            genres_in_movies.genreId,\n" +
                    "            stars_in_movies.starId\n" +
@@ -86,18 +87,45 @@ public class singlemovieroute extends HttpServlet {
                    "                    movies.title,\n" +
                    "                    movies.year,\n" +
                    "                    movies.director,\n" +
-                   "                    movies.price," +
-                   "                    ratings.rating\n" +
-                   "                FROM\n" +
+                   "                    movies.price" +
+                      "                FROM\n" +
                    "                    movies\n" +
-                   "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
-                   "                WHERE movieid = ? "+
+
+                   "                WHERE id = ? "+
                    "            ) AS A\n" +
-                   "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
-                   "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
+                   "        LEFT JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
+                   "        LEFT JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
                    "    ) AS B\n" +
-                   "INNER JOIN genres ON genres.id = B.genreId\n" +
-                   "INNER JOIN stars ON stars.id = B.starId;";
+                   "LEFT JOIN genres ON genres.id = B.genreId\n" +
+                   "LEFT JOIN stars ON stars.id = B.starId;";
+            */
+            String query = "SELECT " +
+            "    A.movieid, " +
+            "    A.title, " +
+            "    A.year, " +
+            "    A.director, " +
+            "    A.price, " +
+            "    genres.name AS genrename, " +
+            "    stars.name AS starname, " +
+            "    stars_in_movies.starId " +
+            "FROM " +
+            "    ( " +
+            "        SELECT " +
+            "            movies.id AS movieid, " +
+            "            movies.title, " +
+            "            movies.year, " +
+            "            movies.director, " +
+            "            movies.price " +
+            "        FROM " +
+            "            movies " +
+            "        WHERE id = ? " +
+            "    ) AS A " +
+            "LEFT JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId " +
+            "LEFT JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId " +
+            "LEFT JOIN genres ON genres.id = genres_in_movies.genreId " +
+            "LEFT JOIN stars ON stars.id = stars_in_movies.starId;";
+            
+        
             System.out.println(query);
             // Perform the query
             PreparedStatement statement = conn.prepareStatement(query);
@@ -121,7 +149,7 @@ public class singlemovieroute extends HttpServlet {
                     String movieTitle = rs.getString("title");
                     String movieYear = rs.getString("year");
                     String movieDirector = rs.getString("director");
-                    String movieRating = rs.getString("rating");
+                   // String movieRating = rs.getString("rating");
                     String movieprice = rs.getString("price");
                     //String movieGenres = rs.getString("genrename");
 
@@ -131,7 +159,7 @@ public class singlemovieroute extends HttpServlet {
                     jsonObject.addProperty("movie_title", movieTitle);
                     jsonObject.addProperty("movie_year", movieYear);
                     jsonObject.addProperty("movie_director", movieDirector);
-                    jsonObject.addProperty("movie_rating", movieRating);
+                    //jsonObject.addProperty("movie_rating", movieRating);
                     jsonObject.addProperty("movie_price", movieprice);
                     //jsonObject.addProperty("movie_genres", movieGenres);
                     jsonObject.add("starsInMovie", starsInMovie); //create jsonarray in jsonobj

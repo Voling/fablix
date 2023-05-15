@@ -42,7 +42,7 @@ function getParameterByName(target) {
 
 function handle(resultData) {
   console.log("handleResult: populating single movie info from resultData");
-
+  console.log(resultData);
   // populate the star info h3
   // find the empty h3 body by id "star_info"
   let movieInfoElement = jQuery("#movie_info");
@@ -66,7 +66,7 @@ function handle(resultData) {
       resultData[0]["movie_year"] +
       "</p>" +
       '<p style = "color:#ffc107">Rating: ' +
-      resultData[0]["movie_rating"] +
+      //resultData[0]["movie_rating"] +
       "</p>" +
       '<p style = "color:#ffc107" id = "thedirector">Director: ' +
       resultData[0]["movie_director"] +
@@ -109,7 +109,7 @@ $(document).ready(() => {
       title: thetitle,
       director: thedirector,
       year: theyear,
-      price:price,
+      price: price,
     };
     // Stringify the object to prepare it for sending in the request
     // const movieObjectString = JSON.stringify(movieObject);
@@ -124,7 +124,7 @@ $(document).ready(() => {
           director: thedirector,
           year: theyear,
           operation: "add",
-          price:price,
+          price: price,
         },
         // Setting request method
         //url: "api/cart", // Setting request url, which is mapped by StarsServlet in Stars.java
@@ -132,8 +132,8 @@ $(document).ready(() => {
       } // Setting callback function to handle data returned successfully by the StarsServlet
     );
   });
-  $('#checkout-button').click(function() {
-    window.location.href = 'cart.html';
+  $("#checkout-button").click(function () {
+    window.location.href = "cart.html";
   });
 });
 /**

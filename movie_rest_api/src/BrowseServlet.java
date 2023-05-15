@@ -139,7 +139,7 @@ public class BrowseServlet extends HttpServlet {
         "                    ratings.rating\n" +
         "                FROM\n" +
         "                    movies\n" +
-        "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
+        "                LEFT JOIN ratings ON movies.id = ratings.movieId\n" +
         "                ORDER BY\n";
         if(sortmethod.equals("title")){
             query += " movies.title ";
@@ -156,19 +156,19 @@ public class BrowseServlet extends HttpServlet {
 
         query += 
         "            ) AS A\n" +
-        "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
+        "        LEFT JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
        // "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
-        " INNER JOIN genres ON genres.id = genres_in_movies.genreId\n" +
+        " LEFT JOIN genres ON genres.id = genres_in_movies.genreId\n" +
         //"INNER JOIN stars ON stars.id = B.starId" +
         " where genres.name = ?" +
         "                LIMIT\n" +
         "                    ?" +
         " OFFSET ?"+
         ") as T" +
-        " INNER JOIN stars_in_movies ON T.movieid = stars_in_movies.movieId\n" +
-        " INNER JOIN stars ON stars.id = stars_in_movies.starId"+
-        " INNER JOIN genres_in_movies ON T.movieid = genres_in_movies.movieId\n" +
-        " INNER JOIN genres ON genres.id = genres_in_movies.genreId;";
+        " LEFT JOIN stars_in_movies ON T.movieid = stars_in_movies.movieId\n" +
+        " LEFT JOIN stars ON stars.id = stars_in_movies.starId"+
+        " LEFT JOIN genres_in_movies ON T.movieid = genres_in_movies.movieId\n" +
+        " LEFT JOIN genres ON genres.id = genres_in_movies.genreId;";
 
        
         //Connection conn;
@@ -223,7 +223,7 @@ public class BrowseServlet extends HttpServlet {
         "                    ratings.rating\n" +
         "                FROM\n" +
         "                    movies\n" +
-        "                INNER JOIN ratings ON movies.id = ratings.movieId\n" +
+        "                LEFT JOIN ratings ON movies.id = ratings.movieId\n" +
         "where movies.title like ?"+
         "                ORDER BY\n";
         if(sortmethod.equals("title")){
@@ -244,11 +244,11 @@ public class BrowseServlet extends HttpServlet {
         "                    ?\n" +
         "OFFSET ?"+
         "            ) AS A\n" +
-        "        INNER JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
-        "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
+        "        LEFT JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
+        "        LEFT JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
         "    ) AS B\n" +
-        "INNER JOIN genres ON genres.id = B.genreId\n" +
-        "INNER JOIN stars ON stars.id = B.starId;";
+        "LEFT JOIN genres ON genres.id = B.genreId\n" +
+        "LEFT JOIN stars ON stars.id = B.starId;";
         try {
             statement = conn.prepareStatement(query);
             statement.setInt(3, offset);
