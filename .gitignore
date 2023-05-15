@@ -2,7 +2,6 @@
 # Created by https://www.gitignore.io/api/java,maven,eclipse,java-web,intellij
 
 #sql files
-*.sql
 *.txt
 .idea
 **/.idea
