@@ -1,5 +1,3 @@
-//const { json } = require("express");
-//bruh what why require express, what the hell man
 let cart = $("#cart");
 
 /**
@@ -13,7 +11,7 @@ function handleSessionData(resultDataJson) {
   console.log(resultDataJson);
   console.log(resultDataJson["sessionID"]);
   console.log(resultDataJson["total"]);
-  $("#totalprice").html(`Total price${resultDataJson["total"]}`)
+  $("#totalprice").html(`Total price${resultDataJson["total"]}`);
 
   // show the session information
   $("#sessionID").text("Session ID: " + resultDataJson["sessionID"]);
@@ -22,18 +20,6 @@ function handleSessionData(resultDataJson) {
   );
   //let fullmoviedata = {};
   handleCartArray(resultDataJson["previousItems"]);
-
-  /*
-  jQuery.ajax({
-    dataType: "json",
-    method: "GET",
-    url: "/api/single-movie?id=" + resultDataJson["previousItems"][0].key,
-    success: (data) => {
-      handleCartArray(data);
-    },
-  });
-  */
-  // show cart information
 }
 
 /**
@@ -43,7 +29,6 @@ function handleSessionData(resultDataJson) {
 function handleCartArray(resultArray) {
   console.log(resultArray);
 
-  // "{\"movieid\":\"tt0395642\",\"amount\":1,\"title\":\"Loma Lynda: Episode II\",\"director\":\"Jason Bognacki\",\"year\":\"2004\"}"
   console.log(resultArray.length);
   let item_list = $("#item_list");
   // change it to html list
@@ -73,21 +58,22 @@ function handleCartArray(resultArray) {
       `<th class="rounded-th movieamount row${i}">` +
       eacharray["amount"] +
       "</th>";
-      rowHTML +=
-      `<th class="rounded-th movieid row${i}">` + eacharray["movieid"] + "</th>";
-      rowHTML +=
-      `<th class="rounded-th movieprice row${i}">` + eacharray["price"] + "</th>";
-      rowHTML +=
+    rowHTML +=
+      `<th class="rounded-th movieid row${i}">` +
+      eacharray["movieid"] +
+      "</th>";
+    rowHTML +=
+      `<th class="rounded-th movieprice row${i}">` +
+      eacharray["price"] +
+      "</th>";
+    rowHTML +=
       `<th class="rounded-th movieaction row${i}">` +
       `<button class="plus"  data-row="${i}">+</button>` +
       `<button class="minus"  data-row="${i}">-</button>` +
       `<button class="del" data-row="${i}">deleta all</button>` +
       "</th>";
-    
-    rowHTML += "<tr>";
 
-    // each item will be in a bullet point
-    //res += "<li>" + resultArray[i] + "</li>";
+    rowHTML += "<tr>";
   }
   console.log(rowHTML);
   // clear the old array and show the new array in the frontend
@@ -95,72 +81,54 @@ function handleCartArray(resultArray) {
 }
 
 $(document).ready(function () {
-    /*
-    $(".plus").click((event)=>{
-        const i = event.target.getAttribute('data-row');
-        console.log(i)
-    })
-    $(".minus").click((event)=>{
-        const i = event.target.getAttribute('data-row');
-        console.log(i)
-    })
-    $(".del").click((event)=>{
-        const i = event.target.getAttribute('data-row');
-        console.log(i)
-    })
-    */
-    $('body').on('click', '#checkout-button', (event) => {
-        window.location.replace("payment.html");
-     });
+  $("body").on("click", "#checkout-button", (event) => {
+    window.location.replace("payment.html");
+  });
 
-    $('body').on('click', '.plus', (event) => {
-        const i = event.target.getAttribute('data-row');
-        let movieid = $(`.movieid.row${i}`).html();
-        console.log(movieid);
-        console.log(i);
-        let title = $(`.movietitle.row${i}`).html();
-        let year = $(`.movieyear.row${i}`).html();
-        let director = $(`.moviedirector.row${i}`).html();
-        let amount = $(`.movieamount.row${i}`).html();
-        let price = $(`.movieprice.row${i}`).html();
-        increment(movieid,title,year,director,amount,i,price);
-        
+  $("body").on("click", ".plus", (event) => {
+    const i = event.target.getAttribute("data-row");
+    let movieid = $(`.movieid.row${i}`).html();
+    console.log(movieid);
+    console.log(i);
+    let title = $(`.movietitle.row${i}`).html();
+    let year = $(`.movieyear.row${i}`).html();
+    let director = $(`.moviedirector.row${i}`).html();
+    let amount = $(`.movieamount.row${i}`).html();
+    let price = $(`.movieprice.row${i}`).html();
+    increment(movieid, title, year, director, amount, i, price);
+  });
 
+  $("body").on("click", ".minus", (event) => {
+    const i = event.target.getAttribute("data-row");
+    console.log(i);
+    //console.log(movieid);
+    //console.log(i);
+    let movieid = $(`.movieid.row${i}`).html();
+    console.log(movieid);
+    let title = $(`.movietitle.row${i}`).html();
+    let year = $(`.movieyear.row${i}`).html();
+    let director = $(`.moviedirector.row${i}`).html();
+    let amount = $(`.movieamount.row${i}`).html();
+    let price = $(`.movieprice.row${i}`).html();
+    decrement(movieid, title, year, director, amount, i, price);
+  });
 
-      });
-    
-      $('body').on('click', '.minus', (event) => {
-        const i = event.target.getAttribute('data-row');
-        console.log(i);
-        //console.log(movieid);
-        //console.log(i);
-        let movieid = $(`.movieid.row${i}`).html();
-        console.log(movieid);
-        let title = $(`.movietitle.row${i}`).html();
-        let year = $(`.movieyear.row${i}`).html();
-        let director = $(`.moviedirector.row${i}`).html();
-        let amount = $(`.movieamount.row${i}`).html();
-        let price = $(`.movieprice.row${i}`).html();
-        decrement(movieid,title,year,director,amount,i,price);
-      });
-    
-      $('body').on('click', '.del', (event) => {
-        const i = event.target.getAttribute('data-row');
-        console.log(i);
-        let movieid = $(`.movieid.row${i}`).html();
-        console.log(movieid);
-        //console.log(i);
-        let title = $(`.movietitle.row${i}`).html();
-        let year = $(`.movieyear.row${i}`).html();
-        let director = $(`.moviedirector.row${i}`).html();
-        let amount = $(`.movieamount.row${i}`).html();
-        let price = $(`.movieprice.row${i}`).html();
-        remove(movieid,title,year,director,amount,i,price);
-      });
-    
-})
+  $("body").on("click", ".del", (event) => {
+    const i = event.target.getAttribute("data-row");
+    console.log(i);
+    let movieid = $(`.movieid.row${i}`).html();
+    console.log(movieid);
+    //console.log(i);
+    let title = $(`.movietitle.row${i}`).html();
+    let year = $(`.movieyear.row${i}`).html();
+    let director = $(`.moviedirector.row${i}`).html();
+    let amount = $(`.movieamount.row${i}`).html();
+    let price = $(`.movieprice.row${i}`).html();
+    remove(movieid, title, year, director, amount, i, price);
+  });
+});
 
-function increment(movieid, title, year, director, amount, i,price) {
+function increment(movieid, title, year, director, amount, i, price) {
   jQuery.ajax("cart", {
     dataType: "json", // Setting return data type
     method: "POST",
@@ -172,15 +140,16 @@ function increment(movieid, title, year, director, amount, i,price) {
       price: price,
       operation: "add",
     },
-    success: (data) => {console.log("success")
-    amount = parseInt(amount)
-    console.log(amount+1)
-      $(`.movieamount.row${i}`).html(`${amount+1}`);
-      $("#totalprice").html(`Total price${data["total"]}`)
+    success: (data) => {
+      console.log("success");
+      amount = parseInt(amount);
+      console.log(amount + 1);
+      $(`.movieamount.row${i}`).html(`${amount + 1}`);
+      $("#totalprice").html(`Total price${data["total"]}`);
     },
   });
 }
-function decrement(movieid, title, year, director, amount, i,price) {
+function decrement(movieid, title, year, director, amount, i, price) {
   jQuery.ajax("cart", {
     dataType: "json", // Setting return data type
     method: "POST",
@@ -189,18 +158,18 @@ function decrement(movieid, title, year, director, amount, i,price) {
       title: title,
       director: director,
       year: year,
-      price:price,
+      price: price,
       operation: "minus",
     },
     success: (data) => {
-        amount = parseInt(amount)
-      $(`.movieamount.row${i}`).html(`${amount-1}`);
-      $("#totalprice").html(`Total price${data["total"]}`)
+      amount = parseInt(amount);
+      $(`.movieamount.row${i}`).html(`${amount - 1}`);
+      $("#totalprice").html(`Total price${data["total"]}`);
     },
   });
 }
-function remove(movieid, title, year, director, amount, i,price) {
-    console.log("deleted")
+function remove(movieid, title, year, director, amount, i, price) {
+  console.log("deleted");
   jQuery.ajax("cart", {
     dataType: "json", // Setting return data type
     method: "POST",
@@ -209,12 +178,12 @@ function remove(movieid, title, year, director, amount, i,price) {
       title: title,
       director: director,
       year: year,
-      price:price,
+      price: price,
       operation: "remove",
     },
     success: (data) => {
       $(`.row${i}.entire`).html("");
-      $("#totalprice").html(`Total price${data["total"]}`)
+      $("#totalprice").html(`Total price${data["total"]}`);
     },
   });
 }

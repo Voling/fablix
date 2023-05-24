@@ -11,7 +11,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.io.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 /**
@@ -40,10 +39,6 @@ public class SearchInputServlet extends HttpServlet {
         response.setContentType("text/html");    // Response mime type
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
-        // Building page head with title
-        //out.println("Found Records");
-        // Building page body
-        //out.println("Found Records");
         try {
             
             
@@ -53,8 +48,6 @@ public class SearchInputServlet extends HttpServlet {
             // Create a new connection to database
             Connection conn = dataSource.getConnection();
             // Declare a new statement
-            //Statement statement = dbCon.createStatement();
-            // Retrieve parameter "name" from the http request, which refers to the value of <input name="name"> in index.html
             String rawtitle = request.getParameter("title");
             //raw title parsed later
             String[] titlewords = rawtitle.split(" ");
@@ -193,12 +186,6 @@ public class SearchInputServlet extends HttpServlet {
             "("+
             "        SELECT\n" +
             "             distinct A.movieid \n" +
-            /* 
-            "            A.title,\n" +
-            "            A.year,\n" +
-            "            A.director,\n" +
-            "            A.rating\n" +
-            */
             "        FROM\n" +
             "            (\n" +
             "                SELECT\n" +
@@ -216,9 +203,7 @@ public class SearchInputServlet extends HttpServlet {
         String later1 =
             "            ) AS A\n" +
             "        LEFT JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
-            // "        INNER JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
             " LEFT JOIN stars ON stars.id = stars_in_movies.starId\n" +
-            //"INNER JOIN stars ON stars.id = B.starId" +
             " where stars.name like ?" +
             "                LIMIT\n" +
             "                    ?" +
@@ -271,122 +256,9 @@ public class SearchInputServlet extends HttpServlet {
         if(starindex != -1){
             statement.setString(starindex, starname);
         }
-            // a decision tree on where to insert parameters
-            //statement.setInt(count+1, pagenum);
-            /* 
-            if(title == null){
-                if(year == null){
-                    if (director == null){
-                        if(starname == null){
-                           
-                        }
-                        else{
-                            statement.setString(1, starname);
-                        }
-                    }
-                    else{
-                        statement.setString(1, director);
-                        if(starname == null){
-                           
-                        }
-                        else{
-                            statement.setString(2, starname);
-                        }
-
-                    }
-                }
-                else{
-                    statement.setString(1, year);
-                    if (director == null){
-                        if(starname == null){
-                           
-                        }
-                        else{
-                            statement.setString(2, starname);
-                        }
-
-                    }
-                    else{
-                        statement.setString(2, director);
-                        if(starname == null){
-                            
-                        }
-                        else{
-                            statement.setString(3, starname);
-                        }
-
-                    }
-
-                }
-
-            }
-            else{
-                statement.setString(1, title);
-                if(year == null){
-                    if (director == null){
-                        if(starname == null){
-                           
-                        }
-                        else{
-                            statement.setString(2, starname);
-                        }
-                    }
-                    else{
-                        statement.setString(2, director);
-                        if(starname == null){
-                           
-                        }
-                        else{
-                            statement.setString(3, starname);
-                        }
-
-                    }
-                }
-                else{
-                    statement.setString(2, year);
-                    if (director == null){
-                        if(starname == null){
-                           
-                        }
-                        else{
-                            statement.setString(3, starname);
-                        }
-                    }
-                    else{
-                        statement.setString(3, director);
-                        if(starname == null){
-                           
-                        }
-                        else{
-                            statement.setString(4, starname);
-                        }
-
-                    }
-
-                }
-
-
-            }
-            */
+            
             System.out.println(statement.toString());
             ResultSet rs = statement.executeQuery();
-            //if title, year, director present then add them to query
-            //TODO: proper starName query addition
-            //String getStar = String.format("SELECT id FROM stars WHERE stars.name = %s LEFT JOIN stars_in_movies ON stars_in_movies.starId = id", starName); //?
-            //String abc = "SELECT * FROM movies WHERE ... RIGHT OUTER JOIN stars_in_movies ON movies.id = stars_in_movies.movieId AND ";
-            //if (starName != null && !starName.equals("")) query += String.format("COMPLETED ADDITION GOES HERE", starName);
-            //example
-
-            //String query = String.format("SELECT * FROM movies WHERE name like '%s'", title); //queries name only
-
-            //TODO: if star is active add to query...
-
-            // Log to localhost log
-            //request.getServletContext().log("query：" + query);
-
-            // Perform the query
-            //ResultSet rs = statement.executeQuery(query);
-            // Create a html <table>
             JsonArray jsonArray = new JsonArray();
 
             while (rs.next()) {

@@ -8,21 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.*;
-import java.lang.Math.*;
 
-/**
- * This IndexServlet is declared in the web annotation below,
- * which is mapped to the URL pattern /api/index.
- */
+import java.util.Date;
+
 @WebServlet(name = "cartServlet", urlPatterns = "/cart")
 public class cart extends HttpServlet {
 
-    /**
-     * handles GET requests to store session information
-     */
 
     class purchaserecord {
         public String movieid;
@@ -33,11 +24,12 @@ public class cart extends HttpServlet {
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
         HttpSession session = request.getSession();
         String sessionId = session.getId();
         long lastAccessTime = session.getLastAccessedTime();
-        float total = (float)session.getAttribute("total");
+        float total = (float) session.getAttribute("total");
 
         JsonObject responseJsonObject = new JsonObject();
         responseJsonObject.addProperty("sessionID", sessionId);
@@ -60,13 +52,12 @@ public class cart extends HttpServlet {
      * handles POST requests to add and show the item list information
      */
     private boolean ifcontains(JsonArray previtems, JsonObject newrecord) {
-        /* 
-        for(int i = 0; i < previtems.size(); i++){
-            if(item[0]["movieid"] == previtems[i])
-        }
-        */
+        /*
+         * for(int i = 0; i < previtems.size(); i++){ if(item[0]["movieid"] == previtems[i]) }
+         */
         for (int i = 0; i < previtems.size(); i++) {
-            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())) {
+            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString()
+                    .equals(newrecord.get("movieid").getAsString())) {
                 int original = previtems.get(i).getAsJsonObject().get("amount").getAsInt();
                 previtems.get(i).getAsJsonObject().addProperty("amount", original + 1);
                 return true;
@@ -76,20 +67,16 @@ public class cart extends HttpServlet {
     }
 
     private boolean delcontains(JsonArray previtems, JsonObject newrecord, HttpSession session) {
-        /* 
-        for(int i = 0; i < previtems.size(); i++){
-            if(item[0]["movieid"] == previtems[i])
-        }
-        */
         for (int i = 0; i < previtems.size(); i++) {
-            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())) {
-                float lastprice = (float)session.getAttribute("total");
-                float amount = (float)previtems.get(i).getAsJsonObject().get("amount").getAsInt();
+            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString()
+                    .equals(newrecord.get("movieid").getAsString())) {
+                float lastprice = (float) session.getAttribute("total");
+                float amount = (float) previtems.get(i).getAsJsonObject().get("amount").getAsInt();
                 float theprice = previtems.get(i).getAsJsonObject().get("price").getAsFloat();
                 System.out.println(amount);
                 System.out.println("enjfnfkmf");
-                session.setAttribute("total", lastprice-(amount*theprice));
-                System.out.println(lastprice-(amount*theprice));
+                session.setAttribute("total", lastprice - (amount * theprice));
+                System.out.println(lastprice - (amount * theprice));
 
                 previtems.remove(i);
             }
@@ -98,13 +85,9 @@ public class cart extends HttpServlet {
     }
 
     private boolean mincontains(JsonArray previtems, JsonObject newrecord) {
-        /* 
-        for(int i = 0; i < previtems.size(); i++){
-            if(item[0]["movieid"] == previtems[i])
-        }
-        */
         for (int i = 0; i < previtems.size(); i++) {
-            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString().equals(newrecord.get("movieid").getAsString())) {
+            if (previtems.get(i).getAsJsonObject().get("movieid").getAsString()
+                    .equals(newrecord.get("movieid").getAsString())) {
                 int original = previtems.get(i).getAsJsonObject().get("amount").getAsInt();
                 if (original > 0) {
                     previtems.get(i).getAsJsonObject().addProperty("amount", original - 1);
@@ -115,7 +98,8 @@ public class cart extends HttpServlet {
         return false;
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
         String movieid = request.getParameter("movieid");
         String title = request.getParameter("title");
         String director = request.getParameter("director");
@@ -156,12 +140,12 @@ public class cart extends HttpServlet {
                     newrecord.addProperty("title", title);
                     newrecord.addProperty("amount", 1);
                     newrecord.addProperty("price", price);
-                    float lastprice = (float)session.getAttribute("total");
-                    session.setAttribute("total", lastprice+price);
+                    float lastprice = (float) session.getAttribute("total");
+                    session.setAttribute("total", lastprice + price);
                     if (!ifcontains(previousItems, newrecord)) {
                         previousItems.add(newrecord);
                         session.setAttribute("previousItems", previousItems);
-                        
+
                     }
                     responseJsonObject.addProperty("status", "success");
 
@@ -179,7 +163,7 @@ public class cart extends HttpServlet {
                     newrecord.addProperty("amount", 1);
                     newrecord.addProperty("price", price);
                     if (mincontains(previousItems, newrecord)) {
-                        float lastprice = (float)session.getAttribute("total");
+                        float lastprice = (float) session.getAttribute("total");
                         session.setAttribute("total", lastprice - price);
                         session.setAttribute("previousItems", previousItems);
                         responseJsonObject.addProperty("status", "success");
@@ -202,8 +186,8 @@ public class cart extends HttpServlet {
                 newrecord.addProperty("title", title);
                 newrecord.addProperty("amount", 1);
                 newrecord.addProperty("price", price);
-                if (delcontains(previousItems, newrecord,session)) {
-                    
+                if (delcontains(previousItems, newrecord, session)) {
+
                     session.setAttribute("previousItems", previousItems);
                     responseJsonObject.addProperty("status", "success");
 
@@ -215,7 +199,7 @@ public class cart extends HttpServlet {
             }
 
         }
-        float lastprice = (float)session.getAttribute("total");
+        float lastprice = (float) session.getAttribute("total");
         System.out.print(lastprice);
         int decimalPlaces = 3;
 
@@ -224,7 +208,7 @@ public class cart extends HttpServlet {
         long roundedTempValue = Math.round(tempValue);
         float roundedValue = (float) (roundedTempValue / factor);
 
-        responseJsonObject.addProperty("total",roundedValue);
+        responseJsonObject.addProperty("total", roundedValue);
 
         responseJsonObject.add("previousItems", previousItems);
 

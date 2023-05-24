@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.io.*;
 import java.sql.PreparedStatement;
 
 // Declaring a WebServlet called SingleStarServlet, which maps to url "/api/single-star"

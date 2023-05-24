@@ -12,7 +12,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.io.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 @WebServlet(name = "fulltextServlet", urlPatterns = "/fulltextsearch")

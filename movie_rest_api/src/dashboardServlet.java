@@ -5,22 +5,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import jakarta.servlet.ServletConfig;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.nio.file.StandardOpenOption;
 import javax.sql.DataSource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.io.*;
-import java.util.HashMap;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
 
 @WebServlet(name = "DashboardServlet", urlPatterns = "/dashboard")
 public class dashboardServlet extends HttpServlet {
@@ -72,7 +64,6 @@ public class dashboardServlet extends HttpServlet {
                 responseJsonObject.addProperty("message", "movie already exists");
                 statement1.close();
                 conn.close();
-                //response.getWriter().write(responseJsonObject.toString());
 
                 return;
             }
@@ -104,10 +95,6 @@ public class dashboardServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            
-           
-            //JsonObject responseJsonObject = new JsonObject();
-            //responseJsonObject.addProperty("message", "Star insertion failed");
         }
        
 

@@ -8,8 +8,6 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Date;
 import javax.naming.InitialContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,7 +16,6 @@ import javax.naming.NamingException;
 import jakarta.servlet.ServletConfig;
 import javax.sql.DataSource;
 import java.sql.Statement;
-import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "paymentServlet", urlPatterns = "/payment")
 public class PaymentServlet extends HttpServlet {
@@ -41,10 +38,7 @@ public class PaymentServlet extends HttpServlet {
         expiration += "%";
         HttpSession session = request.getSession();
         JsonArray previousItems = (JsonArray) session.getAttribute("previousItems");
-        //HttpSession session = request.getSession();
         // NEED TO RETRIEVE INFO FROM CART
-        PrintWriter out = response.getWriter();
-
         try {
             Connection conn = dataSource.getConnection();
             user theuser = (user) (session.getAttribute("user"));
@@ -68,8 +62,7 @@ public class PaymentServlet extends HttpServlet {
             JsonArray jsonArray = new JsonArray();
 
             if (rs.next()) { // credentials are correct;
-                // HttpSession session = request.getSession();
-
+            
                 for (JsonElement movie : previousItems) {
 
                     String salesInsertion = "INSERT INTO sales (customerId,movieId , saleDate)\n"
@@ -103,49 +96,9 @@ public class PaymentServlet extends HttpServlet {
 
 
                 }
-                // save all salesid in session
-                /* 
-                previousItems = new JsonArray();
-                for (JsonElement movie : previousItems) {
-
-                    // get customer ID
-                    String query1 = "select * from sales inner join (SELECT id FROM customers WHERE firstName = ? AND lastName = ? AND ccid = ?) as A on sales"
-                    // join customers with credit card info
-                    int amount = movie.getAsJsonObject().get("amount").getAsInt();
-                    String movieid = movie.getAsJsonObject().get("movieid").getAsString();
-                    System.out.println(movieid);
-                    for (int i = 0; i < amount; i++) {
-                        PreparedStatement transactionTrack = conn.prepareStatement(salesInsertion);
-                        transactionTrack.setString(1, firstName);
-                        transactionTrack.setString(2, lastName);
-                        transactionTrack.setString(3, cardNumber); // set all parameters
-                        transactionTrack.setString(4, movieid);
-
-                        transactionTrack.executeUpdate();
-                        transactionTrack.close();
-                    }
-
-
-                }
-
-                JsonObject newrecord = new JsonObject();
-
-
-                // use email from session to fetch first,lastname,exp date from customer
-                /* 
-                String customerToCC =
-                        "SELECT firstName, lastName, ccid, expiration FROM customer WHERE email = ?"
-                                + "LEFT INNER JOIN creditcards "
-                                + "ON customer.ccid = creditcards.id AND"
-                                + " customer.firstName = creditcards.firstName AND"
-                                + " customer.lastName = creditcards.lastName";
-                PreparedStatement findCustomerWithCC = conn.prepareStatement(customerToCC);
-                findCustomerWithCC.setString(1, email);
-                ResultSet customerInfo = findCustomerWithCC.executeQuery();
-                */
+                
 
                 responseJsonObject.addProperty("status", "success");
-                //responseJsonObject.addProperty("saleids", jsonArray.toString());
                 session.setAttribute("salesid", jsonArray);
             }
             else{

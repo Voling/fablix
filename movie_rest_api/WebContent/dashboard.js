@@ -6,8 +6,6 @@ $(document).ready(function () {
     let birthYear = $("#starBirthYear").val();
     console.log(starName);
     console.log(birthYear);
-    // clear prev messages
-    //$("#errorMsg").remove();
 
     //star insertion
     $.ajax("dashboard", {
@@ -39,8 +37,6 @@ $(document).ready(function () {
     let genre = $("#moviegenre").val();
     console.log(title);
     console.log(year);
-    // clear prev messages
-    //$("#errorMsg").remove();
 
     //star insertion
     $.ajax("insertmovie", {

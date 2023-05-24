@@ -1,25 +1,17 @@
 import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import jakarta.servlet.ServletConfig;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.nio.file.StandardOpenOption;
 import javax.sql.DataSource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.io.*;
-import java.util.HashMap;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Random;
 @WebServlet(name = "movieinsert", urlPatterns = "/insertmovie")
 public class movieinsert extends HttpServlet {
@@ -112,9 +104,6 @@ public class movieinsert extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
             
-           
-            //JsonObject responseJsonObject = new JsonObject();
-            //responseJsonObject.addProperty("message", "Star insertion failed");
         }
        
 

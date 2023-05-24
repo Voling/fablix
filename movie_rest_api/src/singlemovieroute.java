@@ -12,9 +12,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.ResultSet;
-import java.io.*;
 import java.util.HashMap;
 import java.sql.PreparedStatement;
 
@@ -58,47 +56,7 @@ public class singlemovieroute extends HttpServlet {
             // Construct a query with parameter represented by "?"
 
             // Declare our statement
-        /* 
-           String query = "SELECT\n" +
-                   "    A.movieid,\n" +
-                   "    A.title,\n" +
-                   "    A.year,\n" +
-                   "    A.director,\n" +
-                  
-                   "    A.price," +
-                   "    genres.name AS genrename,\n" +
-                   "    stars.name AS starname,\n" +
-                   "    B.starId " +
-                   "FROM\n" +
-                   "    (\n" +
-                   "        SELECT\n" +
-                   "            A.movieid,\n" +
-                   "            A.title,\n" +
-                   "            A.year,\n" +
-                   "            A.director,\n" +
-                
-                   "            A.price, \n" +
-                   "            genres_in_movies.genreId,\n" +
-                   "            stars_in_movies.starId\n" +
-                   "        FROM\n" +
-                   "            (\n" +
-                   "                SELECT\n" +
-                   "                    movies.id AS movieid,\n" +
-                   "                    movies.title,\n" +
-                   "                    movies.year,\n" +
-                   "                    movies.director,\n" +
-                   "                    movies.price" +
-                      "                FROM\n" +
-                   "                    movies\n" +
-
-                   "                WHERE id = ? "+
-                   "            ) AS A\n" +
-                   "        LEFT JOIN genres_in_movies ON A.movieid = genres_in_movies.movieId\n" +
-                   "        LEFT JOIN stars_in_movies ON A.movieid = stars_in_movies.movieId\n" +
-                   "    ) AS B\n" +
-                   "LEFT JOIN genres ON genres.id = B.genreId\n" +
-                   "LEFT JOIN stars ON stars.id = B.starId;";
-            */
+    
             String query = "SELECT " +
             "    A.movieid, " +
             "    A.title, " +
@@ -163,8 +121,7 @@ public class singlemovieroute extends HttpServlet {
                     } // if not in hashmap (dne) then it ca
                    // String movieRating = rs.getString("rating");
                     String movieprice = rs.getString("price");
-                    //String movieGenres = rs.getString("genrename");
-
+                   
                     // Create a JsonObject based on the data we retrieve from rs
 
                     jsonObject.addProperty("movie_id", movieId);

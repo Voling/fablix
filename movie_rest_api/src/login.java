@@ -4,23 +4,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import jakarta.servlet.ServletConfig;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.nio.file.StandardOpenOption;
 import javax.sql.DataSource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.io.*;
-import java.util.HashMap;
 import java.sql.PreparedStatement;
-import java.io.*;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
@@ -39,23 +30,6 @@ public class login extends HttpServlet {
         } catch (NamingException e) {
             e.printStackTrace();
         }
-    }
-
-    private String hash(String astring) {
-        String hashed = "";
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hashedpassword = digest.digest(astring.getBytes(StandardCharsets.UTF_8));
-            for (byte b : hashedpassword) {
-                // hpassword.append(String.format("%02x", b));
-                hashed += String.format("%02x", b);
-            }
-        } catch (NoSuchAlgorithmException e) {
-            System.err.println("Error hashing password: " + e.getMessage());
-        }
-        return hashed;
-
-
     }
     private String verifycustomer(String email, String password, Connection conn,PasswordEncryptor pencrypt){
 
@@ -90,43 +64,7 @@ public class login extends HttpServlet {
 
 
     }
-    private String verifyuser(String email, String password, Connection conn) {
-        // String matched = "";
-        String info = "error";
-
-        // hashing the email
-        String hashedemail = hash(email);
-        String hashedpassword = hash(password);
-        System.out.println(hashedpassword);
-        String query = "select password from user where email = ?;";
-        try {
-            PreparedStatement statement = conn.prepareStatement(query);
-            statement.setString(1, hashedemail);
-            ResultSet rs = statement.executeQuery();
-            rs.next();
-            String supposedpw = rs.getString("password");
-            System.out.println("password:");
-            System.out.println(supposedpw);
-            if (supposedpw == null) {
-                info = "notexist";
-                System.out.println("notexist");
-                return info;
-            }
-            if (hashedpassword.equals(supposedpw)) {
-                info = "found";
-                return info;
-            } else {
-                return "incorrect";
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-
-        return info;
-    }
-
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
@@ -172,12 +110,7 @@ public class login extends HttpServlet {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("errorMessage", e.getMessage());
             System.out.println(jsonObject);
-            // out.write(jsonObject.toString());
-
-            // Log error to localhost log
-            // request.getServletContext().log("Error:", e);
-            // Set response status to 500 (Internal Server Error)
-            // response.setStatus(500);
+          
 
         }
         if (info.equals("found")) {

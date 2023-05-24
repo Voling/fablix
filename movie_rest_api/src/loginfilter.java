@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.io.*;
 /**
  * Servlet Filter implementation class LoginFilter
  */
@@ -54,8 +53,6 @@ public class loginfilter implements Filter {
         allowedURIs.add("login.js");
         allowedURIs.add("api/login");
         allowedURIs.add("_dashboard");
-        //allowedURIs.add("index.html");
-        //allowedURIs.add("index.js");
     }
 
     public void destroy() {
