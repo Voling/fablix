@@ -1,2 +1,0 @@
-scp -i "122b2.0.pem" /home/deandu/Desktop/proj1/creattable.sql ubuntu@ec2-18-117-244-7.us-east-2.compute.amazonaws.com:/home/ubuntu
-
