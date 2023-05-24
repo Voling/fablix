@@ -149,6 +149,18 @@ public class singlemovieroute extends HttpServlet {
                     String movieTitle = rs.getString("title");
                     String movieYear = rs.getString("year");
                     String movieDirector = rs.getString("director");
+                    String starId = rs.getString("starId");
+                    String starName = rs.getString("starname");
+                    JsonObject combined = new JsonObject();
+                    combined.addProperty("starid",starId);
+                    combined.addProperty("starname",starName);
+                    starsInMovie.add(combined);
+    
+                    String thisGenre = rs.getString("genrename");
+                    if (!genreTracker.containsKey(thisGenre)) {
+                        genreTracker.put(thisGenre, 1);
+                        allGenres.add(thisGenre);
+                    } // if not in hashmap (dne) then it ca
                    // String movieRating = rs.getString("rating");
                     String movieprice = rs.getString("price");
                     //String movieGenres = rs.getString("genrename");
@@ -161,7 +173,7 @@ public class singlemovieroute extends HttpServlet {
                     jsonObject.addProperty("movie_director", movieDirector);
                     //jsonObject.addProperty("movie_rating", movieRating);
                     jsonObject.addProperty("movie_price", movieprice);
-                    //jsonObject.addProperty("movie_genres", movieGenres);
+                    jsonObject.add("movie_genres", allGenres);
                     jsonObject.add("starsInMovie", starsInMovie); //create jsonarray in jsonobj
 
                     firstRun = true;

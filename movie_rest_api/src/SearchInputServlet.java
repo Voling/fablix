@@ -55,7 +55,14 @@ public class SearchInputServlet extends HttpServlet {
             // Declare a new statement
             //Statement statement = dbCon.createStatement();
             // Retrieve parameter "name" from the http request, which refers to the value of <input name="name"> in index.html
-            String title = request.getParameter("title");
+            String rawtitle = request.getParameter("title");
+            //raw title parsed later
+            String[] titlewords = rawtitle.split(" ");
+            String parsedtitles = "";
+            for (String word :titlewords){
+                parsedtitles += "+" + word + "* ";
+            }
+
             //System.out.println(title);
             String year = request.getParameter("year");
             String director = request.getParameter("director");
@@ -144,7 +151,7 @@ public class SearchInputServlet extends HttpServlet {
             "LEFT JOIN stars ON stars.id = B.starId;";
        
             query = "(SELECT * FROM movies  WHERE 1=1 ";
-            if (title != null && !title.equals("")) {query += " and title like ?"; count +=1;}
+            if (parsedtitles != null && !parsedtitles.equals("")) {query += " and MATCH(title) AGAINST(? in boolean mode )"; count +=1;}
             if (year != null ) {query += " and year =?"; yearindex = count;count += 1;}
             if (director != null&& !director.equals("")) {query += " and director like ?"; directorindex = count;count+=1;}
             query += " ) as G ";
@@ -240,7 +247,7 @@ public class SearchInputServlet extends HttpServlet {
          later1 += ";";
             later = later1;
             biggerquery = query1;
-            if (title != null && !title.equals("")) {query += " and title like ?"; count +=1;}
+            if (parsedtitles != null && !parsedtitles.equals("")) {query += " and MATCH(title) AGAINST(? in boolean mode ) "; count +=1;}
             if (year != null ) {query += " and year =?"; yearindex = count;count += 1;}
             if (director != null&& !director.equals("")) {query += " and director like ?"; directorindex = count;count+=1;}
             starindex = count;
@@ -250,8 +257,8 @@ public class SearchInputServlet extends HttpServlet {
             pageindex = count;
         }
         PreparedStatement statement = conn.prepareStatement(biggerquery  + query + later);
-        if(title!= null){
-            statement.setString(1, title);
+        if(parsedtitles!= null && !parsedtitles.equals("")){
+            statement.setString(1, parsedtitles);
         }
         if(yearindex != -1){
             statement.setString(yearindex, year);

@@ -58,8 +58,8 @@ function transformdata(resultdata) {
       }
     }
   }
-  for(let b = 0; b< array.length; b++){
-    array[b].genres.sort()
+  for (let b = 0; b < array.length; b++) {
+    array[b].genres.sort();
   }
   console.log(`beforehandle: ${JSON.stringify(array)}`);
   return array;
@@ -89,8 +89,8 @@ function handleMovieResult(resultData) {
     rowHTML += '<th class="rounded-th">' + resultData[i]["year"] + "</th>";
     rowHTML += '<th class="rounded-th">' + resultData[i]["director"] + "</th>";
     rowHTML += '<th class="rounded-th">';
-    for (let a = 0; a < resultData[i]["genres"].length; a++){    
-      rowHTML += resultData[i]["genres"][a] + " " ;
+    for (let a = 0; a < resultData[i]["genres"].length; a++) {
+      rowHTML += resultData[i]["genres"][a] + " ";
     }
     rowHTML += "</th>";
     //console.log(resultData[i]["cast"]);
@@ -144,11 +144,7 @@ function submitsearch(event) {
       if (counter != 0) {
         data += "&";
       }
-      if (
-        field.name === "title" ||
-        field.name === "director" ||
-        field.name === "star"
-      ) {
+      if (field.name === "director" || field.name === "star") {
         console.log("hey soul sister");
         //data[field.name] = "%" + field.value + "%"; // Wrap the title value with % characters
         data += field.name + "=%25" + field.value + "%25";
@@ -159,7 +155,7 @@ function submitsearch(event) {
     }
   }
   data += `&page=${pagenum}`;
-  data += `&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`
+  data += `&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`;
   console.log("here!hey");
   console.log(data);
   jQuery.ajax({
@@ -208,21 +204,21 @@ function submitbrowsetitlea(event) {
     }, // Setting callback function to handle data returned successfully by the StarsServlet
   });
 }
-function updatepagesize(){
+function updatepagesize() {
   const selectElement = document.getElementById("numberSelect");
-  console.log("updating")
+  console.log("updating");
   pagesize = parseInt(selectElement.value);
 }
-function updatesorttype(){
+function updatesorttype() {
   const selectElement = document.getElementById("typeselect");
-  console.log(selectElement.value)
+  console.log(selectElement.value);
   sorttype = selectElement.value;
 }
-function updatesortorder(){
+function updatesortorder() {
   const selectElement = document.getElementById("orderselect");
 
-  console.log(selectElement.value)
-  sortorder = selectElement.value
+  console.log(selectElement.value);
+  sortorder = selectElement.value;
 }
 $(document).ready(function () {
   //find button and attach logout fx to it
@@ -249,11 +245,7 @@ $(document).ready(function () {
         if (counter != 0) {
           data += "&";
         }
-        if (
-          field.name === "title" ||
-          field.name === "director" ||
-          field.name === "star"
-        ) {
+        if (field.name === "director" || field.name === "star") {
           console.log("hey soul sister");
           //data[field.name] = "%" + field.value + "%"; // Wrap the title value with % characters
           data += field.name + "=%25" + field.value + "%25";
@@ -263,7 +255,7 @@ $(document).ready(function () {
         counter += 1;
       }
     }
-    data += `&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`
+    data += `&pagesize=${pagesize}&sort=${sorttype}&order=${sortorder}`;
     if (lastused != "search") {
       lastused = "search";
       pagenum = 1;
@@ -304,15 +296,13 @@ $(document).ready(function () {
         pagenum -= 1;
         submitbrowse(event);
       }
-      if(lastused == "browsetitle"){
+      if (lastused == "browsetitle") {
         pagenum -= 1;
         submitbrowsetitle(event);
-  
       }
-      if(lastused == "browsetitle-a"){
+      if (lastused == "browsetitle-a") {
         pagenum -= 1;
         submitbrowsetitlea(event);
-  
       }
     }
   });
@@ -339,15 +329,13 @@ $(document).ready(function () {
       pagenum += 1;
       submitbrowse(event);
     }
-    if(lastused == "browsetitle"){
+    if (lastused == "browsetitle") {
       pagenum += 1;
       submitbrowsetitle(event);
-
     }
-    if(lastused == "browsetitle-a"){
+    if (lastused == "browsetitle-a") {
       pagenum += 1;
       submitbrowsetitlea(event);
-
     }
   });
   $(".agenre").click((event) => {
@@ -386,8 +374,7 @@ $(document).ready(function () {
         handle(resultData);
       }, // Setting callback function to handle data returned successfully by the StarsServlet
     });
-
-  })
+  });
   $(".title-a").click((event) => {
     let selectedItemText = $(event.target).text();
     console.log(selectedItemText);
@@ -405,10 +392,9 @@ $(document).ready(function () {
         handle(resultData);
       }, // Setting callback function to handle data returned successfully by the StarsServlet
     });
-
-  })
-  $('#checkout-button').click(function() {
-    window.location.href = 'cart.html';
+  });
+  $("#checkout-button").click(function () {
+    window.location.href = "cart.html";
   });
 });
 /**
