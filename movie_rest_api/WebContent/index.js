@@ -402,20 +402,25 @@ $(document).ready(function () {
  * Once this .js is loaded, following scripts will be executed by the browser
  */
 //handle auto complete
-$("#fulltext").autocomplete({
+$("#fulltexta").autocomplete({
   // documentation of the lookup function can be found under the "Custom lookup function" section
   lookup: function (text, doneCallback) {
-    handleLookup(text, doneCallback);
+    console.log(`textlength,${text.length}`);
+    if (text.length >= 3) {
+      handleLookup(text, doneCallback);
+    }
   },
   onSelect: function (suggestion) {
     handleSelectSuggestion(suggestion);
   },
   // set delay time
   deferRequestBy: 300,
-  // there are some other parameters that you might want to use to satisfy all the requirements
+  // there are some other parameters that you might want to use to satsfy all the requirements
   // TODO: add other parameters, such as minimum characters
 });
-
+function handlenormal() {
+  submitsearch();
+}
 function handleLookup(text, doneCallback) {
   console.log("autocomplete initiated");
   console.log("sending AJAX request to backend Java Servlet");
@@ -436,6 +441,14 @@ function handleLookup(text, doneCallback) {
     },
   });
 }
+
+$("#fulltexta").keypress(function (event) {
+  // keyCode 13 is the enter key
+  if (event.keyCode == 13) {
+    // pass the value of the input box to the handler function
+    handlenormal();
+  }
+});
 
 /*
  * This function is used to handle the ajax success callback function.
@@ -469,6 +482,7 @@ function handleSelectSuggestion(suggestion) {
   // TODO: jump to the specific result page based on the selected suggestion
 
   console.log("suggest " + suggestion);
+  window.location.href = "single-movie.html?id=" + suggestion["data"];
 }
 
 ////////////////

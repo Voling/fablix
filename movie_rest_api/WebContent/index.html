@@ -38,6 +38,9 @@
         overflow: auto;
         max-height: none;
       }
+      .autocomplete-suggestion.autocomplete-selected {
+        background-color: grey; /* change this to whatever color you prefer */
+      }
     </style>
   </head>
   <body>
@@ -45,23 +48,6 @@
     <button class="btn btn-danger" id="logoutButton">Log Out</button>
     <!-- button has jquery attached -->
 
-    <div
-      style="
-        width: 24rem;
-        height: 2.5rem;
-        margin: auto;
-        display: flex;
-        flex-direction: horizontal;
-      "
-    >
-      Title:
-      <input
-        style="width: 100%"
-        class="autocomplete-searchbox form-control"
-        type="TEXT"
-        id="fulltext"
-      /><br />
-    </div>
     <form
       class="mx-auto d-block"
       style="text-align: center"
