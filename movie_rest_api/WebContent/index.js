@@ -18,6 +18,10 @@ let lastbrowsed = "";
 let pagesize = 20;
 let sorttype = "ranking";
 let sortorder = "DESC";
+if (typeof Storage !== "undefined") {
+} else {
+  console.log("Sorry, your browser does not support Web Storage...");
+}
 function handle(resultData) {
   handleMovieResult(transformdata(resultData));
 }
@@ -430,16 +434,25 @@ function handleLookup(text, doneCallback) {
   // sending the HTTP GET request to the Java Servlet endpoint hero-suggestion
   // with the query data
   //submitsearch();
-  console.log(text);
-  jQuery.ajax({
-    dataType: "json",
-    url: "autosuggest?text=" + text, // Your server-side script that processes the search
-    type: "GET",
-    success: (resultData) => {
-      console.log(resultData);
-      handleLookupAjaxSuccess(resultData, doneCallback);
-    },
-  });
+  if (localStorage.getItem(text) === null) {
+    console.log(text);
+    jQuery.ajax({
+      dataType: "json",
+      url: "autosuggest?text=" + text,
+      type: "GET",
+      success: (resultData) => {
+        console.log(resultData);
+        localStorage.setItem(text, JSON.stringify(resultData));
+        handleLookupAjaxSuccess(resultData, doneCallback);
+      },
+    });
+  } else {
+    console.log("cached");
+    handleLookupAjaxSuccess(
+      JSON.parse(localStorage.getItem(text)),
+      doneCallback
+    );
+  }
 }
 
 $("#fulltexta").keypress(function (event) {
