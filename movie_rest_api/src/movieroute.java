@@ -37,6 +37,7 @@ public class movieroute extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         response.setContentType("application/json"); // Response mime type
+        System.out.println("knkrgrgrggr");
         String page = request.getParameter("page");
         String pagesize = request.getParameter("pagesize");
         String sortmethod = request.getParameter("sort");

@@ -53,6 +53,7 @@ public class loginfilter implements Filter {
         allowedURIs.add("login.js");
         allowedURIs.add("api/login");
         allowedURIs.add("_dashboard");
+        allowedURIs.add("api/mobilelogin");
     }
 
     public void destroy() {

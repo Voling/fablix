@@ -17,8 +17,8 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
 
 
 
-@WebServlet(name = "LoginServlet", urlPatterns = "/api/login")
-public class login extends HttpServlet {
+@WebServlet(name = "mobileloginServlet", urlPatterns = "/api/mobilelogin")
+public class mobilelogin extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
@@ -67,28 +67,10 @@ public class login extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-        System.out.println("rjfbjfbrf");
-        if (gRecaptchaResponse == null){
-            JsonObject responseJsonObject = new JsonObject();
-            responseJsonObject.addProperty("status", "fail");
-            responseJsonObject.addProperty("message", "pls do recaptcha bro");
-            response.getWriter().write(responseJsonObject.toString());
-            return;
-        }
-        try { //captcha
-            LoginRecaptcha.verify(gRecaptchaResponse);
-        }
-        catch (Exception e) {
-            JsonObject responseJsonObject = new JsonObject();
-            responseJsonObject.addProperty("status", "fail");
-            responseJsonObject.addProperty("message","pls do recaptcha bro");
-            response.getWriter().write(responseJsonObject.toString());
-            return; //immediately fail post if captcha not done
-        }
+        
         PasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
-
+        System.out.println("bcjbjwdnw");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         System.out.println(email);

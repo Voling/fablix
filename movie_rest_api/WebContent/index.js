@@ -34,7 +34,7 @@ function transformdata(resultdata) {
   let length = -1;
 
   for (let i = 0; i < resultdata.length; i++) {
-    console.log(resultdata[i]);
+    //console.log(resultdata[i]);
     if (resultdata[i].id != movie) {
       array.push({
         title: resultdata[i].title,
@@ -65,7 +65,7 @@ function transformdata(resultdata) {
   for (let b = 0; b < array.length; b++) {
     array[b].genres.sort();
   }
-  console.log(`beforehandle: ${JSON.stringify(array)}`);
+  //console.log(`beforehandle: ${JSON.stringify(array)}`);
   return array;
 }
 function handleMovieResult(resultData) {
@@ -74,12 +74,12 @@ function handleMovieResult(resultData) {
   // Populate the star table
   // Find the empty table body by id "star_table_body"
   let starTableBodyElement = jQuery("#movie_table_body");
-  console.log(resultData);
+  //console.log(resultData);
   // Iterate through resultData, no more than 10 entries
   let rowHTML = "";
   for (let i = 0; i < resultData.length; i++) {
     // Concatenate the html tags with resultData jsonObject
-    console.log(`index${i}`);
+    //console.log(`index${i}`);
     rowHTML += "<tr>";
     rowHTML +=
       '<th class="rounded-th">' +
@@ -136,7 +136,7 @@ function handleMovieResult(resultData) {
 }
 function submitsearch(event) {
   event.preventDefault();
-  console.log($("#search"));
+  //console.log($("#search"));
   let formData = $("#search").serializeArray();
   console.log("form" + formData);
   let data = "";
@@ -506,7 +506,7 @@ jQuery.ajax({
   method: "GET", // Setting request method
   url: "api/movies?page=1&pagesize=20&sort=ranking&order=DESC", // Setting request url, which is mapped by StarsServlet in Stars.java
   success: (resultData) => {
-    console.log(resultData);
+    //sconsole.log(resultData);
     if (lastused != "") {
       pagenum = 1;
       lastused = "";
