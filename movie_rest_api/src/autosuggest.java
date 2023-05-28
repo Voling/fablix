@@ -47,9 +47,12 @@ public class autosuggest extends HttpServlet{
 
         // Get a connection from dataSource and let resource manager close the connection after usage.
         try (Connection conn = dataSource.getConnection()) {
-            String query = "select title,id from movies where MATCH(title) AGAINST(? in boolean mode ) LIMIT 10;";
+            String query = "select title,id from movies where MATCH(title) AGAINST(? in boolean mode ) or title like ? or edth(title,?,2) LIMIT 10;";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1,parsedtitles);
+            statement.setString(2,"%" +text + "%");
+            statement.setString(3, text );
+        
             ResultSet rs = statement.executeQuery();
             JsonArray jsonArray = new JsonArray();
             while(rs.next()){
