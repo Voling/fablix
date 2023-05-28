@@ -151,7 +151,7 @@ public class movieroute extends HttpServlet {
 
             // Log to localhost log
             request.getServletContext().log("getting " + jsonArray.size() + " results");
-
+            System.out.println(jsonArray.toString());
             // Write JSON string to output
             out.write(jsonArray.toString());
             // Set response status to 200 (OK)

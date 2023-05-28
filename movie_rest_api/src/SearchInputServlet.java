@@ -144,7 +144,7 @@ public class SearchInputServlet extends HttpServlet {
             "LEFT JOIN stars ON stars.id = B.starId;";
        
             query = "(SELECT * FROM movies  WHERE 1=1 ";
-            if (parsedtitles != null && !parsedtitles.equals("")) {query += " and MATCH(title) AGAINST(? in boolean mode )"; count +=1;}
+            if (parsedtitles != null && !parsedtitles.equals("")) {query += " and MATCH(title) AGAINST(? in boolean mode ) or title like ? or edth(title,?,2) "; count +=3;}
             if (year != null ) {query += " and year =?"; yearindex = count;count += 1;}
             if (director != null&& !director.equals("")) {query += " and director like ?"; directorindex = count;count+=1;}
             query += " ) as G ";
@@ -232,7 +232,7 @@ public class SearchInputServlet extends HttpServlet {
          later1 += ";";
             later = later1;
             biggerquery = query1;
-            if (parsedtitles != null && !parsedtitles.equals("")) {query += " and MATCH(title) AGAINST(? in boolean mode ) "; count +=1;}
+            if (parsedtitles != null && !parsedtitles.equals("")) {query += " and MATCH(title) AGAINST(? in boolean mode ) or title like ? or edth(title,?,2)"; count +=3;}
             if (year != null ) {query += " and year =?"; yearindex = count;count += 1;}
             if (director != null&& !director.equals("")) {query += " and director like ?"; directorindex = count;count+=1;}
             starindex = count;
@@ -244,6 +244,8 @@ public class SearchInputServlet extends HttpServlet {
         PreparedStatement statement = conn.prepareStatement(biggerquery  + query + later);
         if(parsedtitles!= null && !parsedtitles.equals("")){
             statement.setString(1, parsedtitles);
+            statement.setString(2,"%" +rawtitle + "%");
+            statement.setString(3, rawtitle );
         }
         if(yearindex != -1){
             statement.setString(yearindex, year);

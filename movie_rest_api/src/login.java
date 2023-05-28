@@ -42,7 +42,7 @@ public class login extends HttpServlet {
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, email);
             ResultSet rs = statement.executeQuery();
-            rs.next();
+            if (rs.next()){
             String supposedpw = rs.getString("password");
             System.out.println("password:");
             System.out.println(supposedpw);
@@ -57,6 +57,10 @@ public class login extends HttpServlet {
             } else {
                 return "incorrect";
             }
+        }
+        else{
+            info = "notexist";
+        }
         } catch (SQLException e) {
             e.printStackTrace();
         }

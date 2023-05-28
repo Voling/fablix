@@ -31,31 +31,37 @@ public class mobilelogin extends HttpServlet {
             e.printStackTrace();
         }
     }
-    private String verifycustomer(String email, String password, Connection conn,PasswordEncryptor pencrypt){
+
+    private String verifycustomer(String email, String password, Connection conn,
+            PasswordEncryptor pencrypt) {
 
         String query = "select password from customers where email = ?;";
         String info = "error";
         try {
             String encryptedPassword = pencrypt.encryptPassword(password);
-    
+
             System.out.println(encryptedPassword);
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, email);
             ResultSet rs = statement.executeQuery();
-            rs.next();
-            String supposedpw = rs.getString("password");
-            System.out.println("password:");
-            System.out.println(supposedpw);
-            if (supposedpw == null) {
-                info = "notexist";
-                System.out.println("notexist");
-                return info;
-            }
-            if (pencrypt.checkPassword(password, supposedpw)) {
-                info = "found";
-                return info;
+            if (rs.next()) {
+                String supposedpw = rs.getString("password");
+                System.out.println("password:");
+                System.out.println(supposedpw);
+
+                if (supposedpw == null) {
+                    info = "notexist";
+                    System.out.println("notexist");
+                    return info;
+                }
+                if (pencrypt.checkPassword(password, supposedpw)) {
+                    info = "found";
+                    return info;
+                } else {
+                    return "incorrect";
+                }
             } else {
-                return "incorrect";
+                info = "notexist";
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,10 +70,10 @@ public class mobilelogin extends HttpServlet {
 
 
     }
-    
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        
+
         PasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
         System.out.println("bcjbjwdnw");
@@ -83,17 +89,17 @@ public class mobilelogin extends HttpServlet {
         JsonObject responseJsonObject = new JsonObject();
         String info = "";
         try (Connection conn = dataSource.getConnection()) {
-            //info = verifyuser(email, password, conn);
-           
-                info = verifycustomer(email, password, conn, passwordEncryptor);
-            
+            // info = verifyuser(email, password, conn);
+
+            info = verifycustomer(email, password, conn, passwordEncryptor);
+
             conn.close();
         } catch (Exception e) {
             // Write error message JSON object to output
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("errorMessage", e.getMessage());
             System.out.println(jsonObject);
-          
+
 
         }
         if (info.equals("found")) {
@@ -118,6 +124,6 @@ public class mobilelogin extends HttpServlet {
             }
         }
         response.getWriter().write(responseJsonObject.toString());
-       
+
     }
 }
