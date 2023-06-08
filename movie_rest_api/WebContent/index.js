@@ -51,7 +51,11 @@ function transformdata(resultdata) {
       prevstar = resultdata[i].star;
       length += 1;
     } else {
-      if (resultdata[i].genre != prevgenre) {
+      if (
+        resultdata[i].genre != prevgenre &&
+        !array[length].genres.includes(resultdata[i].genre)
+      ) {
+        console.log(`the genre${resultdata[i].genre} prev genre${prevgenre}`);
         array[length].genres.push(resultdata[i].genre);
         prevgenre = resultdata[i].genre;
       }
@@ -69,7 +73,7 @@ function transformdata(resultdata) {
   return array;
 }
 function handleMovieResult(resultData) {
-  console.log("handleStarResult: populating star table from resultData");
+  //console.log("handleStarResult: populating star table from resultData");
 
   // Populate the star table
   // Find the empty table body by id "star_table_body"
