@@ -1,96 +1,117 @@
-## CS 122B Project 1 API example
+# General
 
-This example shows how frontend and backend are separated by implementing a star list page, and a single star page with movie list.
+    - #### Team#:
 
-### Before running the example
+    - #### Names:Yiqun Du /Dylan Vo
 
-#### If you do not have USER `mytestuser` setup in MySQL, follow the below steps to create it:
+    - #### Project 5 Video Demo Link:
 
- - login to mysql as a root user 
-    ```
-    local> mysql -u root -p
-    ```
+    - #### Instruction of deployment:
 
- - create a test user and grant privileges:
-    ```
-    mysql> CREATE USER 'mytestuser'@'localhost' IDENTIFIED BY 'My6$Password';
-    mysql> GRANT ALL PRIVILEGES ON * . * TO 'mytestuser'@'localhost';
-    mysql> quit;
-    ```
+    - #### Collaborations and Work Distribution:
 
-#### prepare the database `moviedbexample`
- 
+- # Connection Pooling
 
-```
-local> mysql -u mytestuser -p
-mysql> CREATE DATABASE IF NOT EXISTS moviedbexample;
-mysql> USE moviedbexample;
-mysql> CREATE TABLE IF NOT EXISTS stars(
-               id varchar(10) primary key,
-               name varchar(100) not null,
-               birthYear integer
-           );
+  - #### Include the filename/path of all code/configuration files in GitHub of using JDBC Connection Pooling.
 
-mysql> INSERT IGNORE INTO stars VALUES('755011', 'Arnold Schwarzeneggar', 1947);
-mysql> INSERT IGNORE INTO stars VALUES('755017', 'Eddie Murphy', 1961);
+    movie_rest_api/WebContent/META-INF/context.xml
+    all backend servlets that uses connection pooling:
+    \_dashboard.java/autosuggest.java
+    BrowseServlet.java
+    dashboardServlet.java
+    login.java
+    mobilelogin.java
+    movieinsert.java
+    movieroute.java
+    PaymentServlet.java
+    SearchinputsServlet.java
+    singlemovieroute.java
+    singleStarServlet.java
 
-mysql> CREATE TABLE if not exists movies(
-       	    id VARCHAR(10) DEFAULT '',
-       	    title VARCHAR(100) DEFAULT '',
-       	    year INTEGER NOT NULL,
-       	    director VARCHAR(100) DEFAULT '',
-       	    PRIMARY KEY (id)
-       );
+  - #### Explain how Connection Pooling is utilized in the Fabflix code.
 
-mysql> INSERT IGNORE INTO movies VALUES('1111', 'The Terminator', 1984, 'James Cameron');
-mysql> INSERT IGNORE INTO movies VALUES('2222', 'Coming To America', 1988, 'John Landis');
+    in context xml
+    " <Resource name="jdbc/moviedb"
+              auth="Container"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              type="javax.sql.DataSource"
+              username="**"
+              password="*****"
+              url="jdbc:mysql://localhost:3306/moviedb?allowMultiQueries=true&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;cachePrepStmts=true"/>
+    "
+    we defined a connection pool of 100 total connections with maximum idle 30 connections and maximum wait time 10000 seconds
+    in fablix the backend code is different in the sense that in each servlet that needs database connections , in the servlet init function it connects to the above datasource connection pool instead
 
-mysql> CREATE TABLE IF NOT EXISTS stars_in_movies(
-       	    starId VARCHAR(10) DEFAULT '',
-       	    movieId VARCHAR(10) DEFAULT '',
-       	    FOREIGN KEY (starId) REFERENCES stars(id),
-       	    FOREIGN KEY (movieId) REFERENCES movies(id)
-       );
+  - #### Explain how Connection Pooling works with two backend SQL.
+    if you look at the current context.xml
+    we established two datasources each connecting to a different port in mysql router which sits in the master server.
+    Therefore we are maintaining two connection pools, one for read/write connections and one for readonly.
+    The backend serlets only connects to readwrite when it needs to update the database.
+    in our simple-router ini, the router will route the two connection pools to the appropriate databases.
 
-mysql> INSERT IGNORE INTO stars_in_movies VALUES('755017', '2222');
-mysql> INSERT IGNORE INTO stars_in_movies VALUES('755011', '1111');
-mysql> quit;
-```
+- # Master/Slave
 
-### To run this example: 
-1. Clone this repository using `git clone`
-2. Open IntelliJ -> Import Project -> Choose the project you just cloned (The root path must contain the pom.xml!) -> Choose Import project from external model -> choose Maven -> Click on Finish -> The IntelliJ will load automatically
-3. For "Root Directory", right click "cs122b-project1-api-example" -> Mark Directory as -> sources root
-4. In `WebContent/META-INF/context.xml`, make sure the mysql username is `mytestuser` and password is `mypassword`.
-5. Also make sure you have the `moviedbexample` database.
-6. To run the example, follow the instructions in canvas.
+  - #### Include the filename/path of all code/configuration files in GitHub of routing queries to Master/Slave SQL.
 
-### Brief Explanation
-- `StarsServlet.java` is a Java servlet that talks to the database and get the stars. It returns a list of stars in the JSON format. 
-The name of star is generated as a link to Single Star page.
+    readwrite-route (to master only):
+    movie_rest_api/src/dashboardServlet.java
+    movie_rest_api/src/PaymentServlet.java
+    read-route(load balanced between master and slave):
+    \_dashboard.java/autosuggest.java
+    BrowseServlet.java
+    login.java
+    mobilelogin.java
+    movieinsert.java
+    movieroute.java
+    SearchinputsServlet.java
+    singlemovieroute.java
+    singleStarServlet.java
+    config fileS:
+    context.xml
 
-- `index.js` is the main Javascript file that initiates an HTTP GET request to the `StarsServlet`. After the response is returned, `index.js` populates the table using the data it gets.
+  - #### How read/write requests were routed to Master/Slave SQL?
+    we used mysql router on the master backend
+    that routes readonly and readwrite connections seperately:
+    readonly is load balanced between master and slave
+    readwrite is only sent to master
 
-- `index.html` is the main HTML file that imports jQuery, Bootstrap, and `index.js`. It also contains the initial skeleton for the table.
+- # JMeter TS/TJ Time Logs
 
-- `SingleStarServlet.java` is a Java servlet that talks to the database and get information about one Star and all the movie this Star performed. It returns a list of Movies in the JSON format. 
+  - #### Instructions of how to use the `log_processing.*` script to process the JMeter logs.
 
-- `single-star.js` is the Javascript file that initiates an HTTP GET request to the `SingleStarServlet`. After the response is returned, `single-star.js` populates the table using the data it gets.
+- # JMeter TS/TJ Time Measurement Report
 
-- `single-star.html` is the HTML file that imports jQuery, Bootstrap, and `single-star.js`. It also contains the initial skeleton for the movies table.
+| **Single-instance Version Test Plan**         | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
+| --------------------------------------------- | ---------------------------- | -------------------------- | ----------------------------------- | ------------------------- | ------------ |
+| Case 1: HTTP/1 thread                         | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
+| Case 2: HTTP/10 threads                       | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
+| Case 3: HTTPS/10 threads                      | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
+| Case 4: HTTP/10 threads/No connection pooling | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
 
-### Separating frontend and backend
-- For project 1, you are recommended to separate frontend and backend. Backend Java Servlet only provides API in JSON format. Frontend Javascript code fetches the data through HTTP (ajax) requests and then display the data on the webpage. 
+| **Scaled Version Test Plan**                  | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
+| --------------------------------------------- | ---------------------------- | -------------------------- | ----------------------------------- | ------------------------- | ------------ |
+| Case 1: HTTP/1 thread                         | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
+| Case 2: HTTP/10 threads                       | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
+| Case 3: HTTP/10 threads/No connection pooling | ![](path to image in img/)   | ??                         | ??                                  | ??                        |
 
-- This example uses `jQuery` for making HTTP requests and manipulate DOM. jQuery is relatively easy to learn compared to other frameworks. This example also includes `Bootstrap`, a popular UI framework to let you easily make your webpage look fancy. 
+"10tsingleHttpsPOoling:ts_average: 340.9500825638343 tj_average: 340.80429591332364
+10tsingleHttpPOOLing:ts_average: 356.31919578217963 tj_average: 356.222502378406
+10tsingnopooling:ts_average: 310.56679960565083 tj_average: 310.515937921364
+1tsinglepooling:ts_average: 47.853849563262685 tj_average: 47.81630769171479
 
+scaled:
+10tnopooling:ts_average: 1200.4086951044587 tj_average: 1200.3575410454368
+10twithpooling:ts_average: 274.82498198004026 tj_average: 274.7857208742734
+ts_average: 47.790490450031406 tj_average: 47.642381506599584
 
-### DataSource
-- For project 1, you are recommended to use tomcat to manage your DataSource instead of manually define MySQL connection in each of the servlet.
-
-- `WebContent/META-INF/context.xml` contains a DataSource, with database information stored in it.
-`WEB-INF/web.xml` registers the DataSource to name jdbc/moviedbexample, which could be referred to anywhere in the project.
-
-- In both `SingleStarServlet.java` and `StarsServlet.java`, a private DataSource reference dataSource is created with `@Resource` annotation. It is a reference to the DataSource `jdbc/moviedbexample` we registered in `web.xml`
-
-- To use DataSource, you can create a new connection to it by `dataSource.getConnection()`, and you can use the connection as previous examples.
+"
+10tsinglepoolinghttps: average 551.6963387124762
+10tsinglepooling: average461.9662126068376
+10tsinglenopooling:average454.9459734964322
+1tsinglepooling: average194.85879332477535
+scaled
+10tBalancedPooling: average437.0841369671558
+1tBalancePooling: average196.58694287507848
+10tBalancednoPooling average7148.619433198381

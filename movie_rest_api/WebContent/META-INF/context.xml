@@ -27,7 +27,8 @@
               maxTotal="100"
               maxIdle="30"
               maxWaitMillis="10000"
-              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" />
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+    />
     
 
     <!-- Defines a Data Source for read-only operations -->
@@ -41,7 +42,9 @@
               maxTotal="100"
               maxIdle="30"
               maxWaitMillis="10000"
-              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" />
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+
+     />         
     
 
 </Context>

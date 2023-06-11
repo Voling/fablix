@@ -54,6 +54,8 @@ public class loginfilter implements Filter {
         allowedURIs.add("api/login");
         allowedURIs.add("_dashboard");
         allowedURIs.add("api/mobilelogin");
+        allowedURIs.add("/search");
+
     }
 
     public void destroy() {
