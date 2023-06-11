@@ -12,4 +12,36 @@
               username="root"
               password="3t1415926"
               url="jdbc:mysql://localhost:3306/moviedb?allowMultiQueries=true&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;cachePrepStmts=true"/>
+
+   
+
+
+    <!-- Defines a Data Source for read-write operations -->
+    <Resource name="jdbc/moviedbReadWrite"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://172.31.3.37:6447/moviedb?allowMultiQueries=true&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;cachePrepStmts=true"
+              username="root"
+              password="3t1415926"
+              maxTotal="100"
+              maxIdle="30"
+              maxWaitMillis="10000"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" />
+    
+
+    <!-- Defines a Data Source for read-only operations -->
+    <Resource name="jdbc/moviedbReadOnly"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://172.31.3.37:6446/moviedb?allowMultiQueries=true&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;cachePrepStmts=true"
+              username="root"
+              password="3t1415926"
+              maxTotal="100"
+              maxIdle="30"
+              maxWaitMillis="10000"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" />
+    
+
 </Context>

@@ -26,7 +26,7 @@ public class login extends HttpServlet {
 
     public void init(ServletConfig config) {
         try {
-            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedb");
+            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedbReadOnly");
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -37,7 +37,6 @@ public class login extends HttpServlet {
         String info = "error";
         try {
             String encryptedPassword = pencrypt.encryptPassword(password);
-    
             System.out.println(encryptedPassword);
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, email);
@@ -46,6 +45,7 @@ public class login extends HttpServlet {
             String supposedpw = rs.getString("password");
             System.out.println("password:");
             System.out.println(supposedpw);
+
             if (supposedpw == null) {
                 info = "notexist";
                 System.out.println("notexist");

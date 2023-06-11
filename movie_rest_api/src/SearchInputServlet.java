@@ -13,6 +13,9 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 /**
  * A servlet that takes input from a html <form> and talks to MySQL moviedbexample,
  * generates output as a html <table>
@@ -25,8 +28,16 @@ public class SearchInputServlet extends HttpServlet {
     private DataSource dataSource;
 
     public void init(ServletConfig config) {
+        try{
+            super.init(config);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+
+        }
         try {
-            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedb");
+            
+            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedbReadOnly");
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -36,6 +47,7 @@ public class SearchInputServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+        long startTs = System.nanoTime();
         response.setContentType("text/html");    // Response mime type
         // Output stream to STDOUT
         PrintWriter out = response.getWriter();
@@ -46,7 +58,7 @@ public class SearchInputServlet extends HttpServlet {
             //A on movies.id = A.movieId;
             System.out.println("resquest gotten");            
             // Create a new connection to database
-            Connection conn = dataSource.getConnection();
+            
             // Declare a new statement
             String rawtitle = request.getParameter("title");
             //raw title parsed later
@@ -241,6 +253,8 @@ public class SearchInputServlet extends HttpServlet {
             count += 1;
             pageindex = count;
         }
+        long startTJ = System.nanoTime();
+        Connection conn = dataSource.getConnection();
         PreparedStatement statement = conn.prepareStatement(biggerquery  + query + later);
         if(parsedtitles!= null && !parsedtitles.equals("")){
             statement.setString(1, parsedtitles);
@@ -290,6 +304,7 @@ public class SearchInputServlet extends HttpServlet {
             }
             rs.close();
             statement.close();
+            
 
             // Log to localhost log
             request.getServletContext().log("getting " + jsonArray.size() + " results");
@@ -298,7 +313,28 @@ public class SearchInputServlet extends HttpServlet {
             out.write(jsonArray.toString());
             // Set response status to 200 (OK)
             response.setStatus(200);
+           
+           
             conn.close();
+            long endTs = System.nanoTime();
+            long endTJ = System.nanoTime();
+            System.out.println("ts time: ");
+            System.out.println(endTs-startTs);
+            System.out.println("tJ time: ");
+            System.out.println(endTJ-startTJ);
+            String filePath = getServletContext().getRealPath("/") + "timelog.txt";  
+            // replace with your file path
+            System.out.println(filePath);
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) { 
+                // true means append to file. If false, the file is overwritten
+
+                writer.write("TS Time: " + String.valueOf((endTs-startTs)/1000000.0));
+                writer.newLine();  // writes a newline
+                writer.write("TJ Time: " + String.valueOf((endTJ-startTJ)/1000000.0));
+                writer.newLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         } catch (Exception e) {
             /*

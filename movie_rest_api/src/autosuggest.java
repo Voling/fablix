@@ -27,7 +27,7 @@ public class autosuggest extends HttpServlet{
 
     public void init(ServletConfig config) {
         try {
-            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedb");
+            dataSource = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/moviedbReadOnly");
         } catch (Exception e) {
             e.printStackTrace();
         }
