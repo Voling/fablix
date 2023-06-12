@@ -1,0 +1,8 @@
+10tsinglepoolinghttps: average 551.6963387124762
+10tsinglepooling: average461.9662126068376
+10tsinglenopooling:average454.9459734964322
+1tsinglepooling: average194.85879332477535
+scaled
+10tBalancedPooling: average437.0841369671558
+1tBalancePooling: average196.58694287507848
+10tBalancednoPooling average7148.619433198381

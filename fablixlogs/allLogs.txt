@@ -1,0 +1,501 @@
+summary +     92 in 00:00:05 =   19.3/s Avg:   406 Min:   116 Max:  1781 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary +    712 in 00:00:30 =   23.7/s Avg:   422 Min:   167 Max:  1820 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    804 in 00:00:35 =   23.1/s Avg:   420 Min:   116 Max:  1820 Err:     0 (0.00%)
+summary +    726 in 00:00:30 =   24.2/s Avg:   411 Min:   167 Max:  2166 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1530 in 00:01:05 =   23.6/s Avg:   416 Min:   116 Max:  2166 Err:     0 (0.00%)
+summary +    703 in 00:00:30 =   23.4/s Avg:   427 Min:   168 Max:  1696 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2233 in 00:01:35 =   23.6/s Avg:   419 Min:   116 Max:  2166 Err:     0 (0.00%)
+summary +    713 in 00:00:30 =   23.8/s Avg:   421 Min:   168 Max:  1854 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2946 in 00:02:05 =   23.6/s Avg:   420 Min:   116 Max:  2166 Err:     0 (0.00%)
+summary +    711 in 00:00:30 =   23.5/s Avg:   422 Min:   167 Max:  2224 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3657 in 00:02:35 =   23.6/s Avg:   420 Min:   116 Max:  2224 Err:     0 (0.00%)
+summary +    698 in 00:00:30 =   23.4/s Avg:   427 Min:   170 Max:  1643 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4355 in 00:03:05 =   23.6/s Avg:   421 Min:   116 Max:  2224 Err:     0 (0.00%)
+summary +    701 in 00:00:30 =   23.4/s Avg:   427 Min:   170 Max:  1807 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5056 in 00:03:35 =   23.5/s Avg:   422 Min:   116 Max:  2224 Err:     0 (0.00%)
+summary +    703 in 00:00:30 =   23.4/s Avg:   410 Min:   167 Max:  1797 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5759 in 00:04:05 =   23.5/s Avg:   421 Min:   116 Max:  2224 Err:     0 (0.00%)
+summary +    703 in 00:00:30 =   23.5/s Avg:   444 Min:   169 Max: 15306 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   6462 in 00:04:35 =   23.5/s Avg:   423 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    727 in 00:00:30 =   24.2/s Avg:   409 Min:   166 Max:  1605 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   7189 in 00:05:05 =   23.6/s Avg:   422 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    710 in 00:00:30 =   23.6/s Avg:   420 Min:   170 Max:  1616 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   7899 in 00:05:35 =   23.6/s Avg:   422 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    716 in 00:00:30 =   23.9/s Avg:   421 Min:   167 Max:  1654 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   8615 in 00:06:05 =   23.6/s Avg:   422 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    723 in 00:00:30 =   24.1/s Avg:   413 Min:   166 Max:  1781 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   9338 in 00:06:35 =   23.7/s Avg:   421 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    710 in 00:00:30 =   23.7/s Avg:   424 Min:   165 Max:  1590 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  10048 in 00:07:05 =   23.7/s Avg:   421 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    708 in 00:00:30 =   23.5/s Avg:   423 Min:   165 Max:  1653 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  10756 in 00:07:35 =   23.6/s Avg:   421 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    713 in 00:00:30 =   23.8/s Avg:   422 Min:   169 Max:  1630 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  11469 in 00:08:05 =   23.7/s Avg:   421 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    684 in 00:00:30 =   22.9/s Avg:   434 Min:   169 Max:  1690 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  12153 in 00:08:35 =   23.6/s Avg:   422 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    730 in 00:00:30 =   24.3/s Avg:   414 Min:   168 Max:  1594 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  12883 in 00:09:05 =   23.6/s Avg:   422 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    729 in 00:00:30 =   24.3/s Avg:   406 Min:   168 Max:  1855 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  13612 in 00:09:35 =   23.7/s Avg:   421 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    727 in 00:00:30 =   24.2/s Avg:   415 Min:   167 Max:  1835 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  14339 in 00:10:05 =   23.7/s Avg:   420 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    725 in 00:00:30 =   24.1/s Avg:   414 Min:   166 Max:  1701 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  15064 in 00:10:35 =   23.7/s Avg:   420 Min:   116 Max: 15306 Err:     0 (0.00%)
+summary +    723 in 00:00:30 =   24.1/s Avg:   413 Min:   165 Max:  1688 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  15787 in 00:11:05 =   23.7/s Avg:   420 Min:   116 Max: 15306 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\1tBalancedPooling.jmx"
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\1tBalancedPooling.jmx
+Starting standalone test @ 2023 Jun 10 22:02:07 PDT (1686459727319)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +    482 in 00:00:23 =   21.4/s Avg:   450 Min:   121 Max:  1373 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary +    650 in 00:00:30 =   21.7/s Avg:   458 Min:   169 Max:  1261 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1132 in 00:00:53 =   21.6/s Avg:   454 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    659 in 00:00:30 =   21.9/s Avg:   458 Min:   171 Max:  1343 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1791 in 00:01:23 =   21.7/s Avg:   455 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    674 in 00:00:30 =   22.5/s Avg:   444 Min:   172 Max:  1341 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2465 in 00:01:53 =   21.9/s Avg:   452 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    619 in 00:00:30 =   20.6/s Avg:   485 Min:   169 Max:  1312 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3084 in 00:02:23 =   21.6/s Avg:   459 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    669 in 00:00:30 =   22.3/s Avg:   449 Min:   175 Max:  1322 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3753 in 00:02:53 =   21.7/s Avg:   457 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    668 in 00:00:30 =   22.4/s Avg:   447 Min:   176 Max:  1349 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4421 in 00:03:23 =   21.8/s Avg:   456 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    679 in 00:00:30 =   22.6/s Avg:   441 Min:   170 Max:  1358 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5100 in 00:03:53 =   21.9/s Avg:   454 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    634 in 00:00:30 =   21.1/s Avg:   473 Min:   171 Max:  1367 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5734 in 00:04:23 =   21.8/s Avg:   456 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    685 in 00:00:30 =   22.9/s Avg:   437 Min:   170 Max:  1266 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   6419 in 00:04:53 =   21.9/s Avg:   454 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    669 in 00:00:30 =   22.3/s Avg:   449 Min:   172 Max:  1341 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   7088 in 00:05:23 =   22.0/s Avg:   453 Min:   121 Max:  1373 Err:     0 (0.00%)
+summary +    663 in 00:00:30 =   22.1/s Avg:   453 Min:   171 Max:  1350 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   7751 in 00:05:53 =   22.0/s Avg:   453 Min:   121 Max:  1373 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\10tBalancedPooling.jmx"
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\10tBalancedPooling.jmx
+Starting standalone test @ 2023 Jun 10 22:21:57 PDT (1686460917270)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +     44 in 00:00:03 =   17.2/s Avg:   403 Min:   127 Max:  1156 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary +    659 in 00:00:30 =   22.0/s Avg:   453 Min:   171 Max:  1305 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    703 in 00:00:33 =   21.6/s Avg:   450 Min:   127 Max:  1305 Err:     0 (0.00%)
+summary +    656 in 00:00:30 =   21.8/s Avg:   457 Min:   171 Max:  1331 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1359 in 00:01:03 =   21.7/s Avg:   453 Min:   127 Max:  1331 Err:     0 (0.00%)
+summary +    670 in 00:00:30 =   22.4/s Avg:   448 Min:   170 Max:  1299 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2029 in 00:01:33 =   21.9/s Avg:   452 Min:   127 Max:  1331 Err:     0 (0.00%)
+summary +    678 in 00:00:30 =   22.6/s Avg:   440 Min:   171 Max:  1249 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2707 in 00:02:03 =   22.1/s Avg:   449 Min:   127 Max:  1331 Err:     0 (0.00%)
+summary +    658 in 00:00:30 =   21.8/s Avg:   458 Min:   170 Max:  1300 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3365 in 00:02:33 =   22.0/s Avg:   451 Min:   127 Max:  1331 Err:     0 (0.00%)
+summary +    669 in 00:00:30 =   22.5/s Avg:   446 Min:   169 Max:  1266 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4034 in 00:03:03 =   22.1/s Avg:   450 Min:   127 Max:  1331 Err:     0 (0.00%)
+summary +    673 in 00:00:30 =   22.4/s Avg:   445 Min:   168 Max:  1374 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4707 in 00:03:33 =   22.1/s Avg:   449 Min:   127 Max:  1374 Err:     0 (0.00%)
+summary +    671 in 00:00:30 =   22.4/s Avg:   446 Min:   171 Max:  1300 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5378 in 00:04:03 =   22.2/s Avg:   449 Min:   127 Max:  1374 Err:     0 (0.00%)
+summary +    651 in 00:00:30 =   21.7/s Avg:   461 Min:   165 Max:  1559 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   6029 in 00:04:33 =   22.1/s Avg:   450 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    663 in 00:00:30 =   22.1/s Avg:   453 Min:   170 Max:  1359 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   6692 in 00:05:03 =   22.1/s Avg:   450 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    688 in 00:00:30 =   22.9/s Avg:   435 Min:   170 Max:  1296 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   7380 in 00:05:33 =   22.2/s Avg:   449 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    656 in 00:00:30 =   21.8/s Avg:   459 Min:   170 Max:  1312 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   8036 in 00:06:03 =   22.2/s Avg:   450 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    673 in 00:00:30 =   22.5/s Avg:   443 Min:   171 Max:  1277 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   8709 in 00:06:33 =   22.2/s Avg:   449 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    697 in 00:00:30 =   23.1/s Avg:   433 Min:   172 Max:  1381 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   9406 in 00:07:03 =   22.2/s Avg:   448 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    693 in 00:00:30 =   23.3/s Avg:   428 Min:   172 Max:  1346 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  10099 in 00:07:33 =   22.3/s Avg:   447 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    691 in 00:00:30 =   23.0/s Avg:   434 Min:   171 Max:  1283 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  10790 in 00:08:03 =   22.4/s Avg:   446 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    681 in 00:00:30 =   22.7/s Avg:   438 Min:   173 Max:  1288 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  11471 in 00:08:33 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    673 in 00:00:30 =   22.4/s Avg:   447 Min:   170 Max:  1337 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  12144 in 00:09:03 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    679 in 00:00:30 =   22.6/s Avg:   443 Min:   173 Max:  1305 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  12823 in 00:09:33 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    674 in 00:00:30 =   22.5/s Avg:   444 Min:   172 Max:  1345 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  13497 in 00:10:03 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    676 in 00:00:30 =   22.5/s Avg:   443 Min:   172 Max:  1316 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  14173 in 00:10:33 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    671 in 00:00:30 =   22.4/s Avg:   446 Min:   170 Max:  1289 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  14844 in 00:11:03 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    688 in 00:00:30 =   23.0/s Avg:   437 Min:   171 Max:  1339 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  15532 in 00:11:33 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    658 in 00:00:30 =   21.9/s Avg:   455 Min:   168 Max:  1285 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  16190 in 00:12:03 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    683 in 00:00:30 =   22.8/s Avg:   440 Min:   171 Max:  1333 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  16873 in 00:12:33 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    682 in 00:00:30 =   22.7/s Avg:   438 Min:   170 Max:  1338 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  17555 in 00:13:03 =   22.4/s Avg:   445 Min:   127 Max:  1559 Err:     0 (0.00%)
+summary +    628 in 00:00:30 =   20.8/s Avg:   442 Min:   170 Max:  7411 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  18183 in 00:13:33 =   22.4/s Avg:   445 Min:   127 Max:  7411 Err:     0 (0.00%)
+summary +    542 in 00:00:30 =   18.2/s Avg:   571 Min:   167 Max: 13898 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  18725 in 00:14:03 =   22.2/s Avg:   448 Min:   127 Max: 13898 Err:     0 (0.00%)
+summary +    531 in 00:00:30 =   17.6/s Avg:   550 Min:   169 Max: 26052 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  19256 in 00:14:33 =   22.1/s Avg:   451 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    512 in 00:00:30 =   17.2/s Avg:   565 Min:   171 Max: 20308 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  19768 in 00:15:03 =   21.9/s Avg:   454 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    637 in 00:00:30 =   21.2/s Avg:   518 Min:   169 Max: 10251 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  20405 in 00:15:33 =   21.9/s Avg:   456 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    660 in 00:00:30 =   22.0/s Avg:   454 Min:   172 Max:  1286 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  21065 in 00:16:03 =   21.9/s Avg:   456 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    661 in 00:00:30 =   22.0/s Avg:   453 Min:   168 Max:  1325 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  21726 in 00:16:33 =   21.9/s Avg:   456 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    673 in 00:00:30 =   22.5/s Avg:   445 Min:   168 Max:  1359 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  22399 in 00:17:03 =   21.9/s Avg:   456 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    677 in 00:00:30 =   22.6/s Avg:   440 Min:   173 Max:  1250 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  23076 in 00:17:33 =   21.9/s Avg:   455 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    680 in 00:00:30 =   22.6/s Avg:   443 Min:   170 Max:  1340 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  23756 in 00:18:03 =   21.9/s Avg:   455 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    701 in 00:00:30 =   23.4/s Avg:   428 Min:   170 Max:  1297 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  24457 in 00:18:33 =   22.0/s Avg:   454 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    679 in 00:00:30 =   22.6/s Avg:   440 Min:   171 Max:  1348 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  25136 in 00:19:03 =   22.0/s Avg:   454 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    687 in 00:00:30 =   22.9/s Avg:   437 Min:   168 Max:  1243 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  25823 in 00:19:33 =   22.0/s Avg:   453 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    696 in 00:00:30 =   23.3/s Avg:   430 Min:   173 Max:  1366 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  26519 in 00:20:03 =   22.1/s Avg:   453 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    664 in 00:00:30 =   22.1/s Avg:   450 Min:   171 Max:  1294 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  27183 in 00:20:33 =   22.1/s Avg:   452 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    672 in 00:00:30 =   22.3/s Avg:   448 Min:   171 Max:  1214 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  27855 in 00:21:03 =   22.1/s Avg:   452 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    701 in 00:00:30 =   23.5/s Avg:   429 Min:   172 Max:  1368 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  28556 in 00:21:33 =   22.1/s Avg:   452 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    683 in 00:00:30 =   22.8/s Avg:   438 Min:   169 Max:  1355 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  29239 in 00:22:03 =   22.1/s Avg:   451 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    703 in 00:00:30 =   23.5/s Avg:   423 Min:   170 Max:  1318 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  29942 in 00:22:33 =   22.1/s Avg:   451 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    675 in 00:00:30 =   22.5/s Avg:   416 Min:   170 Max:  1384 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  30617 in 00:23:03 =   22.1/s Avg:   450 Min:   127 Max: 26052 Err:     0 (0.00%)
+summary +    656 in 00:00:30 =   21.9/s Avg:   484 Min:   171 Max: 21040 Err:     1 (0.15%) Active: 10 Started: 10 Finished: 0
+summary =  31273 in 00:23:33 =   22.1/s Avg:   451 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    666 in 00:00:30 =   22.2/s Avg:   453 Min:   170 Max:  1289 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  31939 in 00:24:03 =   22.1/s Avg:   451 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    708 in 00:00:30 =   23.5/s Avg:   424 Min:   173 Max:  1324 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  32647 in 00:24:33 =   22.2/s Avg:   450 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    644 in 00:00:30 =   21.5/s Avg:   463 Min:   174 Max:  1314 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  33291 in 00:25:03 =   22.2/s Avg:   450 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    698 in 00:00:30 =   23.2/s Avg:   431 Min:   169 Max:  1329 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  33989 in 00:25:33 =   22.2/s Avg:   450 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    667 in 00:00:30 =   22.3/s Avg:   449 Min:   172 Max:  1322 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  34656 in 00:26:03 =   22.2/s Avg:   450 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    694 in 00:00:30 =   23.1/s Avg:   431 Min:   169 Max:  1323 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  35350 in 00:26:33 =   22.2/s Avg:   450 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    707 in 00:00:30 =   23.4/s Avg:   423 Min:   170 Max:  1270 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  36057 in 00:27:03 =   22.2/s Avg:   449 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    664 in 00:00:30 =   22.3/s Avg:   451 Min:   169 Max:  1312 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  36721 in 00:27:33 =   22.2/s Avg:   449 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    700 in 00:00:30 =   23.3/s Avg:   431 Min:   170 Max:  1213 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  37421 in 00:28:03 =   22.2/s Avg:   449 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    660 in 00:00:30 =   22.0/s Avg:   451 Min:   172 Max:  1255 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  38081 in 00:28:33 =   22.2/s Avg:   449 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    663 in 00:00:30 =   22.1/s Avg:   452 Min:   172 Max:  1343 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  38744 in 00:29:03 =   22.2/s Avg:   449 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    694 in 00:00:30 =   23.2/s Avg:   434 Min:   173 Max:  1313 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  39438 in 00:29:33 =   22.2/s Avg:   449 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    700 in 00:00:30 =   23.3/s Avg:   428 Min:   167 Max:  1321 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  40138 in 00:30:03 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    669 in 00:00:30 =   22.4/s Avg:   446 Min:   169 Max:  1363 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  40807 in 00:30:33 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    693 in 00:00:30 =   23.0/s Avg:   434 Min:   171 Max:  1320 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  41500 in 00:31:03 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    673 in 00:00:30 =   22.5/s Avg:   445 Min:   172 Max:  1225 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  42173 in 00:31:33 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    666 in 00:00:30 =   22.2/s Avg:   447 Min:   174 Max:  1277 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  42839 in 00:32:03 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    669 in 00:00:30 =   22.3/s Avg:   449 Min:   171 Max:  1338 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  43508 in 00:32:33 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    673 in 00:00:30 =   22.3/s Avg:   447 Min:   169 Max:  1401 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  44181 in 00:33:03 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    693 in 00:00:30 =   23.2/s Avg:   430 Min:   172 Max:  1236 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  44874 in 00:33:33 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    683 in 00:00:30 =   22.8/s Avg:   438 Min:   171 Max:  1307 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  45557 in 00:34:03 =   22.3/s Avg:   448 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    688 in 00:00:30 =   23.0/s Avg:   439 Min:   171 Max:  1370 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  46245 in 00:34:33 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    695 in 00:00:30 =   23.1/s Avg:   429 Min:   170 Max:  1341 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  46940 in 00:35:03 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    679 in 00:00:30 =   22.5/s Avg:   442 Min:   170 Max:  1347 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  47619 in 00:35:33 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    655 in 00:00:30 =   22.0/s Avg:   458 Min:   172 Max:  1292 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  48274 in 00:36:03 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    652 in 00:00:30 =   21.7/s Avg:   459 Min:   169 Max:  1507 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  48926 in 00:36:33 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    684 in 00:00:30 =   22.9/s Avg:   438 Min:   171 Max:  1335 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  49610 in 00:37:03 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    699 in 00:00:30 =   23.3/s Avg:   427 Min:   169 Max:  1301 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  50309 in 00:37:33 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    693 in 00:00:30 =   23.1/s Avg:   431 Min:   169 Max:  1343 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  51002 in 00:38:03 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    633 in 00:00:30 =   21.0/s Avg:   475 Min:   169 Max:  2080 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  51635 in 00:38:33 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+summary +    685 in 00:00:30 =   22.9/s Avg:   438 Min:   172 Max:  1319 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  52320 in 00:39:03 =   22.3/s Avg:   447 Min:   127 Max: 26052 Err:     1 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\1tBalancedPooling.jmx"
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\1tBalancedPooling.jmx
+Starting standalone test @ 2023 Jun 10 23:23:01 PDT (1686464581200)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +      1 in 00:00:00 =    2.8/s Avg:   204 Min:   204 Max:   204 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary +     78 in 00:00:28 =    2.8/s Avg:   362 Min:   315 Max:   499 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =     79 in 00:00:29 =    2.8/s Avg:   360 Min:   204 Max:   499 Err:     0 (0.00%)
+summary +     80 in 00:00:30 =    2.7/s Avg:   375 Min:   322 Max:   658 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    159 in 00:00:59 =    2.7/s Avg:   368 Min:   204 Max:   658 Err:     0 (0.00%)
+summary +     76 in 00:00:30 =    2.5/s Avg:   393 Min:   317 Max:   722 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    235 in 00:01:29 =    2.6/s Avg:   376 Min:   204 Max:   722 Err:     0 (0.00%)
+summary +     83 in 00:00:30 =    2.8/s Avg:   360 Min:   317 Max:   554 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    318 in 00:01:59 =    2.7/s Avg:   372 Min:   204 Max:   722 Err:     0 (0.00%)
+summary +     78 in 00:00:30 =    2.6/s Avg:   386 Min:   318 Max:   760 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    396 in 00:02:29 =    2.7/s Avg:   375 Min:   204 Max:   760 Err:     0 (0.00%)
+summary +     84 in 00:00:30 =    2.8/s Avg:   356 Min:   316 Max:   598 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    480 in 00:02:59 =    2.7/s Avg:   371 Min:   204 Max:   760 Err:     0 (0.00%)
+summary +     80 in 00:00:30 =    2.7/s Avg:   373 Min:   317 Max:   565 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    560 in 00:03:29 =    2.7/s Avg:   372 Min:   204 Max:   760 Err:     0 (0.00%)
+summary +     84 in 00:00:30 =    2.8/s Avg:   358 Min:   318 Max:   561 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    644 in 00:03:59 =    2.7/s Avg:   370 Min:   204 Max:   760 Err:     0 (0.00%)
+summary +     85 in 00:00:30 =    2.8/s Avg:   353 Min:   316 Max:   508 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    729 in 00:04:29 =    2.7/s Avg:   368 Min:   204 Max:   760 Err:     0 (0.00%)
+summary +     80 in 00:00:30 =    2.7/s Avg:   370 Min:   315 Max:  1368 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    809 in 00:04:59 =    2.7/s Avg:   368 Min:   204 Max:  1368 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\10tBalancedNoPooling.jmx"
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\10tBalancedNoPooling.jmx
+Starting standalone test @ 2023 Jun 10 23:38:20 PDT (1686465500497)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +     64 in 00:00:09 =    6.8/s Avg:  1237 Min:   135 Max:  2191 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary +    219 in 00:00:30 =    7.3/s Avg:  1376 Min:   842 Max:  2347 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    283 in 00:00:39 =    7.2/s Avg:  1345 Min:   135 Max:  2347 Err:     0 (0.00%)
+summary +    222 in 00:00:30 =    7.4/s Avg:  1351 Min:   859 Max:  2647 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    505 in 00:01:10 =    7.3/s Avg:  1347 Min:   135 Max:  2647 Err:     0 (0.00%)
+summary +    226 in 00:00:30 =    7.6/s Avg:  1326 Min:   827 Max:  2294 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    731 in 00:01:39 =    7.4/s Avg:  1341 Min:   135 Max:  2647 Err:     0 (0.00%)
+summary +    219 in 00:00:30 =    7.3/s Avg:  1366 Min:   828 Max:  3034 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    950 in 00:02:10 =    7.3/s Avg:  1347 Min:   135 Max:  3034 Err:     0 (0.00%)
+summary +    228 in 00:00:30 =    7.6/s Avg:  1312 Min:   824 Max:  2097 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1178 in 00:02:39 =    7.4/s Avg:  1340 Min:   135 Max:  3034 Err:     0 (0.00%)
+summary +    218 in 00:00:30 =    7.3/s Avg:  1372 Min:   801 Max:  3385 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1396 in 00:03:09 =    7.4/s Avg:  1345 Min:   135 Max:  3385 Err:     0 (0.00%)
+summary +    230 in 00:00:30 =    7.7/s Avg:  1324 Min:   809 Max:  2639 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1626 in 00:03:39 =    7.4/s Avg:  1342 Min:   135 Max:  3385 Err:     0 (0.00%)
+summary +    229 in 00:00:30 =    7.6/s Avg:  1300 Min:   823 Max:  2264 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1855 in 00:04:10 =    7.4/s Avg:  1337 Min:   135 Max:  3385 Err:     0 (0.00%)
+summary +    222 in 00:00:30 =    7.4/s Avg:  1368 Min:   795 Max:  2757 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2077 in 00:04:40 =    7.4/s Avg:  1340 Min:   135 Max:  3385 Err:     0 (0.00%)
+summary +    225 in 00:00:30 =    7.6/s Avg:  1319 Min:   827 Max:  2128 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2302 in 00:05:09 =    7.4/s Avg:  1338 Min:   135 Max:  3385 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePooling.jmx"
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePooling.jmx
+Starting standalone test @ 2023 Jun 10 23:54:44 PDT (1686466484488)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePooling.jmx"
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePooling.jmx
+Starting standalone test @ 2023 Jun 11 00:13:35 PDT (1686467615010)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +      1 in 00:00:00 =    2.3/s Avg:   201 Min:   201 Max:   201 Err:     0 (0.00%) Active: 4 Started: 4 Finished: 0
+summary +     10 in 00:00:30 =    0.3/s Avg:  3143 Min:   132 Max: 30139 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =     11 in 00:00:31 =    0.4/s Avg:  2876 Min:   132 Max: 30139 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePooling.jmx"
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePooling.jmx
+Starting standalone test @ 2023 Jun 11 00:18:43 PDT (1686467923726)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +    264 in 00:00:16 =   16.2/s Avg:   578 Min:   126 Max:  1091 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary +    576 in 00:00:30 =   19.3/s Avg:   512 Min:   177 Max:  1125 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    840 in 00:00:46 =   18.2/s Avg:   533 Min:   126 Max:  1125 Err:     0 (0.00%)
+summary +    555 in 00:00:30 =   18.5/s Avg:   548 Min:   174 Max: 21040 Err:     1 (0.18%) Active: 10 Started: 10 Finished: 0
+summary =   1395 in 00:01:16 =   18.3/s Avg:   539 Min:   126 Max: 21040 Err:     1 (0.07%)
+summary +    590 in 00:00:30 =   19.6/s Avg:   507 Min:   177 Max:   869 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1985 in 00:01:46 =   18.7/s Avg:   529 Min:   126 Max: 21040 Err:     1 (0.05%)
+summary +    587 in 00:00:30 =   19.6/s Avg:   510 Min:   175 Max:   838 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2572 in 00:02:16 =   18.9/s Avg:   525 Min:   126 Max: 21040 Err:     1 (0.04%)
+summary +    601 in 00:00:30 =   19.9/s Avg:   501 Min:   203 Max:   858 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3173 in 00:02:46 =   19.1/s Avg:   520 Min:   126 Max: 21040 Err:     1 (0.03%)
+summary +    597 in 00:00:30 =   20.0/s Avg:   503 Min:   177 Max:   874 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3770 in 00:03:16 =   19.2/s Avg:   518 Min:   126 Max: 21040 Err:     1 (0.03%)
+summary +    625 in 00:00:30 =   20.8/s Avg:   477 Min:   175 Max:   747 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4395 in 00:03:46 =   19.4/s Avg:   512 Min:   126 Max: 21040 Err:     1 (0.02%)
+summary +    608 in 00:00:30 =   20.1/s Avg:   496 Min:   188 Max:   777 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5003 in 00:04:17 =   19.5/s Avg:   510 Min:   126 Max: 21040 Err:     1 (0.02%)
+summary +    578 in 00:00:30 =   19.6/s Avg:   513 Min:   172 Max:   787 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5581 in 00:04:46 =   19.5/s Avg:   510 Min:   126 Max: 21040 Err:     1 (0.02%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\1tSinglePooling.jmx"
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\1tSinglePooling.jmx
+Starting standalone test @ 2023 Jun 11 00:25:13 PDT (1686468313759)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +     83 in 00:00:16 =    5.2/s Avg:   190 Min:   116 Max:   329 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary +    154 in 00:00:30 =    5.1/s Avg:   195 Min:   174 Max:   397 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    237 in 00:00:46 =    5.1/s Avg:   193 Min:   116 Max:   397 Err:     0 (0.00%)
+summary +    154 in 00:00:30 =    5.1/s Avg:   194 Min:   171 Max:   403 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    391 in 00:01:16 =    5.1/s Avg:   193 Min:   116 Max:   403 Err:     0 (0.00%)
+summary +    149 in 00:00:30 =    5.0/s Avg:   201 Min:   171 Max:   419 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    540 in 00:01:46 =    5.1/s Avg:   195 Min:   116 Max:   419 Err:     0 (0.00%)
+summary +    155 in 00:00:30 =    5.2/s Avg:   192 Min:   171 Max:   421 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    695 in 00:02:16 =    5.1/s Avg:   195 Min:   116 Max:   421 Err:     0 (0.00%)
+summary +    157 in 00:00:30 =    5.2/s Avg:   191 Min:   171 Max:   391 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    852 in 00:02:46 =    5.1/s Avg:   194 Min:   116 Max:   421 Err:     0 (0.00%)
+summary +    152 in 00:00:30 =    5.1/s Avg:   196 Min:   170 Max:   400 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =   1004 in 00:03:16 =    5.1/s Avg:   194 Min:   116 Max:   421 Err:     0 (0.00%)
+summary +    159 in 00:00:30 =    5.3/s Avg:   188 Min:   172 Max:   386 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =   1163 in 00:03:46 =    5.1/s Avg:   194 Min:   116 Max:   421 Err:     0 (0.00%)
+summary +    156 in 00:00:30 =    5.2/s Avg:   191 Min:   170 Max:   405 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =   1319 in 00:04:16 =    5.1/s Avg:   193 Min:   116 Max:   421 Err:     0 (0.00%)
+summary +    153 in 00:00:30 =    5.1/s Avg:   195 Min:   172 Max:   403 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =   1472 in 00:04:46 =    5.1/s Avg:   194 Min:   116 Max:   421 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\1tSinglePooling.jmx" -l log.txt
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\1tSinglePooling.jmx
+Starting standalone test @ 2023 Jun 11 00:30:59 PDT (1686468659324)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +      2 in 00:00:00 =    4.3/s Avg:   154 Min:   133 Max:   176 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary +    156 in 00:00:30 =    5.2/s Avg:   192 Min:   172 Max:   392 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    158 in 00:00:31 =    5.2/s Avg:   191 Min:   133 Max:   392 Err:     0 (0.00%)
+summary +    157 in 00:00:30 =    5.2/s Avg:   191 Min:   171 Max:   397 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    315 in 00:01:01 =    5.2/s Avg:   191 Min:   133 Max:   397 Err:     0 (0.00%)
+summary +    155 in 00:00:30 =    5.2/s Avg:   192 Min:   170 Max:   410 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    470 in 00:01:31 =    5.2/s Avg:   192 Min:   133 Max:   410 Err:     0 (0.00%)
+summary +    149 in 00:00:30 =    4.9/s Avg:   201 Min:   174 Max:   408 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    619 in 00:02:01 =    5.1/s Avg:   194 Min:   133 Max:   410 Err:     0 (0.00%)
+summary +    156 in 00:00:30 =    5.2/s Avg:   191 Min:   171 Max:   408 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    775 in 00:02:31 =    5.1/s Avg:   193 Min:   133 Max:   410 Err:     0 (0.00%)
+summary +    151 in 00:00:30 =    5.0/s Avg:   198 Min:   170 Max:  1254 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =    926 in 00:03:01 =    5.1/s Avg:   194 Min:   133 Max:  1254 Err:     0 (0.00%)
+summary +    155 in 00:00:30 =    5.2/s Avg:   193 Min:   170 Max:   398 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =   1081 in 00:03:31 =    5.1/s Avg:   194 Min:   133 Max:  1254 Err:     0 (0.00%)
+summary +    153 in 00:00:30 =    5.1/s Avg:   195 Min:   172 Max:   391 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =   1234 in 00:04:01 =    5.1/s Avg:   194 Min:   133 Max:  1254 Err:     0 (0.00%)
+summary +    154 in 00:00:30 =    5.1/s Avg:   194 Min:   173 Max:   404 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =   1388 in 00:04:31 =    5.1/s Avg:   194 Min:   133 Max:  1254 Err:     0 (0.00%)
+summary +    151 in 00:00:30 =    5.0/s Avg:   198 Min:   172 Max:   397 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary =   1539 in 00:05:01 =    5.1/s Avg:   194 Min:   133 Max:  1254 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePoolingHttps.jmx" -l log.txt
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePoolingHttps.jmx
+Starting standalone test @ 2023 Jun 11 00:50:42 PDT (1686469842197)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +    259 in 00:00:18 =   14.7/s Avg:   650 Min:   206 Max:  1010 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary +    522 in 00:00:30 =   17.3/s Avg:   573 Min:   240 Max:  1284 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    781 in 00:00:48 =   16.4/s Avg:   599 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    525 in 00:00:30 =   17.4/s Avg:   575 Min:   240 Max:  1029 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1306 in 00:01:18 =   16.8/s Avg:   589 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    546 in 00:00:30 =   18.2/s Avg:   549 Min:   241 Max:   891 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1852 in 00:01:48 =   17.2/s Avg:   577 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    547 in 00:00:30 =   18.2/s Avg:   545 Min:   240 Max:   817 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2399 in 00:02:18 =   17.4/s Avg:   570 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    546 in 00:00:30 =   18.3/s Avg:   548 Min:   238 Max:  1116 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2945 in 00:02:48 =   17.6/s Avg:   566 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    551 in 00:00:30 =   18.4/s Avg:   540 Min:   238 Max:   852 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3496 in 00:03:18 =   17.7/s Avg:   562 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    558 in 00:00:30 =   18.5/s Avg:   543 Min:   239 Max:  1124 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4054 in 00:03:48 =   17.8/s Avg:   559 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    550 in 00:00:30 =   18.4/s Avg:   541 Min:   234 Max:  1051 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4604 in 00:04:18 =   17.9/s Avg:   557 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    573 in 00:00:30 =   18.9/s Avg:   527 Min:   236 Max:  1039 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5177 in 00:04:48 =   18.0/s Avg:   554 Min:   206 Max:  1284 Err:     0 (0.00%)
+summary +    557 in 00:00:30 =   18.7/s Avg:   536 Min:   236 Max:   853 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5734 in 00:05:18 =   18.1/s Avg:   552 Min:   206 Max:  1284 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSingleNoPooling.jmx" -l log.txt
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSingleNoPooling.jmx
+Starting standalone test @ 2023 Jun 11 01:04:08 PDT (1686470648939)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +    399 in 00:00:21 =   19.1/s Avg:   504 Min:   133 Max:   926 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary +    627 in 00:00:30 =   20.8/s Avg:   477 Min:   268 Max:   957 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1026 in 00:00:51 =   20.1/s Avg:   488 Min:   133 Max:   957 Err:     0 (0.00%)
+summary +    666 in 00:00:30 =   22.3/s Avg:   450 Min:   209 Max:   836 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1692 in 00:01:21 =   20.9/s Avg:   473 Min:   133 Max:   957 Err:     0 (0.00%)
+summary +    670 in 00:00:30 =   22.3/s Avg:   445 Min:   236 Max:   798 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2362 in 00:01:51 =   21.3/s Avg:   465 Min:   133 Max:   957 Err:     0 (0.00%)
+summary +    656 in 00:00:30 =   21.9/s Avg:   455 Min:   284 Max:   941 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3018 in 00:02:21 =   21.4/s Avg:   463 Min:   133 Max:   957 Err:     0 (0.00%)
+summary +    657 in 00:00:30 =   21.9/s Avg:   460 Min:   272 Max:  1002 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3675 in 00:02:51 =   21.5/s Avg:   462 Min:   133 Max:  1002 Err:     0 (0.00%)
+summary +    675 in 00:00:30 =   22.5/s Avg:   444 Min:   278 Max:   731 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4350 in 00:03:21 =   21.7/s Avg:   460 Min:   133 Max:  1002 Err:     0 (0.00%)
+summary +    670 in 00:00:30 =   22.3/s Avg:   446 Min:   180 Max:   935 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5020 in 00:03:51 =   21.7/s Avg:   458 Min:   133 Max:  1002 Err:     0 (0.00%)
+summary +    664 in 00:00:30 =   22.1/s Avg:   453 Min:   303 Max:   768 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5684 in 00:04:21 =   21.8/s Avg:   457 Min:   133 Max:  1002 Err:     0 (0.00%)
+summary +    677 in 00:00:30 =   22.6/s Avg:   441 Min:   220 Max:  1341 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   6361 in 00:04:51 =   21.9/s Avg:   455 Min:   133 Max:  1341 Err:     0 (0.00%)
+^CTerminate batch job (Y/N)? y
+
+C:\Users\Dylan\Documents\0 uci\cs122b\apache-jmeter-5.5\bin>jmeter -n -t "C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePoo
+ling.jmx" -l log.txt
+Creating summariser <summary>
+Created the tree successfully using C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePooling.jmx
+Starting standalone test @ 2023 Jun 11 01:12:52 PDT (1686471172004)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +    131 in 00:00:08 =   16.8/s Avg:   534 Min:   133 Max:   795 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary +    630 in 00:00:30 =   21.0/s Avg:   479 Min:   172 Max:   915 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =    761 in 00:00:38 =   20.1/s Avg:   488 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    641 in 00:00:30 =   21.4/s Avg:   465 Min:   174 Max:   892 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   1402 in 00:01:08 =   20.7/s Avg:   478 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    648 in 00:00:30 =   21.6/s Avg:   460 Min:   172 Max:   900 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2050 in 00:01:38 =   21.0/s Avg:   472 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    664 in 00:00:30 =   22.0/s Avg:   455 Min:   181 Max:   727 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   2714 in 00:02:08 =   21.2/s Avg:   468 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    653 in 00:00:30 =   21.9/s Avg:   459 Min:   175 Max:   787 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3367 in 00:02:38 =   21.3/s Avg:   466 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    629 in 00:00:30 =   21.0/s Avg:   473 Min:   171 Max:   879 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   3996 in 00:03:08 =   21.3/s Avg:   467 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    631 in 00:00:30 =   21.0/s Avg:   474 Min:   170 Max:   814 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   4627 in 00:03:38 =   21.2/s Avg:   468 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    623 in 00:00:30 =   20.8/s Avg:   485 Min:   177 Max:   910 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5250 in 00:04:08 =   21.2/s Avg:   470 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    661 in 00:00:30 =   21.9/s Avg:   453 Min:   167 Max:   806 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   5911 in 00:04:38 =   21.3/s Avg:   468 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    639 in 00:00:30 =   21.4/s Avg:   468 Min:   170 Max:   778 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   6550 in 00:05:08 =   21.3/s Avg:   468 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    672 in 00:00:30 =   22.2/s Avg:   449 Min:   168 Max:   795 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   7222 in 00:05:38 =   21.4/s Avg:   466 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    653 in 00:00:30 =   22.0/s Avg:   457 Min:   177 Max:   884 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   7875 in 00:06:08 =   21.4/s Avg:   465 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    665 in 00:00:30 =   22.1/s Avg:   452 Min:   172 Max:   789 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   8540 in 00:06:38 =   21.5/s Avg:   464 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    652 in 00:00:30 =   21.7/s Avg:   459 Min:   178 Max:   810 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   9192 in 00:07:08 =   21.5/s Avg:   464 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    663 in 00:00:30 =   22.0/s Avg:   451 Min:   169 Max:   795 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =   9855 in 00:07:38 =   21.5/s Avg:   463 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    641 in 00:00:30 =   21.5/s Avg:   464 Min:   171 Max:   801 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  10496 in 00:08:08 =   21.5/s Avg:   463 Min:   133 Max:   915 Err:     0 (0.00%)
+summary +    617 in 00:00:30 =   20.6/s Avg:   490 Min:   169 Max:   917 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  11113 in 00:08:38 =   21.5/s Avg:   465 Min:   133 Max:   917 Err:     0 (0.00%)
+summary +    627 in 00:00:30 =   20.8/s Avg:   478 Min:   170 Max:   817 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  11740 in 00:09:08 =   21.4/s Avg:   465 Min:   133 Max:   917 Err:     0 (0.00%)
+summary +    648 in 00:00:30 =   21.7/s Avg:   463 Min:   171 Max:   773 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  12388 in 00:09:38 =   21.4/s Avg:   465 Min:   133 Max:   917 Err:     0 (0.00%)
+summary +    638 in 00:00:30 =   21.2/s Avg:   468 Min:   168 Max:   787 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  13026 in 00:10:08 =   21.4/s Avg:   465 Min:   133 Max:   917 Err:     0 (0.00%)
+summary +    664 in 00:00:30 =   22.0/s Avg:   453 Min:   169 Max:   800 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  13690 in 00:10:38 =   21.5/s Avg:   465 Min:   133 Max:   917 Err:     0 (0.00%)
+summary +    635 in 00:00:30 =   21.2/s Avg:   471 Min:   168 Max:   957 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  14325 in 00:11:08 =   21.4/s Avg:   465 Min:   133 Max:   957 Err:     0 (0.00%)
+summary +    659 in 00:00:30 =   21.9/s Avg:   453 Min:   171 Max:   746 Err:     0 (0.00%) Active: 10 Started: 10 Finished: 0
+summary =  14984 in 00:11:38 =   21.5/s Avg:   465 Min:   133 Max:   957 Err:     0 (0.00%)

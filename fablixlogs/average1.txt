@@ -1,0 +1,9 @@
+10tsingleHttpsPOoling:ts_average: 340.9500825638343 tj_average: 340.80429591332364
+10tsingleHttpPOOLing:ts_average: 356.31919578217963 tj_average: 356.222502378406
+10tsingnopooling:ts_average: 310.56679960565083 tj_average: 310.515937921364
+1tsinglepooling:ts_average: 47.853849563262685 tj_average: 47.81630769171479
+
+scaled:
+10tnopooling:ts_average: 1200.4086951044587 tj_average: 1200.3575410454368
+10twithpooling:ts_average: 274.82498198004026 tj_average: 274.7857208742734
+ts_average: 47.790490450031406 tj_average: 47.642381506599584

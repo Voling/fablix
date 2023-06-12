@@ -1,0 +1,43 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function promptLogin() {
+        const email = prompt("Enter employee email:");
+        const password = prompt("Enter employee password:");
+
+        if (email && password) {
+          $.ajax({
+            url: "_dashboard",
+            method: "POST",
+            dataType: "json",
+            data: { email: email, password: password },
+            success: function (response) {
+              console.log(response);
+              if (response["status"] === "success") {
+                alert("Login successful");
+                window.location.href = "dashboard.html";
+              } // Replace with the URL you want to redirect to
+              else {
+                alert("Login failed, please try again.");
+                promptLogin();
+              }
+            },
+            error: function () {
+              alert("something went wrong");
+              promptLogin();
+            },
+          });
+        } else {
+          alert("Both email and password are required.");
+          promptLogin();
+        }
+      }
+
+      $(document).ready(promptLogin);
+    </script>
+  </head>
+  <body></body>
+</html>

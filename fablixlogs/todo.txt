@@ -1,0 +1,12 @@
+single
+✅⭐Use HTTP, without using Connection Pooling, 10 threads in JMeter.
+✅⭐Use HTTP, 1 thread in JMeter.
+✅⭐⭐Use HTTP, 10 threads in JMeter.
+✅⭐Use HTTPS, 10 threads in JMeter.
+
+scaled
+✅‼️‼️‼️‼️Use HTTP, without using Connection Pooling, 10 threads in JMeter.
+✅‼️‼️‼️‼️Use HTTP, 1 thread in JMeter.
+✅‼️‼️‼️‼️Use HTTP, 10 threads in JMeter.
+
+✅‼️‼️‼️‼️ means server log is there but might need to redo with visual graph!
