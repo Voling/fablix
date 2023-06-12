@@ -87,6 +87,8 @@
 
 - # JMeter TS/TJ Time Logs
  
+  - Single Logs are located in /logs/single/
+  - Scaled Logs are located in /logs/scaled/
   - #### Instructions of how to use the `log_processing.*` script to process the JMeter logs.
   - the parselog file is the log_processing script, 
   - every time you run it , in this line 
