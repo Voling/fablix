@@ -7,6 +7,13 @@
     - #### Project 5 Video Demo Link:
         https://youtu.be/69dYNkNgfgE
     - #### Instruction of deployment:
+    for master/slave build mvn in movie_rest_api
+    for singleins build mvn in proj1singlins/movierestapi
+    for master and slave:
+    after the deployment of master and slave
+    on master run mysqlrouter with simple-router config file in etc
+    with command mysqlrouter --log-file=/path/to/logfile.log
+    
 
     - #### Collaborations and Work Distribution:
     Dean: connection pooling, apache, mysql router, master-slave, log processing, readme, aws, ddos mitigation and investigation
