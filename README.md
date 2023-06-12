@@ -1,15 +1,16 @@
 # General
 
-    - #### Team#:
+    - #### Team#: s23-122b-tryna_find_a_teammate
 
     - #### Names:Yiqun Du /Dylan Vo
 
     - #### Project 5 Video Demo Link:
-
+        https://youtu.be/69dYNkNgfgE
     - #### Instruction of deployment:
 
     - #### Collaborations and Work Distribution:
-
+    Dean: connection pooling, apache, mysql router, master-slave, log processing, readme, aws, ddos mitigation and investigation
+    Dylan: jmeter graphs, jmeter tests, apache, master-slave, gcp, aws, ddos mitigation
 - # Connection Pooling
 
   - #### Include the filename/path of all code/configuration files in GitHub of using JDBC Connection Pooling.
