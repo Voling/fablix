@@ -108,8 +108,8 @@
 | **Scaled Version Test Plan**                  | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
 | --------------------------------------------- | ---------------------------- | -------------------------- | ----------------------------------- | ------------------------- | ------------ |
 | Case 1: HTTP/1 thread                         | /img/scaled/1tBalancedPooling.png   | 196.58694287507848                         | 47.790490450031406                                  | 47.642381506599584                        | with 1 thread the scaled version is slightly slower than single instance , due to the overhead of communication between the servers        |
-| Case 2: HTTP/10 threads                       | /img/scaled/10tBalancedPooling.png   | 437.0841369671558                         | 274.82498198004026                                  | 274.7857208742734                        | ??           |
-| Case 3: HTTP/10 threads/No connection pooling | /img/scaled/10tBalancedNoPooling.png   | 7148.619433198381                         | 1200.4086951044587                                  | 1200.3575410454368                        |
+| Case 2: HTTP/10 threads                       | /img/scaled/10tBalancedPooling.png   | 437.0841369671558                         | 274.82498198004026                                  | 274.7857208742734                        | with 10 threads we can see an obvious improment of query time, ts and tj compared to single instance     |
+| Case 3: HTTP/10 threads/No connection pooling | /img/scaled/10tBalancedNoPooling.png   | 7148.619433198381                         | 1200.4086951044587                                  | 1200.3575410454368                        |without connection pooling the scaled version is falling aprt as tj and ts takes around 1200 ms
 
 "10tSingleHttpsPooling:ts_average: 340.9500825638343 tj_average: 340.80429591332364
 10tSinglePooling:ts_average: 356.31919578217963 tj_average: 356.222502378406
