@@ -86,8 +86,13 @@
     readwrite is only sent to master
 
 - # JMeter TS/TJ Time Logs
-
+ 
   - #### Instructions of how to use the `log_processing.*` script to process the JMeter logs.
+  - the parselog file is the log_processing script, 
+  - every time you run it , in this line 
+  - "ts_avg, tj_avg = com_av("./scaled/1tBalancedPooling/1tBalancedPoolingServer.txt")"
+  - replace the parameter with the filename you try to parse
+  - the output will be written to average1.txt file 
 
 - # JMeter TS/TJ Time Measurement Report
 
