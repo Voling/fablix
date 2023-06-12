@@ -7,6 +7,13 @@
     - #### Project 5 Video Demo Link:
         https://youtu.be/69dYNkNgfgE
     - #### Instruction of deployment:
+    for master/slave build mvn in movie_rest_api
+    for singleins build mvn in proj1singlins/movierestapi
+    for master and slave:
+    after the deployment of master and slave
+    on master run mysqlrouter with simple-router config file in etc
+    with command mysqlrouter --log-file=/path/to/logfile.log
+    
 
     - #### Collaborations and Work Distribution:
     Dean: connection pooling, apache, mysql router, master-slave, log processing, readme, aws, ddos mitigation and investigation
@@ -79,8 +86,13 @@
     readwrite is only sent to master
 
 - # JMeter TS/TJ Time Logs
-
+ 
   - #### Instructions of how to use the `log_processing.*` script to process the JMeter logs.
+  - the parselog file is the log_processing script, 
+  - every time you run it , in this line 
+  - "ts_avg, tj_avg = com_av("./scaled/1tBalancedPooling/1tBalancedPoolingServer.txt")"
+  - replace the parameter with the filename you try to parse
+  - the output will be written to average1.txt file 
 
 - # JMeter TS/TJ Time Measurement Report
 
