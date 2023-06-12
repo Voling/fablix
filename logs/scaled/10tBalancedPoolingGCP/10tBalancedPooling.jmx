@@ -65,9 +65,9 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">3.141.4.157</stringProp>
-          <stringProp name="HTTPSampler.port">8443</stringProp>
-          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.domain">34.139.121.28</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">/fablix/login.html</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -101,9 +101,9 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Variables pré-définies" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">3.141.4.157</stringProp>
-            <stringProp name="HTTPSampler.port">8443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.domain">34.139.121.28</stringProp>
+            <stringProp name="HTTPSampler.port">80</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">/fablix/search?title=${title}&amp;pagesize=50&amp;sort=ranking&amp;order=DESC</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -151,7 +151,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePoolingHttpsGraph.txt</stringProp>
+          <stringProp name="filename">C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\10tBalancedPoolingGCP\10tBalancedPoolingGCPGraph.txt</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
@@ -225,7 +225,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\single\10tSinglePoolingHttpsResponseGraph.csv</stringProp>
+          <stringProp name="filename">C:\Users\Dylan\Documents\0 uci\cs122b\jmeter\scaled\10tBalancedPoolingGCP\10tBalancedPoolingResponseGraph.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>

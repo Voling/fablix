@@ -853,8 +853,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480434202,462,add,200,,Thread Group 1-5,text,true,,8541,175,10,10,http://3.141.4.157:8080/fablix/search?title=Snatch&pagesize=50&sort=ranking&order=DESC,461,0,66
 1686480434220,465,add,200,,Thread Group 1-8,text,true,,3727,183,10,10,http://3.141.4.157:8080/fablix/search?title=Pretty%20Woman&pagesize=50&sort=ranking&order=DESC,464,0,68
 1686480434220,469,add,200,,Thread Group 1-7,text,true,,5353,185,10,10,http://3.141.4.157:8080/fablix/search?title=Cinderella%20Man&pagesize=50&sort=ranking&order=DESC,469,0,67
-1686480434206,492,add,200,,Thread Group 1-2,text,true,,283,182,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Village&pagesize=50&sort=ranking&order=DESC,492,0,65
 1686480434232,466,add,200,,Thread Group 1-9,text,true,,1433,186,10,10,http://3.141.4.157:8080/fablix/search?title=American%20Beauty&pagesize=50&sort=ranking&order=DESC,466,0,66
+1686480434206,492,add,200,,Thread Group 1-2,text,true,,283,182,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Village&pagesize=50&sort=ranking&order=DESC,492,0,65
 1686480434232,466,add,200,,Thread Group 1-1,text,true,,133,188,10,10,http://3.141.4.157:8080/fablix/search?title=One%20Eight%20Seven&pagesize=50&sort=ranking&order=DESC,466,0,66
 1686480434196,506,add,200,,Thread Group 1-6,text,true,,5493,191,10,10,http://3.141.4.157:8080/fablix/search?title=Are%20We%20There%20Yet&pagesize=50&sort=ranking&order=DESC,505,0,64
 1686480434216,489,add,200,,Thread Group 1-3,text,true,,5091,192,10,10,http://3.141.4.157:8080/fablix/search?title=Bride%20And%20Prejudice&pagesize=50&sort=ranking&order=DESC,489,0,64
@@ -1269,8 +1269,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480453132,461,add,200,,Thread Group 1-6,text,true,,281,186,10,10,http://3.141.4.157:8080/fablix/search?title=Bourne%20Identity&pagesize=50&sort=ranking&order=DESC,461,0,67
 1686480453115,491,add,200,,Thread Group 1-5,text,true,,2077,182,10,10,http://3.141.4.157:8080/fablix/search?title=Being%20Human&pagesize=50&sort=ranking&order=DESC,491,0,65
 1686480453125,516,add,200,,Thread Group 1-10,text,true,,2159,200,10,10,http://3.141.4.157:8080/fablix/search?title=The%20World%20is%20Not%20Enough&pagesize=50&sort=ranking&order=DESC,516,0,67
-1686480453119,522,add,200,,Thread Group 1-8,text,true,,5484,190,10,10,http://3.141.4.157:8080/fablix/search?title=Intolerable%20Cruelty&pagesize=50&sort=ranking&order=DESC,522,0,67
 1686480453085,556,add,200,,Thread Group 1-2,text,true,,133,196,10,10,http://3.141.4.157:8080/fablix/search?title=A%20True%20Underdog%20Story&pagesize=50&sort=ranking&order=DESC,556,0,64
+1686480453119,522,add,200,,Thread Group 1-8,text,true,,5484,190,10,10,http://3.141.4.157:8080/fablix/search?title=Intolerable%20Cruelty&pagesize=50&sort=ranking&order=DESC,522,0,67
 1686480453099,544,add,200,,Thread Group 1-3,text,true,,2159,200,10,10,http://3.141.4.157:8080/fablix/search?title=The%20World%20is%20Not%20Enough&pagesize=50&sort=ranking&order=DESC,544,0,65
 1686480453132,525,add,200,,Thread Group 1-4,text,true,,133,204,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Far%20Side%20of%20the%20World&pagesize=50&sort=ranking&order=DESC,525,0,67
 1686480453090,567,add,200,,Thread Group 1-7,text,true,,133,210,10,10,http://3.141.4.157:8080/fablix/search?title=Charlie%20and%20the%20Chocolate%20Factory&pagesize=50&sort=ranking&order=DESC,567,0,66
@@ -1932,8 +1932,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480482949,415,add,200,,Thread Group 1-9,text,true,,5333,183,10,10,http://3.141.4.157:8080/fablix/search?title=Mystic%20River&pagesize=50&sort=ranking&order=DESC,413,0,66
 1686480482851,515,add,200,,Thread Group 1-2,text,true,,133,204,10,10,http://3.141.4.157:8080/fablix/search?title=Crouching%20Tiger%20Hidden%20Dragon&pagesize=50&sort=ranking&order=DESC,515,0,68
 1686480483302,495,add,200,,Thread Group 1-6,text,true,,5484,190,10,10,http://3.141.4.157:8080/fablix/search?title=Intolerable%20Cruelty&pagesize=50&sort=ranking&order=DESC,494,0,65
-1686480483364,457,add,200,,Thread Group 1-9,text,true,,133,183,10,10,http://3.141.4.157:8080/fablix/search?title=Training%20Day&pagesize=50&sort=ranking&order=DESC,457,0,65
 1686480483325,496,add,200,,Thread Group 1-4,text,true,,288,188,10,10,http://3.141.4.157:8080/fablix/search?title=In%20Good%20Company&pagesize=50&sort=ranking&order=DESC,496,0,64
+1686480483364,457,add,200,,Thread Group 1-9,text,true,,133,183,10,10,http://3.141.4.157:8080/fablix/search?title=Training%20Day&pagesize=50&sort=ranking&order=DESC,457,0,65
 1686480483351,477,add,200,,Thread Group 1-10,text,true,,2077,182,10,10,http://3.141.4.157:8080/fablix/search?title=Being%20Human&pagesize=50&sort=ranking&order=DESC,477,0,67
 1686480483313,517,add,200,,Thread Group 1-3,text,true,,280,189,10,10,http://3.141.4.157:8080/fablix/search?title=Any%20Given%20Sunday&pagesize=50&sort=ranking&order=DESC,517,0,66
 1686480483359,478,add,200,,Thread Group 1-1,text,true,,5400,183,10,10,http://3.141.4.157:8080/fablix/search?title=Hotel%20Rwanda&pagesize=50&sort=ranking&order=DESC,478,0,68
@@ -1985,8 +1985,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480485434,583,add,200,,Thread Group 1-7,text,true,,133,201,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Fast%20and%20the%20Furious&pagesize=50&sort=ranking&order=DESC,583,0,77
 1686480485943,539,add,200,,Thread Group 1-4,text,true,,11155,174,10,10,http://3.141.4.157:8080/fablix/search?title=Hitch&pagesize=50&sort=ranking&order=DESC,537,0,62
 1686480485923,575,add,200,,Thread Group 1-1,text,true,,5286,185,10,10,http://3.141.4.157:8080/fablix/search?title=Vampire%20Effect&pagesize=50&sort=ranking&order=DESC,574,0,68
-1686480486017,496,add,200,,Thread Group 1-7,text,true,,818,175,10,10,http://3.141.4.157:8080/fablix/search?title=Amelie&pagesize=50&sort=ranking&order=DESC,495,0,67
 1686480485991,522,add,200,,Thread Group 1-10,text,true,,5333,183,10,10,http://3.141.4.157:8080/fablix/search?title=Mystic%20River&pagesize=50&sort=ranking&order=DESC,521,0,67
+1686480486017,496,add,200,,Thread Group 1-7,text,true,,818,175,10,10,http://3.141.4.157:8080/fablix/search?title=Amelie&pagesize=50&sort=ranking&order=DESC,495,0,67
 1686480486017,497,add,200,,Thread Group 1-3,text,true,,1739,178,10,10,http://3.141.4.157:8080/fablix/search?title=GoldenEye&pagesize=50&sort=ranking&order=DESC,497,0,68
 1686480486002,518,add,200,,Thread Group 1-8,text,true,,12262,180,10,10,http://3.141.4.157:8080/fablix/search?title=Star%20Wars&pagesize=50&sort=ranking&order=DESC,517,0,67
 1686480485970,551,add,200,,Thread Group 1-6,text,true,,133,182,10,10,http://3.141.4.157:8080/fablix/search?title=Boiler%20Room&pagesize=50&sort=ranking&order=DESC,551,0,63
@@ -2980,8 +2980,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480531817,470,add,200,,Thread Group 1-1,text,true,,4359,183,10,10,http://3.141.4.157:8080/fablix/search?title=Terminator%202&pagesize=50&sort=ranking&order=DESC,470,0,68
 1686480531824,478,add,200,,Thread Group 1-3,text,true,,281,192,10,10,http://3.141.4.157:8080/fablix/search?title=Million%20Dollar%20Baby&pagesize=50&sort=ranking&order=DESC,478,0,65
 1686480531818,513,add,200,,Thread Group 1-7,text,true,,133,186,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Lost%20Boys&pagesize=50&sort=ranking&order=DESC,513,0,68
-1686480531886,461,add,200,,Thread Group 1-2,text,true,,5790,182,10,10,http://3.141.4.157:8080/fablix/search?title=White%20Noise&pagesize=50&sort=ranking&order=DESC,461,0,72
 1686480531906,441,add,200,,Thread Group 1-9,text,true,,1739,178,10,10,http://3.141.4.157:8080/fablix/search?title=GoldenEye&pagesize=50&sort=ranking&order=DESC,441,0,65
+1686480531886,461,add,200,,Thread Group 1-2,text,true,,5790,182,10,10,http://3.141.4.157:8080/fablix/search?title=White%20Noise&pagesize=50&sort=ranking&order=DESC,461,0,72
 1686480531928,426,add,200,,Thread Group 1-8,text,true,,133,184,10,10,http://3.141.4.157:8080/fablix/search?title=All%20Over%20Me&pagesize=50&sort=ranking&order=DESC,426,0,63
 1686480531888,468,add,200,,Thread Group 1-6,text,true,,2725,187,10,10,http://3.141.4.157:8080/fablix/search?title=Eyes%20Wide%20Shut&pagesize=50&sort=ranking&order=DESC,468,0,69
 1686480531874,483,add,200,,Thread Group 1-5,text,true,,5091,192,10,10,http://3.141.4.157:8080/fablix/search?title=Bride%20And%20Prejudice&pagesize=50&sort=ranking&order=DESC,483,0,66
@@ -3082,8 +3082,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480536278,497,add,200,,Thread Group 1-3,text,true,,800,185,10,10,http://3.141.4.157:8080/fablix/search?title=Bone%20Collector&pagesize=50&sort=ranking&order=DESC,497,0,66
 1686480536263,515,add,200,,Thread Group 1-5,text,true,,9585,181,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Others&pagesize=50&sort=ranking&order=DESC,514,0,67
 1686480536313,475,add,200,,Thread Group 1-8,text,true,,780,183,10,10,http://3.141.4.157:8080/fablix/search?title=Notting%20Hill&pagesize=50&sort=ranking&order=DESC,475,0,64
-1686480536288,515,add,200,,Thread Group 1-7,text,true,,2753,191,10,10,http://3.141.4.157:8080/fablix/search?title=A%20Clockwork%20Orange&pagesize=50&sort=ranking&order=DESC,515,0,65
 1686480536271,532,add,200,,Thread Group 1-2,text,true,,133,198,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Lord%20of%20the%20Rings&pagesize=50&sort=ranking&order=DESC,532,0,66
+1686480536288,515,add,200,,Thread Group 1-7,text,true,,2753,191,10,10,http://3.141.4.157:8080/fablix/search?title=A%20Clockwork%20Orange&pagesize=50&sort=ranking&order=DESC,515,0,65
 1686480536345,462,add,200,,Thread Group 1-1,text,true,,3479,194,10,10,http://3.141.4.157:8080/fablix/search?title=You%20Only%20Live%20Twice&pagesize=50&sort=ranking&order=DESC,461,0,65
 1686480536312,504,add,200,,Thread Group 1-9,text,true,,133,210,10,10,http://3.141.4.157:8080/fablix/search?title=Charlie%20and%20the%20Chocolate%20Factory&pagesize=50&sort=ranking&order=DESC,504,0,64
 1686480536776,443,add,200,,Thread Group 1-3,text,true,,133,176,10,10,http://3.141.4.157:8080/fablix/search?title=Godsend&pagesize=50&sort=ranking&order=DESC,443,0,66
@@ -3145,8 +3145,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480539295,478,add,200,,Thread Group 1-6,text,true,,288,188,10,10,http://3.141.4.157:8080/fablix/search?title=In%20Good%20Company&pagesize=50&sort=ranking&order=DESC,478,0,66
 1686480539273,502,add,200,,Thread Group 1-5,text,true,,2301,192,10,10,http://3.141.4.157:8080/fablix/search?title=Lord%20of%20the%20Rings&pagesize=50&sort=ranking&order=DESC,502,0,64
 1686480539274,512,add,200,,Thread Group 1-2,text,true,,5091,192,10,10,http://3.141.4.157:8080/fablix/search?title=Bride%20And%20Prejudice&pagesize=50&sort=ranking&order=DESC,511,0,73
-1686480539336,466,add,200,,Thread Group 1-3,text,true,,2301,192,10,10,http://3.141.4.157:8080/fablix/search?title=Lord%20of%20the%20Rings&pagesize=50&sort=ranking&order=DESC,466,0,65
 1686480539388,414,add,200,,Thread Group 1-7,text,true,,5556,175,10,10,http://3.141.4.157:8080/fablix/search?title=Alien3&pagesize=50&sort=ranking&order=DESC,414,0,64
+1686480539336,466,add,200,,Thread Group 1-3,text,true,,2301,192,10,10,http://3.141.4.157:8080/fablix/search?title=Lord%20of%20the%20Rings&pagesize=50&sort=ranking&order=DESC,466,0,65
 1686480539272,532,add,200,,Thread Group 1-9,text,true,,2807,188,10,10,http://3.141.4.157:8080/fablix/search?title=A%20Space%20Odyssey&pagesize=50&sort=ranking&order=DESC,532,0,63
 1686480539319,492,add,200,,Thread Group 1-10,text,true,,5805,193,10,10,http://3.141.4.157:8080/fablix/search?title=A%20View%20to%20a%20Kill&pagesize=50&sort=ranking&order=DESC,492,0,64
 1686480539446,368,add,200,,Thread Group 1-8,text,true,,5992,176,10,10,http://3.141.4.157:8080/fablix/search?title=Hellboy&pagesize=50&sort=ranking&order=DESC,368,0,66
@@ -3477,8 +3477,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480555395,495,add,200,,Thread Group 1-9,text,true,,5400,183,10,10,http://3.141.4.157:8080/fablix/search?title=Hotel%20Rwanda&pagesize=50&sort=ranking&order=DESC,495,0,64
 1686480555418,485,add,200,,Thread Group 1-2,text,true,,5427,193,10,10,http://3.141.4.157:8080/fablix/search?title=Gone%20with%20the%20Wind&pagesize=50&sort=ranking&order=DESC,485,0,66
 1686480555378,526,add,200,,Thread Group 1-10,text,true,,1433,186,10,10,http://3.141.4.157:8080/fablix/search?title=American%20Beauty&pagesize=50&sort=ranking&order=DESC,526,0,67
-1686480555428,477,add,200,,Thread Group 1-8,text,true,,2019,184,10,10,http://3.141.4.157:8080/fablix/search?title=Roman%20Holiday&pagesize=50&sort=ranking&order=DESC,477,0,66
 1686480555446,459,add,200,,Thread Group 1-5,text,true,,1857,187,10,10,http://3.141.4.157:8080/fablix/search?title=All%20or%20Nothing&pagesize=50&sort=ranking&order=DESC,459,0,67
+1686480555428,477,add,200,,Thread Group 1-8,text,true,,2019,184,10,10,http://3.141.4.157:8080/fablix/search?title=Roman%20Holiday&pagesize=50&sort=ranking&order=DESC,477,0,66
 1686480555385,526,add,200,,Thread Group 1-3,text,true,,5360,192,10,10,http://3.141.4.157:8080/fablix/search?title=Love%20the%20Hard%20Way&pagesize=50&sort=ranking&order=DESC,526,0,68
 1686480555413,506,add,200,,Thread Group 1-1,text,true,,2839,200,10,10,http://3.141.4.157:8080/fablix/search?title=Raiders%20Of%20The%20Lost%20Ark&pagesize=50&sort=ranking&order=DESC,506,0,64
 1686480555490,437,add,200,,Thread Group 1-6,text,true,,133,195,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Matrix%20Revolutions&pagesize=50&sort=ranking&order=DESC,437,0,64
@@ -4651,15 +4651,15 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480610415,519,add,200,,Thread Group 1-4,text,true,,5091,192,10,10,http://3.141.4.157:8080/fablix/search?title=Bride%20And%20Prejudice&pagesize=50&sort=ranking&order=DESC,519,0,66
 1686480610405,566,add,200,,Thread Group 1-7,text,true,,24649,178,10,10,http://3.141.4.157:8080/fablix/search?title=Alexander&pagesize=50&sort=ranking&order=DESC,496,0,66
 1686480610886,416,add,200,,Thread Group 1-6,text,true,,5400,183,10,10,http://3.141.4.157:8080/fablix/search?title=Hotel%20Rwanda&pagesize=50&sort=ranking&order=DESC,416,0,64
-1686480610971,439,add,200,,Thread Group 1-7,text,true,,6941,185,10,10,http://3.141.4.157:8080/fablix/search?title=Spider%20Man%202&pagesize=50&sort=ranking&order=DESC,439,0,66
 1686480610929,481,add,200,,Thread Group 1-5,text,true,,3397,184,10,10,http://3.141.4.157:8080/fablix/search?title=Oceans%20Eleven&pagesize=50&sort=ranking&order=DESC,481,0,66
+1686480610971,439,add,200,,Thread Group 1-7,text,true,,6941,185,10,10,http://3.141.4.157:8080/fablix/search?title=Spider%20Man%202&pagesize=50&sort=ranking&order=DESC,439,0,66
 1686480610914,510,add,200,,Thread Group 1-9,text,true,,1445,190,10,10,http://3.141.4.157:8080/fablix/search?title=Good%20Will%20Hunting&pagesize=50&sort=ranking&order=DESC,510,0,69
 1686480610934,500,add,200,,Thread Group 1-4,text,true,,1445,190,10,10,http://3.141.4.157:8080/fablix/search?title=Good%20Will%20Hunting&pagesize=50&sort=ranking&order=DESC,500,0,76
 1686480610896,543,add,200,,Thread Group 1-2,text,true,,133,198,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Lord%20of%20the%20Rings&pagesize=50&sort=ranking&order=DESC,543,0,67
 1686480610932,512,add,200,,Thread Group 1-3,text,true,,2301,192,10,10,http://3.141.4.157:8080/fablix/search?title=Lord%20of%20the%20Rings&pagesize=50&sort=ranking&order=DESC,512,0,72
 1686480610918,547,add,200,,Thread Group 1-1,text,true,,133,196,10,10,http://3.141.4.157:8080/fablix/search?title=A%20True%20Underdog%20Story&pagesize=50&sort=ranking&order=DESC,546,0,67
-1686480610914,556,add,200,,Thread Group 1-10,text,true,,133,199,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Return%20of%20the%20King&pagesize=50&sort=ranking&order=DESC,556,0,68
 1686480610924,546,add,200,,Thread Group 1-8,text,true,,133,201,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Fast%20and%20the%20Furious&pagesize=50&sort=ranking&order=DESC,546,0,70
+1686480610914,556,add,200,,Thread Group 1-10,text,true,,133,199,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Return%20of%20the%20King&pagesize=50&sort=ranking&order=DESC,556,0,68
 1686480611302,265,add,200,,Thread Group 1-6,text,true,,19930,174,10,10,http://3.141.4.157:8080/fablix/search?title=Birth&pagesize=50&sort=ranking&order=DESC,200,0,65
 1686480611410,472,add,200,,Thread Group 1-5,text,true,,133,184,10,10,http://3.141.4.157:8080/fablix/search?title=About%20A%20Boy&pagesize=50&sort=ranking&order=DESC,472,0,68
 1686480611424,475,add,200,,Thread Group 1-9,text,true,,12262,180,10,10,http://3.141.4.157:8080/fablix/search?title=Star%20Wars&pagesize=50&sort=ranking&order=DESC,475,0,67
@@ -6929,8 +6929,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480716519,451,add,200,,Thread Group 1-10,text,true,,133,186,10,10,http://3.141.4.157:8080/fablix/search?title=The%20New%20World&pagesize=50&sort=ranking&order=DESC,451,0,64
 1686480716502,471,add,200,,Thread Group 1-3,text,true,,5427,193,10,10,http://3.141.4.157:8080/fablix/search?title=Gone%20with%20the%20Wind&pagesize=50&sort=ranking&order=DESC,471,0,67
 1686480716473,502,add,200,,Thread Group 1-9,text,true,,133,193,10,10,http://3.141.4.157:8080/fablix/search?title=Master%20and%20Commander&pagesize=50&sort=ranking&order=DESC,502,0,66
-1686480716574,415,add,200,,Thread Group 1-4,text,true,,1110,185,10,10,http://3.141.4.157:8080/fablix/search?title=Men%20In%20Black&pagesize=50&sort=ranking&order=DESC,415,0,66
 1686480716571,418,add,200,,Thread Group 1-5,text,true,,3751,184,10,10,http://3.141.4.157:8080/fablix/search?title=Indiana%20Jones&pagesize=50&sort=ranking&order=DESC,418,0,67
+1686480716574,415,add,200,,Thread Group 1-4,text,true,,1110,185,10,10,http://3.141.4.157:8080/fablix/search?title=Men%20In%20Black&pagesize=50&sort=ranking&order=DESC,415,0,66
 1686480716798,222,add,200,,Thread Group 1-7,text,true,,133,188,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Sixth%20Sense&pagesize=50&sort=ranking&order=DESC,222,0,65
 1686480716911,363,add,200,,Thread Group 1-2,text,true,,133,187,10,10,http://3.141.4.157:8080/fablix/search?title=You%20Got%20Served&pagesize=50&sort=ranking&order=DESC,363,0,66
 1686480716975,450,add,200,,Thread Group 1-9,text,true,,7080,177,10,10,http://3.141.4.157:8080/fablix/search?title=Dr.%20No&pagesize=50&sort=ranking&order=DESC,449,0,71
@@ -7039,8 +7039,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480721375,476,add,200,,Thread Group 1-9,text,true,,133,189,10,10,http://3.141.4.157:8080/fablix/search?title=Along%20Came%20Polly&pagesize=50&sort=ranking&order=DESC,476,0,66
 1686480721386,485,add,200,,Thread Group 1-3,text,true,,2809,197,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Spy%20Who%20Loved%20Me&pagesize=50&sort=ranking&order=DESC,485,0,67
 1686480721384,492,add,200,,Thread Group 1-10,text,true,,133,194,10,10,http://3.141.4.157:8080/fablix/search?title=Revenge%20of%20the%20Sith&pagesize=50&sort=ranking&order=DESC,492,0,71
-1686480721360,518,add,200,,Thread Group 1-4,text,true,,133,198,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Lord%20of%20the%20Rings&pagesize=50&sort=ranking&order=DESC,518,0,65
 1686480721366,512,add,200,,Thread Group 1-1,text,true,,2809,197,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Spy%20Who%20Loved%20Me&pagesize=50&sort=ranking&order=DESC,512,0,66
+1686480721360,518,add,200,,Thread Group 1-4,text,true,,133,198,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Lord%20of%20the%20Rings&pagesize=50&sort=ranking&order=DESC,518,0,65
 1686480721578,327,add,200,,Thread Group 1-7,text,true,,5581,190,10,10,http://3.141.4.157:8080/fablix/search?title=Son%20Of%20The%20Mask&pagesize=50&sort=ranking&order=DESC,326,0,66
 1686480721749,310,add,200,,Thread Group 1-5,text,true,,133,194,10,10,http://3.141.4.157:8080/fablix/search?title=Bowling%20for%20Columbine&pagesize=50&sort=ranking&order=DESC,310,0,69
 1686480721748,314,add,200,,Thread Group 1-6,text,true,,281,192,10,10,http://3.141.4.157:8080/fablix/search?title=Million%20Dollar%20Baby&pagesize=50&sort=ranking&order=DESC,314,0,70
@@ -7161,8 +7161,8 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1686480727082,537,add,200,,Thread Group 1-7,text,true,,5581,190,10,10,http://3.141.4.157:8080/fablix/search?title=Son%20Of%20The%20Mask&pagesize=50&sort=ranking&order=DESC,537,0,63
 1686480727084,536,add,200,,Thread Group 1-9,text,true,,1110,185,10,10,http://3.141.4.157:8080/fablix/search?title=Men%20In%20Black&pagesize=50&sort=ranking&order=DESC,536,0,68
 1686480727029,607,add,200,,Thread Group 1-10,text,true,,1759,184,10,10,http://3.141.4.157:8080/fablix/search?title=Jurassic%20Park&pagesize=50&sort=ranking&order=DESC,607,0,65
-1686480727142,512,add,200,,Thread Group 1-5,text,true,,1599,180,10,10,http://3.141.4.157:8080/fablix/search?title=Episode%20I&pagesize=50&sort=ranking&order=DESC,512,0,68
 1686480727040,614,add,200,,Thread Group 1-6,text,true,,133,189,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Life%20Aquatic&pagesize=50&sort=ranking&order=DESC,614,0,65
+1686480727142,512,add,200,,Thread Group 1-5,text,true,,1599,180,10,10,http://3.141.4.157:8080/fablix/search?title=Episode%20I&pagesize=50&sort=ranking&order=DESC,512,0,68
 1686480727167,514,add,200,,Thread Group 1-3,text,true,,133,190,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Polar%20Express&pagesize=50&sort=ranking&order=DESC,514,0,64
 1686480727031,650,add,200,,Thread Group 1-4,text,true,,1132,201,10,10,http://3.141.4.157:8080/fablix/search?title=The%20Phantom%20of%20the%20Opera&pagesize=50&sort=ranking&order=DESC,650,0,65
 1686480727054,708,add,200,,Thread Group 1-2,text,true,,89132,174,10,10,http://3.141.4.157:8080/fablix/search?title=Seven&pagesize=50&sort=ranking&order=DESC,569,0,65
