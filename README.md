@@ -85,33 +85,33 @@
 
 | **Single-instance Version Test Plan**         | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
 | --------------------------------------------- | ---------------------------- | -------------------------- | ----------------------------------- | ------------------------- | ------------ |
-| Case 1: HTTP/1 thread                         | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
-| Case 2: HTTP/10 threads                       | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
-| Case 3: HTTPS/10 threads                      | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
-| Case 4: HTTP/10 threads/No connection pooling | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
+| Case 1: HTTP/1 thread                         | /img/single/1tSinglePooling.png   | 194.85879332477535                         | 47.853849563262685                                  | 47.81630769171479                        | ??           |
+| Case 2: HTTP/10 threads                       | /img/single/10tSinglePooling.png   | 461.9662126068376                         | 356.31919578217963                                  | 356.222502378406                        | ??           |
+| Case 3: HTTPS/10 threads                      | /img/single/10tSinglePoolingHTTPS.png   | 551.6963387124762                         | 340.9500825638343                                  | 340.80429591332364                        | ??           |
+| Case 4: HTTP/10 threads/No connection pooling | /img/single/10tSingleNoPooling.png   | 454.9459734964322                         | 310.56679960565083                                  | 310.515937921364                        | ??           |
 
 | **Scaled Version Test Plan**                  | **Graph Results Screenshot** | **Average Query Time(ms)** | **Average Search Servlet Time(ms)** | **Average JDBC Time(ms)** | **Analysis** |
 | --------------------------------------------- | ---------------------------- | -------------------------- | ----------------------------------- | ------------------------- | ------------ |
-| Case 1: HTTP/1 thread                         | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
-| Case 2: HTTP/10 threads                       | ![](path to image in img/)   | ??                         | ??                                  | ??                        | ??           |
-| Case 3: HTTP/10 threads/No connection pooling | ![](path to image in img/)   | ??                         | ??                                  | ??                        |
+| Case 1: HTTP/1 thread                         | /img/scaled/1tBalancedPooling.png   | 196.58694287507848                         | 47.790490450031406                                  | 47.642381506599584                        | ??           |
+| Case 2: HTTP/10 threads                       | /img/scaled/10tBalancedPooling.png   | 437.0841369671558                         | 274.82498198004026                                  | 274.7857208742734                        | ??           |
+| Case 3: HTTP/10 threads/No connection pooling | /img/scaled/10tBalancedNoPooling.png   | 7148.619433198381                         | 1200.4086951044587                                  | 1200.3575410454368                        |
 
-"10tsingleHttpsPOoling:ts_average: 340.9500825638343 tj_average: 340.80429591332364
-10tsingleHttpPOOLing:ts_average: 356.31919578217963 tj_average: 356.222502378406
-10tsingnopooling:ts_average: 310.56679960565083 tj_average: 310.515937921364
-1tsinglepooling:ts_average: 47.853849563262685 tj_average: 47.81630769171479
+"10tSingleHttpsPooling:ts_average: 340.9500825638343 tj_average: 340.80429591332364
+10tSinglePooling:ts_average: 356.31919578217963 tj_average: 356.222502378406
+10tSingleNoPooling:ts_average: 310.56679960565083 tj_average: 310.515937921364
+1tSinglePooling:ts_average: 47.853849563262685 tj_average: 47.81630769171479
 
 scaled:
-10tnopooling:ts_average: 1200.4086951044587 tj_average: 1200.3575410454368
-10twithpooling:ts_average: 274.82498198004026 tj_average: 274.7857208742734
-1tpooling:ts_average: 47.790490450031406 tj_average: 47.642381506599584
+10tBalancedNoPooling:ts_average: 1200.4086951044587 tj_average: 1200.3575410454368
+10tBalancedPooling:ts_average: 274.82498198004026 tj_average: 274.7857208742734
+1tBalancedPooling:ts_average: 47.790490450031406 tj_average: 47.642381506599584
 
 "
-10tsinglepoolinghttps: average 551.6963387124762
-10tsinglepooling: average461.9662126068376
-10tsinglenopooling:average454.9459734964322
-1tsinglepooling: average194.85879332477535
+10tSinglePoolingHTTPS: average 551.6963387124762
+10tSinglePooling: average461.9662126068376
+10tSingleNoPooling:average454.9459734964322
+1tSinglePooling: average194.85879332477535
 scaled
 10tBalancedPooling: average437.0841369671558
 1tBalancePooling: average196.58694287507848
-10tBalancednoPooling average7148.619433198381
+10tBalancedNoPooling average7148.619433198381
