@@ -1,9 +1,7 @@
-Fablix is a movie database website created using a variety of programming languages. It is a fully secured, deployable application.
+Fablix is a full-stack application created using a variety of programming languages. It is a fully secured, deployable application. Created by Dylan Vo and Yiqun Du.
 # Info
-    - #### Names: Dylan Vo/Yiqun Du
-
-    - #### Video Demo Link:
-        https://youtu.be/69dYNkNgfgE
+    - #### Demo Playlist Link:
+        [https://youtu.be/69dYNkNgfgE](https://www.youtube.com/playlist?list=PLRGZTRAn3xZhTOwDfYPpF5Bd9kQ_IfiX_)
     - #### Instruction of deployment:
     for master/replicator build mvn in movie_rest_api
     for singleins build mvn in proj1singlins/movierestapi
