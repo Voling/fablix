@@ -1,13 +1,11 @@
-# General
+Fablix is a movie database website created using a variety of programming languages. It is a fully secured, deployable application.
+# Info
+    - #### Names: Dylan Vo/Yiqun Du
 
-    - #### Team#: s23-122b-tryna_find_a_teammate
-
-    - #### Names:Yiqun Du /Dylan Vo
-
-    - #### Project 5 Video Demo Link:
+    - #### Video Demo Link:
         https://youtu.be/69dYNkNgfgE
     - #### Instruction of deployment:
-    for master/slave build mvn in movie_rest_api
+    for master/replicator build mvn in movie_rest_api
     for singleins build mvn in proj1singlins/movierestapi
     for master and slave:
     after the deployment of master and slave
@@ -15,9 +13,7 @@
     with command mysqlrouter --log-file=/path/to/logfile.log
     
 
-    - #### Collaborations and Work Distribution:
-    Dean: connection pooling, apache, mysql router, master-slave, log processing, readme, aws, ddos mitigation and investigation
-    Dylan: jmeter graphs, jmeter tests, apache, master-slave, gcp, aws, ddos mitigation
+- # Jmeter tests:
 - # Connection Pooling
 
   - #### Include the filename/path of all code/configuration files in GitHub of using JDBC Connection Pooling.
